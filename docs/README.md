@@ -23,7 +23,6 @@ The primary features of this website include:
 - [API endpoints](api-endpoints.md)
 - [DB schema](schema.md)
 - [Sample State](sample-state.md)
-- [Redux Structure](redux-structure.md)
 
 ## Implementation Timeline
 
