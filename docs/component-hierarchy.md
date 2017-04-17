@@ -17,7 +17,9 @@
 **GroupContainer**
   - Header
   - GroupIndex
+    - GroupIndexItem
   - EventIndex
+    - EventIndexItem
   - Footer
 
 **GroupFormContainer**

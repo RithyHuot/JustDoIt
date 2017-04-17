@@ -32,12 +32,12 @@ The primary features of this website include:
 
 ### Phase 2: Group Model, API, and components (2 days)
 
-**Objective:** Users can join a group. Group can be created, read, edited and destroyed through
+**Objective:** Users can join a group. User can view and create individual group. Group can be created, read, edited and destroyed through
 the API.
 
 ### Phase 3: Event Model, API, and components (2 days)
 
-**Objective:** Users can rsvp to an event. Event belong to Groups that can be created, read, edited and destroyed through the API.
+**Objective:** Users can rsvp to an event. User can view and create individual event. Event belong to Groups that can be created, read, edited and destroyed through the API.
 
 ### Phase 4: Calendar (1 day)
 
