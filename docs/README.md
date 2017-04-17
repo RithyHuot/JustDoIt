@@ -1,5 +1,5 @@
 ## Minimum Viable Product
-#### JustDoIt is a web application inspired by Evernote built using Ruby on Rails and React+Redux.
+#### JustDoIt is a web application inspired by Meetup built using Ruby on Rails and React+Redux.
 
 The primary features of this website include:
 - [ ] Hosting on Heroku
