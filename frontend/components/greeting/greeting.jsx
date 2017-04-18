@@ -8,14 +8,14 @@ class Greeting extends React.Component {
 
   handleClick () {
     this.props.logout().then(
-      () => this.props.router.push('/')
+      () => this.props.router.push('/login')
     );
   }
 
   personalGreeting() {
     let logout;
-    if (this.props.current_user) {
-      logout = <button onClick={this.handleClick.bind(this)}> Log Out</button>;
+    if (this.props.currentUser) {
+      logout = (<button onClick={this.handleClick.bind(this)}> Log Out</button>);
     }
 
     return (
@@ -52,7 +52,7 @@ class Greeting extends React.Component {
     // if (this.props.currentUser) {
     //   return this.personalGreeting();
     // } else {
-    //   return this.sessionLink();
+    //   return (<h1>Loading...</h1>);
     // }
   }
 }
