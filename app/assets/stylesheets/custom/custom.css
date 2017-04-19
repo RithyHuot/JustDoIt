@@ -1,0 +1,102 @@
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px 2px rgba(0,0,0, 0.5);
+}
+
+.header-inner .header-center img {
+  height: 80px;
+  width: auto;
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.header-create-group {
+  cursor: pointer;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 550;
+}
+
+#login-link {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.signup-link {
+  background-color: rgb(180, 8, 34);
+  color: white;
+  display: inline-block;
+  padding: 10px 15px ;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+.close-button {
+  margin-bottom: 20px;
+}
+
+#login-text, #signup-text {
+  font-size: 36px;
+  font-family: sans-serif;
+  margin-top: 10px;
+  color: rgb(180, 8, 34);
+}
+
+#sign-link {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  border-bottom: 1px solid grey;
+}
+
+.login-submit, .demo-submit, .signup-submit {
+  border: none;
+  background-color: rgb(180, 8, 34);
+  color: white;
+  display: inline-block;
+  padding: 7px 12px ;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.error-msg {
+  padding: 5px;
+  color: red;
+}
+
+.login-input {
+  width: 350px;
+  border-radius: 5px;
+  border-style: solid;
+  margin-bottom: 13px;
+  height: 30px;
+  font-size: 20px;
+}
+
+.demo-submit {
+  border-top: 1px solid grey;
+  margin-top: 15px;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+}
+
+
+#logout-button, .welcome-msg, #login-link, .signup-link {
+  margin-right: 20px;
+}

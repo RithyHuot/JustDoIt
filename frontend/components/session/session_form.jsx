@@ -1,6 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
+import Modal from 'react-modal';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -11,16 +12,18 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   componentDidUpdate(newProps) {
-    this.redirectIfLoggedIn();
+    if (newProps.loggedIn) {
+      hashHistory.push('/');
+    }
   }
 
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      this.props.router.push('/');
+  componentWillUnmount(){
+    if (this.props.errors !== undefined) {
+       this.props.receiveErrors([]);
     }
   }
 
@@ -36,53 +39,84 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = merge({}, this.state);
     this.props.login(user)
-      .then(() => this.redirectIfLoggedIn());
+      .then(() => {
+        this.props.closeModal();
+        if(this.props.location.pathname !== '/'){
+          hashHistory.push('/');
+        }
+      });
   }
 
   renderErrors() {
     const errors = this.props.errors.map((error, i) => (
-      <li key={`error-${i}`}>
+      <li className='error-msg' key={`error-${i}`}>
         { error }
       </li>
     ));
     return (
-      <ul>
+      <ul >
         { errors }
       </ul>
     );
   }
 
+  guestLogin(email, password) {
+    return (event) => {
+      event.preventDefault();
+      this.setState({ email: "", password: "" }, () => {
+        this.setValue(email, "email", () => {
+          this.setValue(password, "password", () => {
+            this.handleSubmit(new Event('dummy'));
+          });
+        });
+      });
+    };
+  }
+
+  setValue(value, field, callback) {
+    if (!value) return callback();
+    this.setState({ [field]: this.state[field] + value[0] });
+    setTimeout(() => {
+      this.setValue(value.slice(1), field, callback);
+    }, 30);
+  }
+
   render () {
     return (
-      <div className='login'>
-        <form onSubmit={this.handleSubmit}>
+      <div className='login' >
+        <form className='login' onSubmit={this.handleSubmit}>
           <div className='login-header'>
             <span id='login-text'> Log in </span>
             <div id='sign-link'>
-             Not registered with us yet? <Link to='/signup'> Sign up </Link>
+             Not registered with us yet? <Link onClick={ this.props.closeModal } to='/signup'> Sign up </Link>
            </div>
           </div>
           { this.renderErrors() }
           <div>
             <br />
-            <label id='email'> Email: </label>
-            <input
-              type='text'
-              value={ this.state.email }
-              onChange={ this.handleInput("email") }
-              className='login-input'
-            />
+            <label id='email'> Email address:
+            <br/>
+              <input
+                type='text'
+                value={ this.state.email }
+                onChange={ this.handleInput("email") }
+                className='login-input'
+              />
+              </label>
             <br />
-            <label id='password'> Password: </label>
-            <input
-              type='password'
-              value={ this.state.password }
-              onChange={ this.handleInput("password") }
-              className='login-input'
-            />
-
+            <label id='password'> Password:
+            <br/>
+              <input
+                type='password'
+                value={ this.state.password }
+                onChange={ this.handleInput("password") }
+                className='login-input'
+              />
+            </label>
             <br />
-            <input type='submit' value='Login' />
+            <input className='login-submit' type='submit' value='Login' />
+            <br />
+            <input className='demo-submit' type='submit' value='Demo Login' onClick={ this.guestLogin("demo@justdoit.com", "password123")}/>
           </div>
         </form>
         <br />

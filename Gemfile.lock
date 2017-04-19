@@ -42,6 +42,8 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (7.1.4)
+    autoprefixer-rails (6.7.7.2)
+      execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -120,6 +122,11 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.0.2)
       actionpack (= 5.0.2)
       activesupport (= 5.0.2)
@@ -171,6 +178,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  autoprefixer-rails
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -183,6 +191,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails_12factor
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

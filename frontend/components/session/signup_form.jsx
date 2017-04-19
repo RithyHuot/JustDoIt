@@ -16,7 +16,9 @@ class Signup extends React.Component {
   }
 
   componentDidUpdate(newProps) {
-    this.redirectIfLoggedIn();
+    if (newProps.loggedIn) {
+      this.props.router.push('/');
+    }
   }
 
   redirectIfLoggedIn() {
@@ -40,6 +42,12 @@ class Signup extends React.Component {
       .then(() => this.redirectIfLoggedIn());
   }
 
+  componentWillUnmount(){
+    if (this.props.errors !== undefined) {
+      this.props.receiveErrors([]);
+    }
+  }
+
   renderErrors() {
     const errors = this.props.errors.map((error, i) => (
       <li key={`error-${i}`}>
@@ -55,49 +63,54 @@ class Signup extends React.Component {
 
   render () {
     return (
-      <div className='login'>
+      <div className='signup'>
         <form onSubmit={this.handleSubmit}>
-          <div className='signup-header'> Sign up </div>
+          <div id='signup-text'> Sign up </div>
           { this.renderErrors() }
           <div>
             <br />
-            <label id='name'> Name: </label>
-            <input
-              type='text'
-              value={ this.state.name }
-              onChange={ this.handleInput("name") }
-              className='login-input'
-            />
+            <label id='name'> Name:
+              <br />
+              <input
+                type='text'
+                value={ this.state.name }
+                onChange={ this.handleInput("name") }
+                className='login-input'
+              />
+            </label>
             <br />
-            <label id='email'> Email: </label>
-            <input
-              type='text'
-              value={ this.state.email }
-              onChange={ this.handleInput("email") }
-              className='login-input'
-            />
+            <label id='email'> Email address:
+              <br />
+              <input
+                type='text'
+                value={ this.state.email }
+                onChange={ this.handleInput("email") }
+                className='login-input'
+              />
+            </label>
             <br />
-            <label id='password'> Password: </label>
-            <input
-              type='password'
-              value={ this.state.password }
-              onChange={ this.handleInput("password") }
-              className='login-input'
-            />
-
+            <label id='password'> Password:
+              <br />
+              <input
+                type='password'
+                value={ this.state.password }
+                onChange={ this.handleInput("password") }
+                className='login-input'
+              />
+            </label>
             <br />
-            <input type='submit' value='Sign up' />
+            <input type='submit' className='signup-submit' value='Sign up' />
           </div>
         </form>
         <br />
-        <div>
-          Already a member? <Link to='/login'> Log in </Link>
-        </div>
       </div>
     );
   }
 
 }
 
+// <div>
+//   Already a member? <Link to='/login'> Log in </Link>
+// </div>
 
 export default withRouter(Signup);
