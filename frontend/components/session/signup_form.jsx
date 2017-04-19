@@ -50,7 +50,7 @@ class Signup extends React.Component {
 
   renderErrors() {
     const errors = this.props.errors.map((error, i) => (
-      <li key={`error-${i}`}>
+      <li className='error-msg' key={`error-${i}`}>
         { error }
       </li>
     ));

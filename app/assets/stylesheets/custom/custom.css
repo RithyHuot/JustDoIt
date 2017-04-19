@@ -96,6 +96,13 @@
   justify-content: center;
 }
 
+.signup form {
+  border: 1px solid grey;
+  margin-top: 15%;
+  padding: 15px 10px;
+  border-radius: 5px;
+}
+
 
 #logout-button, .welcome-msg, #login-link, .signup-link {
   margin-right: 20px;
