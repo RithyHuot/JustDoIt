@@ -1,6 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 import { Link, withRouter } from 'react-router';
+import Modal from 'react-modal';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   componentDidUpdate(newProps) {
@@ -36,7 +38,9 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = merge({}, this.state);
     this.props.login(user)
-      .then(() => this.redirectIfLoggedIn());
+      .then(() => {
+        this.props.closeModal();
+      });
   }
 
   renderErrors() {
@@ -52,6 +56,27 @@ class SessionForm extends React.Component {
     );
   }
 
+  guestLogin(email, password) {
+    return (event) => {
+      event.preventDefault();
+      this.setState({ email: "", password: "" }, () => {
+        this.setValue(email, "email", () => {
+          this.setValue(password, "password", () => {
+            this.props.login(this.state).then(() => this.props.closeModal());
+          });
+        });
+      });
+    };
+  }
+
+  setValue(value, field, callback) {
+    if (!value) return callback();
+    this.setState({ [field]: this.state[field] + value[0] });
+    setTimeout(() => {
+      this.setValue(value.slice(1), field, callback);
+    }, 30);
+  }
+
   render () {
     return (
       <div className='login'>
@@ -59,7 +84,7 @@ class SessionForm extends React.Component {
           <div className='login-header'>
             <span id='login-text'> Log in </span>
             <div id='sign-link'>
-             Not registered with us yet? <Link to='/signup'> Sign up </Link>
+             Not registered with us yet? <Link onClick={ this.props.closeModal } to='/signup'> Sign up </Link>
            </div>
           </div>
           { this.renderErrors() }
@@ -80,9 +105,10 @@ class SessionForm extends React.Component {
               onChange={ this.handleInput("password") }
               className='login-input'
             />
-
             <br />
             <input type='submit' value='Login' />
+            <br />
+            <input type='submit' value='Demo Login' onClick={ this.guestLogin("demo@justdoit.com", "password123")}/>
           </div>
         </form>
         <br />

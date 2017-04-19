@@ -8,16 +8,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const formType = ownProps.location.pathname.slice(1);
-  // let actionType;
-  // if (formType === 'login') {
-  //   actionType = login;
-  // } else {
-  //   actionType = signup;
-  // }
   return ({
-    login: (user) => dispatch(login(user)),
-    formType
+    login: (user) => dispatch(login(user))
   });
 };
 

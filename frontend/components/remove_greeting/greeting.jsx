@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 
 class Greeting extends React.Component {
   constructor (props) {
@@ -8,8 +8,12 @@ class Greeting extends React.Component {
 
   handleClick () {
     this.props.logout().then(
-      () => this.props.router.push('/login')
+      () => this.props.router.push('/')
     );
+  }
+
+  redirectToHome () {
+    hashHistory.push('/');
   }
 
   personalGreeting() {
@@ -25,10 +29,13 @@ class Greeting extends React.Component {
             <span className='header-create-group'> Create a Group </span>
           </div>
           <div className='header-center'>
-            <img src='/images/logo.png'/>
+            <img src='/images/logo.png' onClick={this.redirectToHome}/>
           </div>
           <div className='header-left'>
-            {}
+            <ul>
+              <Link to='/login'>Login</Link>
+              <Link to='/signup' className='header-link-signup'>Sign up </Link>
+            </ul>
           </div>
         </div>
           { logout }
@@ -49,11 +56,6 @@ class Greeting extends React.Component {
   render () {
 
     return this.personalGreeting();
-    // if (this.props.currentUser) {
-    //   return this.personalGreeting();
-    // } else {
-    //   return (<h1>Loading...</h1>);
-    // }
   }
 }
 
