@@ -12,7 +12,7 @@ const style = {
     position        : 'absolute',
     top             : '30%',
     left            : '35%',
-    height          : '400px',
+    height          : '450px',
     width           : '400px',
     border          : '1px solid #ccc',
     padding         : '20px',

@@ -30,6 +30,12 @@ class Header extends React.Component {
     }
   }
 
+  componentWillUpdate(){
+    if (this.props.errors !== undefined) {
+      this.props.receiveErrors([]);
+    }
+  }
+
   handleClick () {
     this.props.logout().then(
       () => {
