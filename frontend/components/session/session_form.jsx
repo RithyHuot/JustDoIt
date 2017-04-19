@@ -22,7 +22,9 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount(){
-    this.props.receiveErrors([]);
+    if (this.props.errors !== undefined) {
+       this.props.receiveErrors([]);
+    }
   }
 
   handleInput(field) {
@@ -39,6 +41,7 @@ class SessionForm extends React.Component {
     this.props.login(user)
       .then(() => {
         this.props.closeModal();
+        this.props.router.push('/');
       });
   }
 
@@ -62,7 +65,10 @@ class SessionForm extends React.Component {
         this.setValue(email, "email", () => {
           this.setValue(password, "password", () => {
             this.handleSubmit(new Event('dummy'));
-            this.props.login(this.state).then(() => this.props.closeModal());
+            this.props.login(this.state).then(() => {
+              this.props.closeModal();
+              this.props.router.push('/');
+            });
           });
         });
       });

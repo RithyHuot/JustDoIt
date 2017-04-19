@@ -34,7 +34,9 @@ class Header extends React.Component {
   }
 
   componentWillUpdate(){
-    this.props.receiveErrors([]);
+    if (this.props.errors !== undefined) {
+      this.props.receiveErrors([]);
+    }
   }
 
   render() {
@@ -44,11 +46,12 @@ class Header extends React.Component {
     let signup;
 
     if (this.props.currentUser) {
-      logout = (<button onClick={this.handleClick.bind(this)}> Log Out</button>);
+      logout = (<button id='logout-button' onClick={this.handleClick.bind(this)}> Log Out</button>);
       welcome = (<span className='welcome-msg'> Welcome, {this.props.currentUser.first_name} {this.props.currentUser.last_name}
     </span>);
   } else {
-    login = (<span onClick={ this.openModal }>Login</span>);
+    login = (<span id='login-link' onClick={ this.openModal }>Login</span>);
+    signup = (<Link onClick={ this.closeModal } to='/signup' className='header-link-signup'>Sign up</Link>);
   }
 
     return (
@@ -64,9 +67,9 @@ class Header extends React.Component {
             <ul>
               { welcome }
               &nbsp; &nbsp;
-              <span onClick={ this.openModal }>Login</span>
+              { login }
               &nbsp; &nbsp;
-              <Link onClick={ this.closeModal } to='/signup' className='header-link-signup'>Sign up</Link>
+              { signup }
               &nbsp; &nbsp;
               { logout }
             </ul>

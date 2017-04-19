@@ -1,3 +1,11 @@
+# JustDoIt
+[Heroku link][heroku]
+
+[Trello link][trello]
+
+[heroku]: https://justdoitrng.herokuapp.com/#/
+[trello]: https://trello.com/b/Av4nSsaO/justdoit
+
 ## Minimum Viable Product
 #### JustDoIt is a web application inspired by Meetup built using Ruby on Rails and React+Redux.
 
