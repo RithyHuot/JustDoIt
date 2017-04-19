@@ -96,6 +96,12 @@
   justify-content: center;
 }
 
+.signup-form {
+  position: absolute;
+  z-index: 8;
+  background-color: white;
+}
+
 .signup form {
   border: 1px solid grey;
   margin-top: 15%;
