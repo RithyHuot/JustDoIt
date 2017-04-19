@@ -4,7 +4,7 @@ import Signup from './signup_form';
 
 const mapStateToProps = (state) => {
   return ({loggedIn: Boolean(state.session.currentUser),
-  errors: state.session.errors});
+  errors: Object.values(state.session.errors)});
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

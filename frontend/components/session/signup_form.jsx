@@ -12,15 +12,11 @@ class Signup extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
+
   }
 
   componentDidUpdate(newProps) {
-    this.redirectIfLoggedIn();
-  }
-
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
+    if (newProps.loggedIn) {
       this.props.router.push('/');
     }
   }

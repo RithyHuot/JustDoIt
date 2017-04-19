@@ -24,7 +24,7 @@ class Header extends React.Component {
   }
 
   redirectToHome () {
-    hashHistory.push('/');
+    this.props.router.push('/');
   }
 
   handleClick () {
@@ -50,20 +50,20 @@ class Header extends React.Component {
       welcome = (<span className='welcome-msg'> Welcome, {this.props.currentUser.first_name} {this.props.currentUser.last_name}
     </span>);
   } else {
-    login = (<span id='login-link' onClick={ this.openModal }>Login</span>);
-    signup = (<Link onClick={ this.closeModal } to='/signup' className='header-link-signup'>Sign up</Link>);
+    login = (<span id='login-link' onClick={ this.openModal }>Log in</span>);
+    signup = (<Link onClick={ this.closeModal } to='/signup' className='signup-link'>Sign up</Link>);
   }
 
     return (
       <nav>
         <div className='header-inner'>
-          <div className='header-right'>
+          <div className='header-left'>
             <span className='header-create-group'> Create a Group </span>
           </div>
           <div className='header-center'>
             <img src='/images/logo.png' onClick={this.redirectToHome}/>
           </div>
-          <div className='header-left'>
+          <div className='header-right'>
             <ul>
               { welcome }
               &nbsp; &nbsp;

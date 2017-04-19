@@ -65,10 +65,6 @@ class SessionForm extends React.Component {
         this.setValue(email, "email", () => {
           this.setValue(password, "password", () => {
             this.handleSubmit(new Event('dummy'));
-            this.props.login(this.state).then(() => {
-              this.props.closeModal();
-              this.props.router.push('/');
-            });
           });
         });
       });
