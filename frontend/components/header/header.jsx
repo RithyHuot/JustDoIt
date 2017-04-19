@@ -33,14 +33,23 @@ class Header extends React.Component {
     );
   }
 
+  componentWillUpdate(){
+    this.props.receiveErrors([]);
+  }
+
   render() {
     let logout;
     let welcome;
+    let login;
+    let signup;
+
     if (this.props.currentUser) {
       logout = (<button onClick={this.handleClick.bind(this)}> Log Out</button>);
       welcome = (<span className='welcome-msg'> Welcome, {this.props.currentUser.first_name} {this.props.currentUser.last_name}
     </span>);
-    }
+  } else {
+    login = (<span onClick={ this.openModal }>Login</span>);
+  }
 
     return (
       <nav>

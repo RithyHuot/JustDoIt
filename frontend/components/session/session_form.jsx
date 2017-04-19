@@ -12,18 +12,17 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
   }
 
   componentDidUpdate(newProps) {
-    this.redirectIfLoggedIn();
-  }
-
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
+    if (newProps.loggedIn) {
       this.props.router.push('/');
     }
+  }
+
+  componentWillUnmount(){
+    this.props.receiveErrors([]);
   }
 
   handleInput(field) {
@@ -62,6 +61,7 @@ class SessionForm extends React.Component {
       this.setState({ email: "", password: "" }, () => {
         this.setValue(email, "email", () => {
           this.setValue(password, "password", () => {
+            this.handleSubmit(new Event('dummy'));
             this.props.login(this.state).then(() => this.props.closeModal());
           });
         });
