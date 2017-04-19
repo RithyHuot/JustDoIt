@@ -13,6 +13,7 @@ class Header extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.redirectToHome = this.redirectToHome.bind(this);
   }
 
   closeModal() {
@@ -24,19 +25,19 @@ class Header extends React.Component {
   }
 
   redirectToHome () {
-    this.props.router.push('/');
+    if(this.props.location.pathname !== '/'){
+      hashHistory.push('/');
+    }
   }
 
   handleClick () {
     this.props.logout().then(
-      () => this.props.router.push('/')
+      () => {
+        if(this.props.location.pathname !== '/'){
+          hashHistory.push('/');
+        }
+      }
     );
-  }
-
-  componentWillUpdate(){
-    if (this.props.errors !== undefined) {
-      this.props.receiveErrors([]);
-    }
   }
 
   render() {
@@ -44,7 +45,6 @@ class Header extends React.Component {
     let welcome;
     let login;
     let signup;
-
     if (this.props.currentUser) {
       logout = (<button id='logout-button' onClick={this.handleClick.bind(this)}> Log Out</button>);
       welcome = (<span className='welcome-msg'> Welcome, {this.props.currentUser.first_name} {this.props.currentUser.last_name}

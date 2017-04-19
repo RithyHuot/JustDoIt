@@ -1,6 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
-import { Link, withRouter } from 'react-router';
+import { Link, withRouter, hashHistory } from 'react-router';
 import Modal from 'react-modal';
 
 class SessionForm extends React.Component {
@@ -17,7 +17,7 @@ class SessionForm extends React.Component {
 
   componentDidUpdate(newProps) {
     if (newProps.loggedIn) {
-      this.props.router.push('/');
+      hashHistory.push('/');
     }
   }
 
@@ -41,18 +41,20 @@ class SessionForm extends React.Component {
     this.props.login(user)
       .then(() => {
         this.props.closeModal();
-        this.props.router.push('/');
+        if(this.props.location.pathname !== '/'){
+          hashHistory.push('/');
+        }
       });
   }
 
   renderErrors() {
     const errors = this.props.errors.map((error, i) => (
-      <li key={`error-${i}`}>
+      <li className='error-msg' key={`error-${i}`}>
         { error }
       </li>
     ));
     return (
-      <ul>
+      <ul >
         { errors }
       </ul>
     );
@@ -92,25 +94,29 @@ class SessionForm extends React.Component {
           { this.renderErrors() }
           <div>
             <br />
-            <label id='email'> Email: </label>
-            <input
-              type='text'
-              value={ this.state.email }
-              onChange={ this.handleInput("email") }
-              className='login-input'
-            />
+            <label id='email'> Email address:
+            <br/>
+              <input
+                type='text'
+                value={ this.state.email }
+                onChange={ this.handleInput("email") }
+                className='login-input'
+              />
+              </label>
             <br />
-            <label id='password'> Password: </label>
-            <input
-              type='password'
-              value={ this.state.password }
-              onChange={ this.handleInput("password") }
-              className='login-input'
-            />
+            <label id='password'> Password:
+            <br/>
+              <input
+                type='password'
+                value={ this.state.password }
+                onChange={ this.handleInput("password") }
+                className='login-input'
+              />
+            </label>
             <br />
-            <input type='submit' value='Login' />
+            <input className='login-submit' type='submit' value='Login' />
             <br />
-            <input type='submit' value='Demo Login' onClick={ this.guestLogin("demo@justdoit.com", "password123")}/>
+            <input className='demo-submit' type='submit' value='Demo Login' onClick={ this.guestLogin("demo@justdoit.com", "password123")}/>
           </div>
         </form>
         <br />

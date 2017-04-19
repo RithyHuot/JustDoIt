@@ -15,7 +15,7 @@ export const sessionReducer = (state = defaultState, action) => {
       newState = merge({}, state, { currentUser: action.currentUser });
       return newState;
     case RECEIVE_ERRORS:
-      newState = merge({}, {errors: action.errors});
+      newState = Object.assign({}, state, {errors: action.errors});
       return newState;
     default:
       return state;

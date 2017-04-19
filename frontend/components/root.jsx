@@ -5,7 +5,6 @@ import App from './app';
 import SessionFormContainer from './session/session_container';
 import SignupFormContainer from './session/signup_container';
 
-
 const Root = ({ store }) => {
   const redirectIfLoggIn  = () => {
     if (store.getState().session.currentUser) {

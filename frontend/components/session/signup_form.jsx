@@ -12,11 +12,17 @@ class Signup extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-
+    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
   componentDidUpdate(newProps) {
     if (newProps.loggedIn) {
+      this.props.router.push('/');
+    }
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
       this.props.router.push('/');
     }
   }
@@ -34,6 +40,12 @@ class Signup extends React.Component {
     const user = merge({}, this.state);
     this.props.signup(user)
       .then(() => this.redirectIfLoggedIn());
+  }
+
+  componentWillUnmount(){
+    if (this.props.errors !== undefined) {
+      this.props.receiveErrors([]);
+    }
   }
 
   renderErrors() {

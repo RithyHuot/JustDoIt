@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { signup } from '../../actions/session_actions';
+import { signup, receiveErrors } from '../../actions/session_actions';
 import Signup from './signup_form';
 
 const mapStateToProps = (state) => {
@@ -8,11 +8,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const formType = ownProps.location.pathname.slice(1);
-
   return ({
     signup: (user) => dispatch(signup(user)),
-    formType
+    receiveErrors: (errors) => dispatch(receiveErrors(errors))
   });
 };
 

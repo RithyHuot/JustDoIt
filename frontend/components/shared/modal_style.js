@@ -12,13 +12,13 @@ const style = {
     position        : 'absolute',
     top             : '30%',
     left            : '35%',
-    height          : '300px',
+    height          : '400px',
     width           : '400px',
     border          : '1px solid #ccc',
     padding         : '20px',
     borderRadius    : '4px',
     outline         : 'none',
-    backgroundColor : '#eee',
+    backgroundColor : 'white',
     zIndex          : 11
   }
 };
