@@ -15,12 +15,12 @@ const Root = ({ store }) => {
     <Router history={ hashHistory }>
       <Route path="/" component= { App }>
         <Route path='/signup' component={ SignupFormContainer } onEnter={ redirectIfLoggIn } />
-        <Route path='/login' component={ SessionFormContainer } onEnter={ redirectIfLoggIn }/>
       </Route>
     </Router>
   </Provider>);
 }
 ;
+// <Route path='/login' component={ SessionFormContainer } onEnter={ redirectIfLoggIn }/>
 // <IndexRoute component={ App } />
 
 export default Root;

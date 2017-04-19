@@ -83,8 +83,8 @@ class SessionForm extends React.Component {
 
   render () {
     return (
-      <div className='login'>
-        <form onSubmit={this.handleSubmit}>
+      <div className='login' >
+        <form className='login' onSubmit={this.handleSubmit}>
           <div className='login-header'>
             <span id='login-text'> Log in </span>
             <div id='sign-link'>

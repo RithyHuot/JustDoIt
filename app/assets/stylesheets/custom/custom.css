@@ -45,7 +45,7 @@
   margin-bottom: 20px;
 }
 
-#login-text {
+#login-text, #signup-text {
   font-size: 36px;
   font-family: sans-serif;
   margin-top: 10px;
@@ -54,20 +54,22 @@
 
 #sign-link {
   padding-top: 10px;
+  margin-bottom: 10px;
   font-family: sans-serif;
   border-bottom: 1px solid grey;
 }
 
-.login-submit, .demo-submit {
+.login-submit, .demo-submit, .signup-submit {
   border: none;
   background-color: rgb(180, 8, 34);
   color: white;
   display: inline-block;
   padding: 7px 12px ;
-  margin-left: 5px;
+  margin-top: 5px;
   border-radius: 5px;
   font-size: 16px;
   font-weight: 550;
+  cursor: pointer;
 }
 
 .error-msg {
@@ -82,4 +84,19 @@
   margin-bottom: 13px;
   height: 30px;
   font-size: 20px;
+}
+
+.demo-submit {
+  border-top: 1px solid grey;
+  margin-top: 15px;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+}
+
+
+#logout-button, .welcome-msg, #login-link, .signup-link {
+  margin-right: 20px;
 }
