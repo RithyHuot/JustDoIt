@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string           not null
+#  password_digest :string
+#  session_token   :string
+#  first_name      :string
+#  last_name       :string
+#  location        :string
+#  image_url       :string
+#  bio             :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   validates :email, :session_token, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
