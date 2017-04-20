@@ -10,7 +10,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:groupdId])
+    @group = Group.find(params[:id])
 
     if @group
       render '/api/groups/show', group: @group
@@ -20,13 +20,13 @@ class Api::GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:groupId])
+    @group = Group.find(params[:id])
 
     if @group.update
       render '/api/groups/show', group: @group
     else
       render :error, status: 422
-    end 
+    end
   end
 
   private
