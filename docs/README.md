@@ -38,20 +38,24 @@ The primary features of this website include:
 
 **Objective:** Functioning rails project with front-end Authentication with CSS and demo login.
 
-### Phase 2: Group Model, API, and components (2 days)
+### Phase 2: Home Page (1 days)
+
+**Objective:** Display cover page and explore categories and footer
+
+### Phase 3: Group Model, API, and components (2 days)
 
 **Objective:** Users can join a group. User can view and create individual group. Group can be created, read, edited and destroyed through
 the API.
 
-### Phase 3: Event Model, API, and components (2 days)
+### Phase 4: Event Model, API, and components (2 days)
 
 **Objective:** Users can rsvp to an event. User can view and create individual event. Event belong to Groups that can be created, read, edited and destroyed through the API.
 
-### Phase 4: Calendar (1 day)
+### Phase 5: Calendar (1 day)
 
 **Objective:** A calendar on the group page that listed all the user's events for a specific date.
 
-### Phase 5: Search (2 day)
+### Phase 6: Search (2 day)
 
 **Objective:** Allow users to search for groups by location and group info(name, description)
 

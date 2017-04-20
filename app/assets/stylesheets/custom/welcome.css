@@ -1,0 +1,34 @@
+#video {
+  display: block;
+  width:100%;
+  height:400px;
+  background-color: black;
+  overflow: hidden
+}
+
+.welcome-video {
+  display: flex;
+  justify-content: center;
+}
+
+#video {
+  position: absolute;
+  z-index: -3;
+  background-color: white;
+}
+
+.inner-text {
+  font-family: sans-serif;
+  padding-top: 130px;
+  font-size: 55px;
+  font-weight: bolder;
+  color: white;
+}
+
+.inner-smaller-text {
+  font-family: sans-serif;
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+}

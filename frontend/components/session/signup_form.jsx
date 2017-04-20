@@ -76,6 +76,7 @@ class Signup extends React.Component {
                 value={ this.state.name }
                 onChange={ this.handleInput("name") }
                 className='login-input'
+                placeholder='eg. Jon Snow'
               />
             </label>
             <br />
@@ -86,6 +87,7 @@ class Signup extends React.Component {
                 value={ this.state.email }
                 onChange={ this.handleInput("email") }
                 className='login-input'
+                placeholder='eg. demo@justdoit.com'
               />
             </label>
             <br />
