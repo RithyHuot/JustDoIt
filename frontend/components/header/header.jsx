@@ -80,11 +80,8 @@ class Header extends React.Component {
           </div>
           <div className='header-right'>
             { welcome }
-            &nbsp; &nbsp;
             { login }
-            &nbsp; &nbsp;
             { signup }
-            &nbsp; &nbsp;
             { logout }
           </div>
         </div>

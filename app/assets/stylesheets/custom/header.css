@@ -34,7 +34,7 @@
   width: 280px;
   justify-content: space-between;
   align-items: center;
-  right: 0;
+  margin-right: 30px;
 }
 
 .header-create-group {
@@ -49,13 +49,17 @@
   font-size: 20px;
   font-weight: 500;
   font-family: sans-serif;
+  margin-left: 40px;
 }
 
-.signup-link {
+.signup-link, #logout-button {
   background-color: rgb(180, 8, 34);
   color: white;
   display: inline-block;
-  padding: 10px 15px ;
+  width: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
   margin-left: 5px;
   border-radius: 5px;
 }
@@ -69,13 +73,6 @@
   font-family: sans-serif;
   margin-top: 10px;
   color: rgb(180, 8, 34);
-}
-
-#sign-link {
-  padding-top: 10px;
-  margin-bottom: 10px;
-  font-family: sans-serif;
-  border-bottom: 1px solid grey;
 }
 
 .login-submit, .demo-submit, .signup-submit {
@@ -131,16 +128,5 @@
 .welcome-msg {
   font-size: 20px;
   font-weight: 500;
-}
-
-#logout-button, .welcome-msg, #login-link, .signup-link {
-  margin-right: 20px;
-}
-
-.logout-button {
-  color: white;
-  display: inline-block;
-  padding: 10px 15px ;
-  margin-left: 5px;
-  border-radius: 5px;
+  width: 180px;
 }
