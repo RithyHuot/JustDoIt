@@ -64,6 +64,11 @@ class Signup extends React.Component {
   render () {
     return (
       <div className='signup'>
+        <div className='signup-header'>
+          <div className='signup-logo'>
+            <Link to='/'><img src='/images/justdoit.png' /> </Link>
+          </div>
+        </div>
         <form className='signup-form' onSubmit={this.handleSubmit}>
           <div id='signup-text'> Sign up </div>
           { this.renderErrors() }
@@ -104,12 +109,12 @@ class Signup extends React.Component {
             <input type='submit' className='signup-submit' value='Sign up' />
           </div>
         </form>
-        <img width='100%' src='/images/splash.png' />
       </div>
     );
   }
 
 }
+// <img width='100%' src='/images/splash.png' />
 
 // <div>
 //   Already a member? <Link to='/login'> Log in </Link>

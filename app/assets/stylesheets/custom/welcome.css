@@ -17,9 +17,13 @@
   background-color: white;
 }
 
+.inner-video {
+  padding-top: 130px;
+  height: 334px;
+}
+
 .inner-text {
   font-family: sans-serif;
-  padding-top: 130px;
   font-size: 53px;
   font-weight: bolder;
   color: white;

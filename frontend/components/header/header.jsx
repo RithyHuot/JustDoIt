@@ -61,26 +61,7 @@ class Header extends React.Component {
   }
 
     return (
-      <nav>
-        <div className='header-inner'>
-          <div className='header-left'>
-            <span className='header-create-group'> Create a Group </span>
-          </div>
-          <div className='header-center'>
-            <img src='/images/justdoit.png' onClick={this.redirectToHome}/>
-          </div>
-          <div className='header-right'>
-            <ul>
-              { welcome }
-              &nbsp; &nbsp;
-              { login }
-              &nbsp; &nbsp;
-              { signup }
-              &nbsp; &nbsp;
-              { logout }
-            </ul>
-          </div>
-        </div>
+      <nav className='header-nav'>
         <Modal
           isOpen={ this.state.modalOpen }
           onRequestClose={ this.closeModal }
@@ -90,6 +71,23 @@ class Header extends React.Component {
           <button className='close-button' onClick={this.closeModal}> X </button>
           <SignInForm closeModal={ this.closeModal }/>
         </Modal>
+        <div className='header-inner'>
+          <div className='header-left'>
+            <span className='header-create-group'> Create a Group </span>
+          </div>
+          <div className='header-center'>
+            <img src='/images/justdoit.png' onClick={this.redirectToHome}/>
+          </div>
+          <div className='header-right'>
+            { welcome }
+            &nbsp; &nbsp;
+            { login }
+            &nbsp; &nbsp;
+            { signup }
+            &nbsp; &nbsp;
+            { logout }
+          </div>
+        </div>
       </nav>
     );
   }
