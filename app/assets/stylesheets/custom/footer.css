@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  margin-top: 50px;
+  height: 80px;
+}
+
+.inner-footer {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer img {
+  width: 40px;
+  height: 40px;
+}
+
+#footer-home span{
+  color: white;
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+}
