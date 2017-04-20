@@ -3,6 +3,20 @@ class Api::GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
+      render '/api/groups/show', group: @group
+    else
+      render :error, status: 422
+    end
+  end
+
+  def index
+    @groups = Group.all
+    render :index
+  end
+
+  def show
+    @group = Group.find(params[:id])
+    if @group
       render :show
     else
       render :error, status: 422
@@ -12,7 +26,7 @@ class Api::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
 
-    if @group
+    if @group.destroy
       render '/api/groups/show', group: @group
     else
       render :error, status: 422
@@ -22,7 +36,7 @@ class Api::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
 
-    if @group.update
+    if @group.update(group_params)
       render '/api/groups/show', group: @group
     else
       render :error, status: 422
