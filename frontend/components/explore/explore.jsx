@@ -17,7 +17,7 @@ class Explore extends React.Component {
           </div>
           <div className='second-inner'>
             <div id='img2'>
-              <img src='/images/outdoor.png'/>
+              <img src='/images/camp.png'/>
             </div>
             <span> Outdoors & Adventure </span>
           </div>

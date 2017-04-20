@@ -35,20 +35,19 @@
   justify-content: space-between;
   align-items: center;
   right: 0;
-  /*padding-right: 15px;*/
 }
 
 .header-create-group {
   cursor: pointer;
   padding-left: 20px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 550;
 }
 
 #login-link {
   cursor: pointer;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   font-family: sans-serif;
 }
 
@@ -129,7 +128,19 @@
   border-radius: 5px;
 }
 
+.welcome-msg {
+  font-size: 20px;
+  font-weight: 500;
+}
 
 #logout-button, .welcome-msg, #login-link, .signup-link {
   margin-right: 20px;
+}
+
+.logout-button {
+  color: white;
+  display: inline-block;
+  padding: 10px 15px ;
+  margin-left: 5px;
+  border-radius: 5px;
 }

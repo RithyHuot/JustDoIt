@@ -38,7 +38,9 @@ class Signup extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = merge({}, this.state);
-    this.props.signup(user)
+    const name = user.name.split(" ");
+    const newUser = { email: user.email, password: user.password, first_name: name[0], last_name: name[1]};
+    this.props.signup(newUser)
       .then(() => this.redirectIfLoggedIn());
   }
 
