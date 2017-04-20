@@ -67,7 +67,7 @@ class Header extends React.Component {
             <span className='header-create-group'> Create a Group </span>
           </div>
           <div className='header-center'>
-            <img src='/images/logo.png' onClick={this.redirectToHome}/>
+            <img src='/images/justdoit.png' onClick={this.redirectToHome}/>
           </div>
           <div className='header-right'>
             <ul>

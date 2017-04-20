@@ -6,7 +6,10 @@ class WelcomeVideo extends React.Component {
     return(
       <div className='welcome-video'>
         <div id='video'>
-          <video  width='100%' src="https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4" autoPlay loop data-vscid="awucb44bj"></video>
+          <video  width='100%'
+            src="https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4"
+            autoPlay loop data-vscid="awucb44bj">
+          </video>
         </div>
         <div className='inner-video'>
           <div className='inner-text'>
@@ -20,13 +23,7 @@ class WelcomeVideo extends React.Component {
           </div>
         </div>
       </div>
-
-  )};
+  );}
 }
 
-// <video width="320" height="240" autoplay loop>
-//   <source src="movie.mp4" type="video/mp4" />
-//   <source src="movie.ogg" type="video/ogg" />
-//   Your browser does not support the video tag.
-// </video>
 export default WelcomeVideo;

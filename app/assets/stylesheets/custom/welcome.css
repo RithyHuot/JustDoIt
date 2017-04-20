@@ -1,7 +1,7 @@
 #video {
   display: block;
   width:100%;
-  height:400px;
+  height:464px;
   background-color: black;
   overflow: hidden
 }
@@ -13,22 +13,38 @@
 
 #video {
   position: absolute;
-  z-index: -3;
+  z-index: 0;
   background-color: white;
 }
 
 .inner-text {
   font-family: sans-serif;
   padding-top: 130px;
-  font-size: 55px;
+  font-size: 53px;
   font-weight: bolder;
   color: white;
+  z-index: 5
 }
 
 .inner-smaller-text {
   font-family: sans-serif;
-  padding-top: 10px;
+  padding-top: 12px;
+  padding-left: 120px;
+  padding-bottom: 60px;
   font-size: 20px;
   font-weight: bolder;
   color: white;
+  z-index: 5
+}
+
+.inner-signup-link {
+  background-color: rgb(180, 8, 34);
+  color: white;
+  font-size: 20px;
+  display: inline-block;
+  padding: 12px 100px ;
+  margin-left: 80px;
+  border-radius: 5px;
+  border: none;
+  z-index: 5
 }
