@@ -9,6 +9,7 @@
 .welcome-video {
   display: flex;
   justify-content: center;
+  height: 464px;
 }
 
 #video {
