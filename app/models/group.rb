@@ -16,5 +16,6 @@
 class Group < ApplicationRecord
   validates :name, :category, :location, :description, presence: true
 
-  has_many :users
+  has_many :memberships
+  has_many :users, through: :memberships, source: :user
 end
