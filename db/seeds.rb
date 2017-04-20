@@ -27,7 +27,7 @@ rss = Urss.at("http://www.flickr.com/services/feeds/photos_public.gne?format=rss
 images = rss.entries.map { |entry| entry.medias.collect(&:content_url) }.flatten
 
 10.times do
-  users.sample.events.create!(name: Faker::StarWars.vehicle,
+  users.sample.groups.create!(name: Faker::StarWars.vehicle,
                               category: Faker::StarWars.specie,
                               location: Faker::StarWars.planet,
                               description: Faker::StarWars.quote,
