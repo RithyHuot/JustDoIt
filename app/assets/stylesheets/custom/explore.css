@@ -1,3 +1,31 @@
-#img1 {
-  background-image: url(https://secure.meetupstatic.com/photos/event/2/e/a/5/event_450131941.jpeg)
+.first-explore {
+  display: flex;
+  justify-content: space-between;
+}
+
+.explore-text {
+  font-size: 45px;
+  font-family: sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.first-explore, .second-explore  {
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.first-explore img, .second-explore img {
+  width: 300px;
+  height: 200px;
+  margin: 5px;
+}
+
+.first-explore span, .second-explore span {
+  padding-left: 5px;
 }
