@@ -3,16 +3,16 @@
   flex-direction: column;
   align-items: center;
   background-color: #ed1c40;
-  height: 170px;
+  height: 150px;
 
   .home-text, .home-group-count {
     text-align: center;
   }
 
   .home-text {
-    margin-top: 35px;
+    margin-top: 25px;
     font-size: 35px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: white;
     font-weight: 500;
   }
@@ -20,5 +20,81 @@
   .home-group-count {
     font-size: 18px;
     color: rgba(255,255,255,.7)
+  }
+}
+
+.home-search-container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: black;
+  width:960px;
+  top: -20px;
+  position: relative;
+
+  .home-search {
+    display: flex;
+    margin-left: 18px;
+
+    .search  {
+
+      input {
+        height: 45px;
+        border-radius: 5px;
+        width: 280px;
+        font-size: 18px;
+      }
+
+      span {
+        margin-left: 10px;
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .home-nav {
+    display: flex;
+    height: 45px;
+    width: 250px;
+    margin-right: 10px;
+    border: 1px solid rgb(62, 62, 62);
+    border-radius: 5px;
+
+    .home-calendar {
+      width: 50%;
+      height: auto;
+
+      div {
+
+      }
+
+      button {
+        background: transparent;
+        color: white;
+        border: none;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        border-radius: 5px;
+      }
+    }
+
+    .home-groups {
+      width: 50%;
+      height: auto;
+
+      button {
+        background-color: rgb(69, 67, 67);
+        color: white;
+        border: none;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        border-radius: 4px;
+      }
+    }
   }
 }

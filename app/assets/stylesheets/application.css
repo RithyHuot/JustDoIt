@@ -18,3 +18,20 @@
  /** {
    border: 1px solid green !important
  }*/
+
+ ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   color: rgba(156, 156, 156, 0.68);
+   font-style: italic;
+ }
+ ::-moz-placeholder { /* Firefox 19+ */
+   color: rgba(156, 156, 156, 0.68);
+   font-style: italic;
+ }
+ :-ms-input-placeholder { /* IE 10+ */
+   color: rgba(156, 156, 156, 0.68);
+   font-style: italic;
+ }
+ :-moz-placeholder { /* Firefox 18- */
+   color: rgba(156, 156, 156, 0.68);
+   font-style: italic;
+ }
