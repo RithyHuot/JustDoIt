@@ -1,6 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 import { Link, withRouter } from 'react-router';
+import SignupHeader from './signup_header';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class Signup extends React.Component {
     this.state = {
       email: '',
       password: '',
-      name: '',
+      first_name: '',
+      last_name: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -37,9 +39,7 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = merge({}, this.state);
-    const name = user.name.split(" ");
-    const newUser = { email: user.email, password: user.password, first_name: name[0], last_name: name[1]};
+    const newUser = merge({}, this.state);
     this.props.signup(newUser)
       .then(() => this.redirectIfLoggedIn());
   }
@@ -66,31 +66,40 @@ class Signup extends React.Component {
   render () {
     return (
       <div className='signup'>
-        <div className='signup-header'>
-          <div className='signup-logo'>
-            <Link to='/'><img src='/images/justdoit.png' /> </Link>
-          </div>
-        </div>
+        <SignupHeader />
         <form className='signup-form' onSubmit={this.handleSubmit}>
           <div id='signup-text'> Sign up </div>
           { this.renderErrors() }
           <div>
             <br />
-            <label id='name'> Name:
+            <label id='name'> First Name:
               <br />
               <input
                 type='text'
-                value={ this.state.name }
-                onChange={ this.handleInput("name") }
+                value={ this.state.firstName }
+                onChange={ this.handleInput("first_name") }
                 className='login-input'
-                placeholder='eg. Jon Snow'
+                placeholder='eg. Jon'
               />
             </label>
+            <br />
+            <label id='name'> Last Name:
+              <br />
+              <input
+                type='text'
+                value={ this.state.lastName }
+                onChange={ this.handleInput("last_name") }
+                className='login-input'
+                placeholder='eg. Snow'
+              />
+            </label>
+
+
             <br />
             <label id='email'> Email address:
               <br />
               <input
-                type='text'
+                type='email'
                 value={ this.state.email }
                 onChange={ this.handleInput("email") }
                 className='login-input'

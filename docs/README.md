@@ -56,15 +56,12 @@ the API.
 
 **Objective:** Users can rsvp to an event. User can view and create individual event. Event belong to Groups that can be created, read, edited and destroyed through the API.
 
-### Phase 6: Calendar (1 day)
-
-**Objective:** A calendar on the group page that listed all the user's events for a specific date.
-
-### Phase 7: Search (2 day)
+### Phase 7: Search (1 day)
 
 **Objective:** Allow users to search for groups by location and group info(name, description)
 
 ### Bonus Features (TBD)
+- [ ] A calendar on the group page that listed all the user's events for a specific date.
 - [ ] Add Login/Signup popup linking to the Signup and Login pages
 - [ ] Categories
 - [ ] Calendar (for all groups in search results)

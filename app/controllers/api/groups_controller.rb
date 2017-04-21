@@ -1,11 +1,11 @@
 class Api::GroupsController < ApplicationController
-  before_action: :require_login, except [:index, :show]
+  before_action :require_login, except: [:index, :show]
 
   def adduser
     @group = Group.find(params[:id])
     unless @group.user_ids.include(current_user.id)
       @group.user_ids = @group.user_ids.push(current_user.id)
-      
+
       render '/api/groups/show', group: @group
     else
       render(json: ["Can't find user"], status: 404)
