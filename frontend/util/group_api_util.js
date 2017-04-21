@@ -34,3 +34,17 @@ export const createGroup = (group) => {
     data: { group }
   });
 };
+
+export const addUserToGroup = (groupId) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/groups/${groupId}`
+  });
+};
+
+export const removeUserFromGroup = (groupId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/groups/${groupId}`
+  });
+};

@@ -70,3 +70,19 @@ export const createGroup = (group) => (dispatch) => {
       (errors) => dispatch(receiveErrors(errors))
     );
 };
+
+export const addUserToGroup = (groupId) => (dispatch) => {
+  return APIUtil.addUserToGroup(groupId)
+    .then(
+      (groupRes) => dispatch(receiveGroup(groupRes)),
+      (errors) => dispatch(receiveErrors(errors))
+    );
+};
+
+export const removeUserFromGroup = (groupId) => (dispatch) => {
+  return APIUtil.removeUserFromGroup(groupId)
+    .then(
+      (groupRes) => dispatch(receiveGroup(groupRes)),
+      (errors) => dispatch(receiveErrors(errors))
+    );
+};
