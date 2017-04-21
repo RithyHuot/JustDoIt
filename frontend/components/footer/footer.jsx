@@ -7,15 +7,18 @@ class Footer extends React.Component {
       <div className='footer'>
         <div className='inner-footer'>
           <div id='footer-home'>
-            <Link to='/'> <span>Home </span></Link>
+            <Link to='/'> <img src='/images/home.png'/></Link>
           </div>
           <div id='linkedin'>
-            <a target="_blank" href='https://www.linkedin.com/in/rithyhuot'><img src='/images/linkedin-icon.png' /> </a>
+            <a target="_blank" href='https://www.linkedin.com/in/rithyhuot'><img src='/images/linkedin-logo.png' /> </a>
           </div>
           <div id='github'>
           <a target="_blank"
             href='https://github.com/rithyhuot'><img src='/images/github.png' /> </a>
           </div>
+        </div>
+        <div id='trade-mark'>
+          <span> Website by Rithy Huot</span>
         </div>
       </div>
     );

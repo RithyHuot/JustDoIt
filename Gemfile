@@ -50,6 +50,10 @@ group :development do
   gem "guard-livereload",  :require => false
   gem "rack-livereload"
   gem "rb-fsevent",        :require => false
+  gem 'faker'
+  # gem 'image_suckr'
+  # gem 'random_images', '~> 0.0.6'
+  gem 'urss'
 end
 
 group :production do
