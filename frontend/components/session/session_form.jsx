@@ -41,8 +41,8 @@ class SessionForm extends React.Component {
     this.props.login(user)
       .then(() => {
         this.props.closeModal();
-        if(this.props.location.pathname !== '/'){
-          hashHistory.push('/');
+        if(this.props.location.pathname !== '/home'){
+          hashHistory.push('/home');
         }
       });
   }

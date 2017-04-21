@@ -1,0 +1,24 @@
+.home-banner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ed1c40;
+  height: 170px;
+
+  .home-text, .home-group-count {
+    text-align: center;
+  }
+
+  .home-text {
+    margin-top: 35px;
+    font-size: 35px;
+    margin-bottom: 25px;
+    color: white;
+    font-weight: 500;
+  }
+
+  .home-group-count {
+    font-size: 18px;
+    color: rgba(255,255,255,.7)
+  }
+}
