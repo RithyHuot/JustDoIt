@@ -40,7 +40,7 @@ The primary features of this website include:
 
 ### Phase 2: Welcome Page (1 days)
 
-**Objective:** Display cover page and explore categories and footer
+**Objective:** Display cover page, explore categories and footer
 
 ### Phase 3: Group Model, API, and components (2 days)
 

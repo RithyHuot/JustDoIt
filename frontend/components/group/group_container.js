@@ -5,7 +5,8 @@ import { requestGroup } from '../../actions/group_actions';
 
 const mapStateToProps = (state) => {
   return({
-    groups: Object.values(state.groups)
+    group: Object.values(state.groups.groups),
+    currentUser: state.session.currentUser
   });
 };
 

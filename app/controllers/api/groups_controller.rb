@@ -1,8 +1,30 @@
 class Api::GroupsController < ApplicationController
+  before_action: :require_login, except [:index, :show]
+
+  def adduser
+    @group = Group.find(params[:id])
+    unless @group.user_ids.include(current_user.id)
+      @group.user_ids = @group.user_ids.push(current_user.id)
+    else
+      render(json: ["Can't find user"], status: 404)
+    end
+  end
+
+  def removeuser
+    @group = Group.find(params[:id])
+    if @group.user_ids.include(current_user.id)
+      user_ids = @group.user_ids
+      user_ids.delete(current_user.id)
+      @group.user_ids = user_ids
+    else
+      render(json: ["Can't find user"], status: 404)
+    end
+  end
+
   def create
     @group = Group.new(group_params)
 
-    if @group.save
+    if @group.save && require_login
       render '/api/groups/show', group: @group
     else
       render :error, status: 422
@@ -19,7 +41,7 @@ class Api::GroupsController < ApplicationController
     if @group
       render :show
     else
-      render :error, status: 422
+      render(json: ["Can't find group"], status: 404)
     end
   end
 
@@ -29,7 +51,7 @@ class Api::GroupsController < ApplicationController
     if @group.destroy
       render '/api/groups/show', group: @group
     else
-      render :error, status: 422
+      render(json: ["Can't find group"], status: 404)
     end
   end
 
@@ -39,7 +61,7 @@ class Api::GroupsController < ApplicationController
     if @group.update(group_params)
       render '/api/groups/show', group: @group
     else
-      render :error, status: 422
+      render(json: ["Can't find group"], status: 404)
     end
   end
 
