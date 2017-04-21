@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 gem "autoprefixer-rails"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'faker'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -50,7 +51,6 @@ group :development do
   gem "guard-livereload",  :require => false
   gem "rack-livereload"
   gem "rb-fsevent",        :require => false
-  gem 'faker'
   # gem 'image_suckr'
   # gem 'random_images', '~> 0.0.6'
   gem 'urss'
