@@ -1,6 +1,7 @@
 import React from 'react';
-import GroupBanner from './group_banner';
 import Spinner from '../shared/spinner.jsx';
+import GroupBanner from './group_banner';
+import GroupUser from './group_user';
 
 class Group extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Group extends React.Component {
   }
 
   render(){
-    const { groups, params } = this.props;
+    const { groups, params, currentUser } = this.props;
     let group = groups.filter(
       (object) => object.id == this.props.params.groupId
     );
@@ -28,6 +29,9 @@ class Group extends React.Component {
     return(
       <div className='group-page'>
         <GroupBanner group={ group }/>
+        <div className='group-page-body'>
+          <GroupUser user={ currentUser } group={ group }/>
+        </div>
       </div>
     );
     }

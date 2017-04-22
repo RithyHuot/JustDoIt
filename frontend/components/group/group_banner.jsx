@@ -2,11 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 
 class GroupBanner extends React.Component {
-
-  // componentDidMount(){
-  //   this.props.requestGroup(parseInt(this.props.params.groupId));
-  // }
-
   render() {
     const { group } = this.props;
     return(
