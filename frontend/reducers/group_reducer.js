@@ -11,17 +11,17 @@ export const groupReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
   case RECEIVE_GROUPS:
-    return action.groups;
+    newState = merge({}, state, { groups: action.groups });
+    return newState;
   case RECEIVE_GROUP:
-    newState = merge({}, state);
-    newState[action.group.id] = action.group;
-    return merge({}, state, newState);
+    newState = Object.assign({}, state, { groups: action.group});
+    return newState;
   case REMOVE_GROUP:
     newState = merge({}, state);
     delete newState[action.group.id];
     return newState;
   case RECEIVE_ERRORS:
-    newState = Object.assign({}, state, {errors: action.errors});
+    newState = Object.assign({}, state, { errors: action.errors });
     return newState;
   default:
     return state;

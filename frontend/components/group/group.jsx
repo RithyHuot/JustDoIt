@@ -9,12 +9,22 @@ class Group extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestGroup(this.props.params.groupId);
+    let group = this.props.groups.filter(
+      (object) => object.id == this.props.params.groupId
+    );
+
+    if( group.length < 1) {
+      this.props.requestGroup(this.props.params.groupId);
+    }
   }
 
   render(){
-    const { group } = this.props;
-    if (!group[0]) return <Spinner />;
+    const { groups, params } = this.props;
+    let group = groups.filter(
+      (object) => object.id == this.props.params.groupId
+    );
+
+    if (group.length < 1) return <Spinner />;
     return(
       <div className='group-page'>
         <GroupBanner group={ group }/>

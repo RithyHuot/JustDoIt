@@ -5,7 +5,7 @@ import Home from './home';
 
 const mapStateToProps = (state) => {
   return({
-    groups: Object.values(state.groups),
+    groups: Object.values(state.groups.groups),
     currentUser: state.session.currentUser
   });
 };
