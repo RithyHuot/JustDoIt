@@ -13,7 +13,7 @@ class GroupBanner extends React.Component {
       <div className='group-banner-container'>
         <div className='group-outer-container'>
           <div className='group-banner'>
-            { group[0].name }
+            <span>{ group[0].name }</span>
           </div>
           <div className='group-nav'>
             <div className='group-left'>
@@ -29,7 +29,7 @@ class GroupBanner extends React.Component {
             </div>
             <div className='group-right'>
               <div className='join-us'>
-
+                <button> Join us! </button>
               </div>
             </div>
           </div>

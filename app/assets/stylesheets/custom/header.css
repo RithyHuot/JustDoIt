@@ -70,6 +70,8 @@
 
 #logout-button {
   font-size: 16px;
+  background-color: #d01031;
+  border: none;
 }
 
 .close-button {
