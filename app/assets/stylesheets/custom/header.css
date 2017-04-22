@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.header-center {
+  margin-left: 140px;
+}
+
 .header-right {
   display: flex;
   width: 280px;
