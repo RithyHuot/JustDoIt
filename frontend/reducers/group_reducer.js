@@ -14,11 +14,11 @@ export const groupReducer = (state = defaultState, action) => {
     return action.groups;
   case RECEIVE_GROUP:
     newState = merge({}, state);
-    newState.groups[action.group.id] = action.group;
+    newState[action.group.id] = action.group;
     return merge({}, state, newState);
   case REMOVE_GROUP:
     newState = merge({}, state);
-    delete newState.groups[action.group.id];
+    delete newState[action.group.id];
     return newState;
   case RECEIVE_ERRORS:
     newState = Object.assign({}, state, {errors: action.errors});

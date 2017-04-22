@@ -4,12 +4,12 @@
   flex-direction: column;
   background-color: black;
   margin-top: 50px;
-  height: 80px;
+  height: 100px;
 }
 
 .inner-footer {
   display: flex;
-  width: 60%;
+  width: 80%;
   padding-left: 20%;
   padding-right: 20%;
   justify-content: space-between;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestGroups } from '../../actions/group_actions';
+import { requestGroups, requestGroup } from '../../actions/group_actions';
 import Home from './home';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDisplayToProps = (dispatch) => {
   return({
-    requestGroups: () => dispatch(requestGroups())
+    requestGroups: () => dispatch(requestGroups()),
+    requestGroup: (groupId) => dispatch(requestGroup(groupId))
   });
 };
 

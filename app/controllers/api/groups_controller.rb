@@ -36,7 +36,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.includes(:users).all
     render :index
   end
 
