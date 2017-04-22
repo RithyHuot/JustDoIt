@@ -19,7 +19,7 @@ class GroupBanner extends React.Component {
                 <Link to={`/groups/${group[0].id}`}>Members</Link>
               </div>
               <div className='create-event-button'>
-                <Link to={`/groups/${group[0].id}/event/new`}>Create Event</Link>
+                <Link to={`/groups/${group[0].id}/event/new`}>Create an Event</Link>
               </div>
             </div>
             <div className='group-right'>

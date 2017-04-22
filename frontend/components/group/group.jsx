@@ -2,6 +2,7 @@ import React from 'react';
 import Spinner from '../shared/spinner.jsx';
 import GroupBanner from './group_banner';
 import GroupUser from './group_user';
+import GroupDetail from './group_detail';
 
 class Group extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class Group extends React.Component {
         <GroupBanner group={ group }/>
         <div className='group-page-body'>
           <GroupUser user={ currentUser } group={ group }/>
+          <GroupDetail group={ group } />
         </div>
       </div>
     );
