@@ -5,7 +5,7 @@ import App from './app';
 import SignupFormContainer from './session/signup_container';
 import GroupContainer from './group/group_container';
 import HomeContainer from './home/home_container';
-// import MemberContainer from './member/member_container';
+import GroupFormContainer from './group/group_form_container';
 
 const Root = ({ store }) => {
   const redirectIfLoggIn  = () => {
@@ -25,6 +25,7 @@ const Root = ({ store }) => {
       <Route path="/" component={ App } >
         <IndexRoute onEnter= { redirectToHome } />
         <Router path='home' component={ HomeContainer }/>
+        <Route path='group/new' component={ GroupFormContainer } />
         <Route path='group/:groupId' component={ GroupContainer } >
           <Route path='members' component={ GroupContainer } />
         </Route>

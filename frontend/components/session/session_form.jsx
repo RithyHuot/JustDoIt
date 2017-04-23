@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidUpdate(newProps) {

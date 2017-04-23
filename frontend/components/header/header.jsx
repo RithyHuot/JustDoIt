@@ -14,6 +14,7 @@ class Header extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.redirectToHome = this.redirectToHome.bind(this);
+    this.redirectToGroupForm = this.redirectToGroupForm.bind(this);
   }
 
   closeModal() {
@@ -46,6 +47,12 @@ class Header extends React.Component {
     );
   }
 
+  redirectToGroupForm (){
+    if (this.props.location.pathname !== '/group/new') {
+      this.props.router.push('/group/new');
+    }
+  }
+
   render() {
     let logout;
     let welcome;
@@ -73,7 +80,7 @@ class Header extends React.Component {
         </Modal>
         <div className='header-inner'>
           <div className='header-left'>
-            <span className='header-create-group'> Create a Group </span>
+            <span className='header-create-group' onClick={ this.redirectToGroupForm }> Create a Group </span>
           </div>
           <div className='header-center'>
             <img src='/images/justdoit.png' onClick={this.redirectToHome}/>
