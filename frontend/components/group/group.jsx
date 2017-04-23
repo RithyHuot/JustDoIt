@@ -27,6 +27,8 @@ class Group extends React.Component {
       (object) => object.id == params.groupId
     );
 
+    if (group.length < 1) return <Spinner />;
+
     let path;
 
     if (location.pathname === `/group/${params.groupId}/members`) {
@@ -35,7 +37,6 @@ class Group extends React.Component {
       path = <GroupDetail group={ group } />;
     }
 
-    if (group.length < 1) return <Spinner />;
     return(
       <div className='group-page'>
         <GroupBanner group={ group }/>

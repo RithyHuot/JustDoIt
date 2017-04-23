@@ -2,6 +2,17 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 
 class GroupBanner extends React.Component {
+  constructor(props){
+    super(props);
+    this.handleRedirect = this.handleRedirect.bind(this);
+  }
+
+  handleRedirect(path) {
+    if (this.props.location.pathname !== `/group/${this.props.group[0].id}/${path}`) {
+      this.props.router.push(`/group/${this.props.group[0].id}/${path}`);
+    }
+  }
+
   render() {
     const { group } = this.props;
     return(
