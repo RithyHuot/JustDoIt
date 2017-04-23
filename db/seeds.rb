@@ -22,7 +22,7 @@ users = User.all
 # images = rss.entries.map { |entry| entry.medias.collect(&:content_url) }.flatten
 
 #City and State
-city = ['New York, NY', 'Los Angeles, CA', 'Phoenix, AZ', 'Columbus, OH', 'El Paso, TX', 'Philadelphia, PA', 'San Deigo, CA', 'San Antonio, TX', 'Austin, TX', 'Dallas, TX', 'Boston, MA', 'Poland, OR', 'Settle, WA', 'Omaha, NE']
+city = ['New York, NY', 'Los Angeles, CA', 'Phoenix, AZ', 'Columbus, OH', 'El Paso, TX', 'Philadelphia, PA', 'San Deigo, CA', 'San Antonio, TX', 'Austin, TX', 'Dallas, TX', 'Boston, MA', 'Poland, OR', 'Seattle, WA', 'Omaha, NE']
 
 category =['Movements', 'Outdoors & Adventure', 'Tech', 'Family', 'Health & Wellness', 'Sports & Fitness', 'Learning', 'Photography', 'Food & Drink', 'Writing', 'Language & Culture', 'Music', 'LGBTQ', 'Film', 'Sci-Fi & Games', 'Beliefs', 'Arts', 'Book Clubs', 'Dance', 'Pets', 'Hobbies & Crafts', 'Fashion & Beauty', 'Social', 'Career & Business']
 
