@@ -2,6 +2,9 @@ import React from 'react';
 import merge from 'lodash/merge';
 import { Link, withRouter } from 'react-router';
 import SignupHeader from './signup_header';
+import Modal from 'react-modal';
+import SignInForm from '../session/session_container';
+import ModalStyle from '../shared/modal_style.js';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -15,6 +18,16 @@ class Signup extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false });
+  }
+
+  openModal() {
+    this.setState({ modalOpen: true });
   }
 
   componentDidUpdate(newProps) {
@@ -67,6 +80,17 @@ class Signup extends React.Component {
     return (
       <div className='signup'>
         <SignupHeader />
+
+        <Modal
+          isOpen={ this.state.modalOpen }
+          onRequestClose={ this.closeModal }
+          style={ ModalStyle }
+          contentLabel='login-modal'
+          >
+          <button className='close-button' onClick={this.closeModal}> X </button>
+          <SignInForm closeModal={ this.closeModal }/>
+        </Modal>
+
         <form className='signup-form' onSubmit={this.handleSubmit}>
           <div id='signup-text'> Sign up </div>
           { this.renderErrors() }
@@ -119,7 +143,11 @@ class Signup extends React.Component {
             <br />
             <input type='submit' className='signup-submit' value='Sign up' />
           </div>
+          <div className='signup-signin'>
+            Already a member? <span onClick={ this.openModal } > Sign in</span>
+        </div>
         </form>
+
       </div>
     );
   }

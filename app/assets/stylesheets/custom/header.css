@@ -2,13 +2,13 @@
   display: flex;
   position: absolute;
   left: 0;
-  cursor: pointer;
   border-bottom: 1px solid rgba(98, 98, 98, 0.42);
   width: 100%;
 }
 .signup-header img {
   width: 120px;
   margin: 12px;
+  cursor: pointer;
 }
 
 .header-inner {
@@ -133,6 +133,15 @@
   margin-top: 15%;
   padding: 15px 10px;
   border-radius: 5px;
+}
+
+.signup-signin {
+  margin-top: 20px;
+}
+
+.signup-signin span {
+  cursor: pointer;
+  color: rgb(79, 95, 233);
 }
 
 .welcome-msg {
