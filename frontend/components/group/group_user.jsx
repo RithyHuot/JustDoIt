@@ -21,6 +21,15 @@ class GroupUser extends React.Component {
             Members: { group[0].user_count }
           </div>
         </div>
+        <div className='group-organizer'>
+          <div className='group-organizer-text'>
+            Organizers:
+          </div>
+          <div className='group-organizer-name'>
+            <img className='group-organizer-image' src={ group[0].organizer[0].image_url }/>
+            <span>{ group[0].organizer[0].first_name } { group[0].organizer[0].last_name } </span>
+          </div>
+        </div>
       </div>
     );
   }

@@ -44,6 +44,28 @@
         margin-bottom: 20px;
       }
     }
+
+    .group-organizer {
+      margin-left: 10px;
+
+      .group-organizer-text {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .group-organizer-name {
+        display: flex;
+        align-items: center;
+
+        .group-organizer-image {
+          width: 30px;
+          height: 30px;
+          border: 0.5px solid rgb(128, 128, 128);
+          margin-right: 10px;
+        }
+      }
+      }
   }
 
   //group detail and event container
