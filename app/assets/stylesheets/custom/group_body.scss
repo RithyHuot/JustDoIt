@@ -76,4 +76,24 @@
       }
     }
   }
+
+  .group-member-container {
+    width: 78%;
+    align-items: stretch;
+    border: 1px solid rgba(181, 181, 181, 0.8);
+
+    .group-member-text {
+      font-size: 20px;
+      font-weight: 600;
+      padding: 10px;
+      border-bottom: 1px solid rgba(181, 181, 181, 0.8);
+    }
+
+    .group-member-user {
+      padding: 10px;
+      border-bottom: 1px solid rgba(181, 181, 181, 0.8);
+      color: rgb(85, 134, 191);
+    }
+  }
+
 }

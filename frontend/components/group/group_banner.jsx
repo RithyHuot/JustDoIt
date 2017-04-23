@@ -13,13 +13,13 @@ class GroupBanner extends React.Component {
           <div className='group-nav'>
             <div className='group-left'>
               <div className='home'>
-                <Link to={`/groups/${group[0].id}`}>Home</Link>
+                <Link to={`/group/${group[0].id}`}>Home</Link>
               </div>
               <div className='members'>
-                <Link to={`/groups/${group[0].id}`}>Members</Link>
+                <Link to={`/group/${group[0].id}/members`}>Members</Link>
               </div>
               <div className='create-event-button'>
-                <Link to={`/groups/${group[0].id}/event/new`}>Create an Event</Link>
+                <Link to={`/group/${group[0].id}/event/new`}>Create an Event</Link>
               </div>
             </div>
             <div className='group-right'>
