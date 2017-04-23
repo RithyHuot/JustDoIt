@@ -3,6 +3,15 @@
     json.extract! group, :id, :name, :category, :founded,
                   :description, :location, :image_url, :created_at
     json.user_count group.user_ids.count
+
+    json.organizer do
+      json.array! group.organizer_users do |organizer|
+        json.id organizer.id
+        json.first_name organizer.first_name
+        json.last_name organizer.last_name
+      end
+    end
+
     json.users do
       json.array! group.users do |user|
         json.first_name user.first_name

@@ -24,7 +24,9 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :memberships
+  has_many :organizers
   has_many :groups, through: :memberships, source: :group
+  has_many :organizer_groups, through: :organizers, source: :group
 
   attr_reader :password
 

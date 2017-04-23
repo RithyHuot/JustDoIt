@@ -92,13 +92,26 @@ description = [
 ]
 
 #seeds groups
-18.times do |i|
-  users.sample.groups.create!(name: event[i],
+15.times do |i|
+  user = users.sample
+  user.organizer_groups.create!(name: event[i],
                               category: category.sample,
                               location: city.sample,
                               description: description[i],
-                              founded: Faker::Date.backward(100),
+                              founded: Faker::Date.backward(1000),
                               image_url: "/images/group/#{rand(30)}.jpg")
+  Group.all.last.user_ids = Group.all.last.user_ids.push(user.id)
+end
+
+3.times do |i|
+  user = users.first
+  user.organizer_groups.create!(name: event[i+15],
+                              category: category.sample,
+                              location: city.sample,
+                              description: description[i+15],
+                              founded: Faker::Date.backward(1000),
+                              image_url: "/images/group/#{rand(30)}.jpg")
+  Group.all.last.user_ids = Group.all.last.user_ids.push(user.id)
 end
 
 groups = Group.all

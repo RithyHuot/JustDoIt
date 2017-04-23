@@ -26,9 +26,9 @@ class Api::GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
-
-    if @group.save && require_login
+    @group = current_user.organizer_groups.new(group_params)
+    @group.user_ids = @group.user_ids.push(current_user.id)
+    if @group.save
       render '/api/groups/show', group: @group
     else
       render :error, status: 422
