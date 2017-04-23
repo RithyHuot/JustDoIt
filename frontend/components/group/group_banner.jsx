@@ -28,12 +28,17 @@ class GroupBanner extends React.Component {
   render() {
     const { group, user } = this.props;
     let button;
+    let organizerButton;
     const joined = group[0].users.some((obj) => obj.id === user.id);
 
     if (joined) {
       button = <button onClick={ () => this.leaveGroup() }>Leave Group</button>;
     } else {
       button = <button onClick={ () => this.joinGroup() } > Join us! </button>;
+    }
+
+    if (group[0].organizer[0].id === user.id) {
+      organizerButton = <button onClick={ () => this.handleRedirect('edit') }>Edit Group </button>;
     }
 
     return(
@@ -57,6 +62,7 @@ class GroupBanner extends React.Component {
             <div className='group-right'>
               <div className='join-us'>
                 { button }
+                { organizerButton }
               </div>
             </div>
           </div>
