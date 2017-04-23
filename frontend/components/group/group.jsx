@@ -22,7 +22,7 @@ class Group extends React.Component {
   }
 
   render(){
-    const { groups, params, currentUser, location } = this.props;
+    const { groups, params, currentUser, location, addUserToGroup, removeUserFromGroup } = this.props;
     let group = groups.filter(
       (object) => object.id == params.groupId
     );
@@ -39,9 +39,16 @@ class Group extends React.Component {
 
     return(
       <div className='group-page'>
-        <GroupBanner group={ group }/>
+        <GroupBanner
+          group={ group }
+          user={ currentUser }
+          addUserToGroup={ addUserToGroup }
+          removeUserFromGroup={ removeUserFromGroup }
+          />
         <div className='group-page-body'>
-          <GroupUser user={ currentUser } group={ group }/>
+          <GroupUser
+            user={ currentUser }
+            group={ group }/>
           { path }
         </div>
       </div>

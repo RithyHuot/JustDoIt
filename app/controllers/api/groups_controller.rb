@@ -3,7 +3,7 @@ class Api::GroupsController < ApplicationController
 
   def adduser
     @group = Group.find(params[:id])
-    unless @group.user_ids.include(current_user.id)
+    unless @group.user_ids.include?(current_user.id)
       @group.user_ids = @group.user_ids.push(current_user.id)
 
       render '/api/groups/show', group: @group
@@ -14,7 +14,7 @@ class Api::GroupsController < ApplicationController
 
   def removeuser
     @group = Group.find(params[:id])
-    if @group.user_ids.include(current_user.id)
+    if @group.user_ids.include?(current_user.id)
       user_ids = @group.user_ids
       user_ids.delete(current_user.id)
       @group.user_ids = user_ids

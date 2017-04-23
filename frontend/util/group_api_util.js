@@ -38,13 +38,13 @@ export const createGroup = (group) => {
 export const addUserToGroup = (groupId) => {
   return $.ajax({
     method: 'POST',
-    url: `/api/groups/${groupId}`
+    url: `/api/groups/${groupId}/adduser`
   });
 };
 
 export const removeUserFromGroup = (groupId) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/groups/${groupId}`
+    url: `/api/groups/${groupId}/removeuser`
   });
 };

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Group from './group';
-import { requestGroup } from '../../actions/group_actions';
+import { requestGroup, addUserToGroup, removeUserFromGroup, createGroup, updateGroup, deleteGroup } from '../../actions/group_actions';
 
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,12 @@ const mapStateToProps = (state) => {
 
 const mapDisplayToProps = (dispatch) => {
   return ({
-    requestGroup: (groupId) => dispatch(requestGroup(groupId))
+    requestGroup: (groupId) => dispatch(requestGroup(groupId)),
+    addUserToGroup: (groupId) => dispatch(addUserToGroup(groupId)),
+    removeUserFromGroup: (groupId) => dispatch(removeUserFromGroup(groupId)),
+    createGroup: (group) => dispatch(createGroup(group)),
+    updateGroup: (group) => dispatch(updateGroup(group)),
+    deleteGroup: (groupId) => dispatch(deleteGroup(groupId))
   });
 };
 

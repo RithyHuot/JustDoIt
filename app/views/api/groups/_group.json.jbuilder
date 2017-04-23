@@ -7,6 +7,7 @@ json.set! group.id do
       json.last_name user.last_name
       json.image_url user.image_url
       json.joined user.joined
+      json.id user.id
     end
   end
 end
