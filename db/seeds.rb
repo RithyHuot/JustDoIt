@@ -28,7 +28,7 @@ category =['Movements', 'Outdoors & Adventure', 'Tech', 'Family', 'Health & Well
 
 event = [
   'Harlem GO Meetup Group',
-  'Base New York Software Engineers',
+  'Software Engineers',
   'Artificial Intelligence Meetup',
   'Smashing Magazine',
   'React Native NYC',
