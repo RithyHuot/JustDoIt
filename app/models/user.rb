@@ -28,6 +28,9 @@ class User < ApplicationRecord
   has_many :groups, through: :memberships, source: :group
   has_many :organizer_groups, through: :organizers, source: :group
 
+  has_many :rsvps
+  has_many :events, through: :rsvps, source: :event 
+
   attr_reader :password
 
   def self.find_by_credential(email, password)

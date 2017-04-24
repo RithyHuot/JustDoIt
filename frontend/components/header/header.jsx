@@ -48,8 +48,12 @@ class Header extends React.Component {
   }
 
   redirectToGroupForm (){
-    if (this.props.location.pathname !== '/group/new') {
-      this.props.router.push('/group/new');
+    if (!this.props.currentUser) {
+      this.openModal();
+    } else {
+      if (this.props.location.pathname !== '/group/new') {
+        this.props.router.push('/group/new');
+      }
     }
   }
 

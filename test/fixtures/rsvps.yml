@@ -1,16 +1,12 @@
 # == Schema Information
 #
-# Table name: groups
+# Table name: rsvps
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  category    :string
-#  founded     :datetime
-#  description :text
-#  location    :string
-#  image_url   :string           default("/images/group/6.jpg")
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  event_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -1,21 +1,20 @@
 # == Schema Information
 #
-# Table name: groups
+# Table name: events
 #
 #  id          :integer          not null, primary key
+#  group_id    :integer
 #  name        :string
-#  category    :string
-#  founded     :datetime
+#  date        :datetime
 #  description :text
 #  location    :string
-#  image_url   :string           default("/images/group/6.jpg")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class GroupTest < ActiveSupport::TestCase
+class EventTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
