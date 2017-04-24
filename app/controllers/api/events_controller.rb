@@ -2,7 +2,8 @@ class Api::EventsController < ApplicationController
   before_action :require_login, except: [:index, :show]
 
   def index
-    @events = Event.includes(:users).all
+
+    @events = Event.includes(:users).where(group_id: params[:group_id])
     render :index
   end
 
@@ -11,7 +12,7 @@ class Api::EventsController < ApplicationController
     if @event.errors.full_messages.length < 1
       render '/api/events/show', event: @event
     else
-      render :error, status: 422 
+      render :error, status: 422
     end
   end
 

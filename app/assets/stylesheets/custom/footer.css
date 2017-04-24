@@ -7,6 +7,14 @@
   height: 100px;
 }
 
+.app-container {
+  position: relative;
+}
+
+main {
+  height: calc(100% + 100px);
+}
+
 .inner-footer {
   display: flex;
   width: 80%;

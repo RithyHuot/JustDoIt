@@ -8,18 +8,26 @@ import FooterContainer from './footer/footer_container';
 const AppWithOutState = (props) => {
   if (!props.currentUser){
     return (
-      <div>
-        <HeaderContainer />
-        <WelcomeVideoContainer />
-        <ExploreContainer />
+      <div className="app-container">
+        <div className='top'>
+          <div>
+          <HeaderContainer />
+          <WelcomeVideoContainer />
+          <ExploreContainer />
+          </div>
+        </div>
         <FooterContainer />
       </div>
     );
   }  else {
     return (
-      <div>
-        <HeaderContainer />
-        { props.children }
+      <div className="app-container">
+        <div className='top'>
+          <div>
+            <HeaderContainer />
+            { props.children }
+          </div>
+        </div>
         <FooterContainer />
       </div>
     );
