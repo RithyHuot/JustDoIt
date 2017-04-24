@@ -10,11 +10,14 @@ class GroupForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
     this.renderDropdownBox = this.renderDropdownBox.bind(this);
 
-    this.state ={
+    let founded = new Date;
+
+    this.state = {
       name: '',
       category: '--Please select a category--',
       location: '',
-      description: ''
+      description: '',
+      founded: `${founded}`
     };
   }
 
