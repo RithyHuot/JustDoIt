@@ -3,7 +3,7 @@ Group.destroy_all
 
 #Demo account
 User.create!(email: 'demo@justdoit.com', password: 'password123',
-             first_name: 'Jon', last_name: 'Snow')
+             first_name: 'Jon', last_name: 'Snow', joined: Faker::Date.backward(2000))
 
 #seeds users
 25.times do
