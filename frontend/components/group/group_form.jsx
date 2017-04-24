@@ -82,6 +82,7 @@ class GroupForm extends React.Component {
     return (
       <div className='group-form-container'>
         <GroupFormBanner />
+        { this.renderErrors() }
         <div className='group-form'>
           <form onSubmit={ this.handleSubmit } >
             <div className='group-location'>

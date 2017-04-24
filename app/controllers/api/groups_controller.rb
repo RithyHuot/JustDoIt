@@ -26,9 +26,9 @@ class Api::GroupsController < ApplicationController
   end
 
   def create
-    @group = current_user.organizer_groups.new(group_params)
-    @group.user_ids = @group.user_ids.push(current_user.id)
-    if @group.save
+    @group = current_user.organizer_groups.create(group_params)
+    if @group.errors.full_messages.length < 1
+      @group.user_ids = @group.user_ids.push(current_user.id)
       render '/api/groups/show', group: @group
     else
       render :error, status: 422
@@ -36,12 +36,12 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.includes(:users).all
+    @groups = Group.includes(:users, :organizer_users).all
     render :index
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.includes(:users).find(params[:id])
     if @group
       render :show
     else

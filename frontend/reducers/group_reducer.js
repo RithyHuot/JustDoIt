@@ -21,7 +21,11 @@ export const groupReducer = (state = defaultState, action) => {
     delete newState[action.group.id];
     return newState;
   case RECEIVE_ERRORS:
-    newState = Object.assign({}, state, { errors: action.errors });
+    if (action.errors.responseJSON === undefined) {
+      newState = Object.assign({}, state, { errors: action.errors });
+    } else {
+      newState = Object.assign({}, state, { errors: action.errors.responseJSON });
+    }
     return newState;
   default:
     return state;
