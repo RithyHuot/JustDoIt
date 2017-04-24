@@ -9,25 +9,38 @@ class GroupForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.renderDropdownBox = this.renderDropdownBox.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
-    let founded = new Date;
+    const { location, groups, params } = this.props;
 
-    this.state = {
-      name: '',
-      category: '--Please select a category--',
-      location: '',
-      description: '',
-      founded: `${founded}`
-    };
+    if (location.pathname === `/group/${params.groupId}/edit` && groups.length !== 0){
+      let group = groups.filter(
+          (object) => object.id == params.groupId
+        );
+
+      this.state =  group[0];
+    } else {
+      let founded = new Date;
+      this.state = {
+        name: '',
+        category: '--Please select a category--',
+        location: '',
+        description: '',
+        founded: `${founded}`
+      };
+    }
   }
 
-  // componentWillMount(){
-  //   const { group, currentUser } = this.props;
-  //   const organizerId = group[0].organizer[0].id;
-  //   if (organizerId !== currentUser.id) {
-  //     this.props.router.push(`/group/${ group[0].id }`);
-  //   }
-  // }
+  componentWillMount(){
+    const { location, groups, params, requestGroup } = this.props;
+    if (location.pathname === `/group/${params.groupId}/edit`
+      && groups.length === 0){
+        requestGroup(params.groupId)
+          .then((group) =>{
+            this.setState( group.group[params.groupId] );
+          });
+      }
+  }
 
   renderErrors() {
     const errors = this.props.errors.map((error, i) => (
@@ -50,8 +63,15 @@ class GroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createGroup(this.state)
-      .then(() => this.props.router.push('/home'));
+    if (this.props.location.pathname === `/group/${this.props.params.groupId}/edit`){
+      this.props.updateGroup(this.state)
+        .then(() => this.props.router.push(`/group/${this.props.params.groupId}`));
+    } else {
+      this.props.createGroup(this.state)
+      .then(() => {
+        this.props.router.push(`/home`);
+      });
+    }
   }
 
   handleInput(field) {
@@ -80,7 +100,21 @@ class GroupForm extends React.Component {
      return dropdownBox;
   }
 
+  handleDelete(){
+    this.props.deleteGroup(this.props.params.groupId)
+      .then(() => {
+        this.props.router.push('/home');
+      });
+  }
+
   render() {
+    let deleteButton;
+    let submitValue = 'Agree & Continue';
+    if (this.props.location.pathname === `/group/${this.props.params.groupId}/edit`) {
+      deleteButton = <button className='group-form-delete' onClick={ this.handleDelete }> Delete Group </button>;
+      submitValue = 'Update Group';
+    }
+
     const { name, category, location, description } = this.state;
     return (
       <div className='group-form-container'>
@@ -124,7 +158,8 @@ class GroupForm extends React.Component {
                 <li>Put your members first</li>
               </ul>
             </div>
-            <input className='group-form-submit' type='submit' value='Agree & Continue' />
+            <input className='group-form-submit' type='submit' value={ submitValue } />
+            { deleteButton }
           </form>
         </div>
       </div>

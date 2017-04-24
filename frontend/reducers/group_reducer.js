@@ -18,7 +18,7 @@ export const groupReducer = (state = defaultState, action) => {
     return newState;
   case REMOVE_GROUP:
     newState = merge({}, state);
-    delete newState[action.group.id];
+    delete newState.groups[parseInt(Object.keys(action.group))];
     return newState;
   case RECEIVE_ERRORS:
     if (action.errors.responseJSON === undefined) {

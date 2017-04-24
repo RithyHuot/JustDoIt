@@ -14,10 +14,7 @@ const mapDisplayToProps = (dispatch) => {
   return ({
     requestGroup: (groupId) => dispatch(requestGroup(groupId)),
     addUserToGroup: (groupId) => dispatch(addUserToGroup(groupId)),
-    removeUserFromGroup: (groupId) => dispatch(removeUserFromGroup(groupId)),
-    createGroup: (group) => dispatch(createGroup(group)),
-    updateGroup: (group) => dispatch(updateGroup(group)),
-    deleteGroup: (groupId) => dispatch(deleteGroup(groupId))
+    removeUserFromGroup: (groupId) => dispatch(removeUserFromGroup(groupId))
   });
 };
 

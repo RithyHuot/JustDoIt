@@ -65,7 +65,7 @@ class Api::GroupsController < ApplicationController
     if @group.update(group_params)
       render '/api/groups/show', group: @group
     else
-      render(json: ["Can't find group"], status: 404)
+      render :error, status: 422
     end
   end
 
