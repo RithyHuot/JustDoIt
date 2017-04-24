@@ -1,27 +1,14 @@
 User.destroy_all
+Membership.destroy_all
+Rsvp.destroy_all
 Group.destroy_all
+Event.destroy_all
 
-#Demo account
-User.create!(email: 'demo@justdoit.com', password: 'password123',
-             first_name: 'Jon', last_name: 'Snow', joined: Faker::Date.backward(2000))
-
-#seeds users
-25.times do
-  User.create!(email: Faker::Internet.email, password: 'password123',
-               first_name: Faker::Name.first_name,
-               last_name: Faker::Name.last_name,
-               joined: Faker::Date.backward(100),
-               image_url: "/images/user/#{rand(36)}.jpg"
-               )
-end
-
-users = User.all
-
-#generate random images
+# generate random images
 # rss = Urss.at("http://www.flickr.com/services/feeds/photos_public.gne?format=rss_200"); true
 # images = rss.entries.map { |entry| entry.medias.collect(&:content_url) }.flatten
 
-#City and State
+# City and State
 city = ['New York, NY', 'Los Angeles, CA', 'Phoenix, AZ', 'Columbus, OH', 'El Paso, TX', 'Philadelphia, PA', 'San Deigo, CA', 'San Antonio, TX', 'Austin, TX', 'Dallas, TX', 'Boston, MA', 'Poland, OR', 'Seattle, WA', 'Omaha, NE']
 
 category =['Movements', 'Outdoors & Adventure', 'Tech', 'Family', 'Health & Wellness', 'Sports & Fitness', 'Learning', 'Photography', 'Food & Drink', 'Writing', 'Language & Culture', 'Music', 'LGBTQ', 'Film', 'Sci-Fi & Games', 'Beliefs', 'Arts', 'Book Clubs', 'Dance', 'Pets', 'Hobbies & Crafts', 'Fashion & Beauty', 'Social', 'Career & Business']
@@ -91,6 +78,75 @@ description = [
   "Interested in rock climbing? Join this group to see huddles based on rock climbing events, competitions, lessons, and more. Anyone welcome, of all ages and all skill levels"
 ]
 
+
+# city  = File.readlines(Rails.root.join('lib', 'seeds', 'city.txt'))[0].split(';')
+# event = File.readlines(Rails.root.join('lib', 'seeds', 'event.txt'))[0].split(',')
+# description = File.readlines(Rails.root.join('lib', 'seeds', 'description.txt'))[0].split(';')
+# category = File.readlines(Rails.root.join('lib', 'seeds', 'category.txt'))[0].split(',')
+
+event_description =  [
+  "True love will never put a blockade between you and your dreams. Be it the love of your family, friends or significant other, if the people who surround you do not support, encourage or urge you in the direction of your destiny, they may not be the best people to keep in your company. You are a product of your environment — choose yours carefully. Surround yourself with the doers, the believers, the dreamers and the thinkers. Only they will lift you higher",
+  "Fear holds many of us back in life. The fear of failing, of rejection and of other’s opinions can impact us so heavily that we only fail ourselves by our own inaction. We’ve heard it many times before: The thought of something is often worse than the thing itself. It is no different than fearing failure if we go in search of our dreams. Don’t underestimate your own resilience",
+  "There is no such thing as too old or too young when it comes to chasing your dreams. There is no such thing as a right time or a wrong time, either. It is simply a matter of deciding what it is you want to do and taking the necessary steps to get there. Wherever we are in the world, and in whatever circumstances we find ourselves, only we can decide to take the leap of faith and make our dreams realities",
+  "What you think about, you bring about. If you put all your focus, energy and positive thoughts toward whatever it is you want, you’d be amazed at what opportunities come knocking. Whatever it is, however it happens, if you want something badly enough, it’s as if the stars re-align and are only too willing to give to you whatever your heart desires. Call it fate, coincidence, beginner’s luck or whatever sits best with you, but when you put that time and energy into something with all you have, you will manifest it into your life.",
+  "Advocates from Dwayne “The Rock” Johnson to Michael Jordan to Johnny Depp to J.K. Rowling and many more successful people worldwide have sworn that success in life cannot come about without great failures. No matter how many times you get knocked back, rejected or turned away, either personally or professionally, the key is to never accept defeat. Always move forward and never stop learning. See your failures as valuable lessons on the road to success, learn from them, grow with them and never give up on your dreams.",
+  "You will meet many a person who will share opinions regarding your life and your work, whether you ask or not. Some will agree with you, some won’t. C’est la vie! You will never, ever, please everybody. At the end of the day, the only person you need compare yourself to is the person you were yesterday. As long as you’re working toward your own happiness, don’t let the opinions of others divert you, especially those from people who have not yet found their own paths in life. We are all unique, what we decide to do with our time is entirely up to us; listen to your heart and answer only to yourself.",
+  "The greatest riches we can ever hope to have are the ones that make us truly happy. Where do you find your happiness? To where does your heart call? It may be a profession, a hobby, a place, a person, a pet or a lifestyle, but it’s only when we stop and acknowledge what it is our hearts want that we will find our greatest treasures. These are the treasures that will bring joy and happiness into our lives; this is where the heart is.",
+  "Above all, never stop dreaming. It’s the possibility of having a dream come true that makes life interesting. Just believe anything is possible.",
+  "Every great dream begins with a dreamer. Always remember, you have within you the strength, the patience, and the passion to reach for the stars to change the world.",
+  "Be like water making its way through cracks. Do not be assertive, but adjust to the object, and you shall find a way around or through it. If nothing within you stays rigid, outward things will disclose themselves. Empty your mind, be formless. Shapeless, like water. If you put water into a cup, it becomes the cup. You put water into a bottle and it becomes the bottle. You put it in a teapot, it becomes the teapot. Now, water can flow or it can crash. Be water, my friend.",
+  "We’ve all got both light and dark inside us. What matters is the part we choose to act on. That’s who we really are.",
+  "A turning point in my life came when love became my default choice for twenty-one straight days. I wondered what opportunities might open up. I wondered what connections might be repaired. I wondered what moments I might capture that I would have otherwise missed. I wondered who I might become",
+  "Once upon a time, there was a girl who could do anything in the world she wanted.  All she had to do was choose something and focus.  So one day she sat down in front of a blank canvas and began to paint.  Every stroke was more perfect than the next, slowly and gracefully converging to build a flawless masterpiece.  And when she eventually finished painting, she stared proudly at her work and smiled",
+  "A big part of your life is a result of the choices you make.  And if you don’t like your life – if it completely lacks excitement and passion – it’s time to start making changes and better choices.",
+  "There is good reason why you should wake each morning and mindfully consider what and who you will give your day to.  Because unlike other things in life – money, entertainment, obligations, etc. – time is the one thing you can never get back once it’s gone.",
+  "Greek philosopher Heraclitus once said: “No man ever steps in the same river twice, for it's not the same river and he's not the same man.” The world around us is rapidly changing. The rate of change is accelerating. Tech sector, evolving into a tech ecosystem, is at the forefront of many changes that we experience daily."
+]
+
+event_name = [
+  "Let's meetup  @ Central Park!",
+  "Let's meetup  @ Starbucks!",
+  "Let's meetup  @ The Coffee Shop!",
+  "Let's meetup  @ The Park!",
+  "Let's meetup  @ My cafe",
+  "Let's meetup  @ 5th Avenue",
+  "Let's meetup  @ 7th Avenue",
+  "Let's meetup  @ The Avenue of Americas",
+  "Let's meetup  @ The Office",
+  "Let's meetup  @ School",
+  "Let's meetup  @ My house",
+  "Let's meetup  @ Your house",
+  "Let's meetup  @ My car",
+  "Let's meetup  @ The hotel",
+  "Let's meetup  @ Macys",
+  "Let's meetup  @ Zheng's house",
+  "Let's meetup  @ Jacky's house",
+  "Let's meetup  @ Philip's house",
+  "Let's meetup  @ The party",
+  "Let's meetup  @ Cave",
+  "Let's meetup  @ Rave",
+  "Let's meetup  @ Dave",
+  "Let's meetup  @ My Mealpal",
+  "Let's meetup  @ Apple",
+  "Let's meetup  @ Google"
+]
+
+#Demo account
+User.create!(email: 'demo@justdoit.com', password: 'password123',
+             first_name: 'Jon', last_name: 'Snow', joined: Faker::Date.backward(2000))
+
+#seeds users
+25.times do
+  User.create!(email: Faker::Internet.email, password: 'password123',
+               first_name: Faker::Name.first_name,
+               last_name: Faker::Name.last_name,
+               joined: Faker::Date.backward(100),
+               image_url: "/images/user/#{rand(36)}.jpg"
+               )
+end
+
+users = User.all
+
 #seeds groups
 15.times do |i|
   user = users.sample
@@ -118,6 +174,27 @@ groups = Group.all
 
 100.times do
   group_id = rand(17)
-  user_id = rand(9)
+  user_id = rand(24)
   groups[group_id].user_ids = groups[group_id].user_ids.push(users[user_id].id)
+end
+
+
+100.times do
+  user = users.sample
+  group_id = rand(17)
+  user.events.create!(
+    name: event_name.sample,
+    location: city.sample,
+    date: Faker::Date.backward(100),
+    description: event_description.sample,
+    group_id: groups[group_id].id
+  )
+end
+
+events = Event.all
+
+200.times do
+  event_id = rand(99)
+  user_id = rand(24)
+  events[event_id].user_ids = events[event_id].user_ids.push(users[user_id].id)
 end

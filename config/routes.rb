@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post '/groups/:id/adduser', to: 'groups#adduser'
     delete '/groups/:id/removeuser', to: 'groups#removeuser'
 
-    post '/groups/:groupId/events/:id/adduser', to: 'events#adduser'
-    delete `/groups/:groupId/events/:id/removeuser`, to: 'events#removeuser'
+    post '/events/:id/adduser', to: 'events#adduser'
+    delete '/events/:id/removeuser', to: 'events#removeuser'
   end
 end

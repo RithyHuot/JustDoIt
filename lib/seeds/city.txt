@@ -1,0 +1,14 @@
+New York, NY;
+Los Angeles, CA;
+Phoenix, AZ;
+Columbus, OH;
+El Paso, TX;
+Philadelphia, PA;
+San Deigo, CA;
+San Antonio, TX;
+Austin, TX;
+Dallas, TX;
+Boston, MA;
+Poland, OR;
+Seattle, WA;
+Omaha, NE

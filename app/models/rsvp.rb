@@ -13,6 +13,6 @@ class Rsvp < ApplicationRecord
   validates :user, :event, presence: true
   validates :user_id, uniqueness: { scope: :event_id }
 
-  belongs_to :group
+  belongs_to :event
   belongs_to :user
 end

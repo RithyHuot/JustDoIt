@@ -7,9 +7,12 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(event_params)
-    if @event.save
+    @event = current_user.events.create(event_params)
+    if @event.errors.full_messages.length < 1
       render '/api/events/show', event: @event
+    else
+      render :error, status: 422 
+    end
   end
 
   def show
@@ -56,7 +59,7 @@ class Api::EventsController < ApplicationController
     if @event.user_ids.include?(current_user.id)
       user_ids = @event.user_ids
       user_ids.delete(current_user.id)
-      @event.user_ids = user_ids 
+      @event.user_ids = user_ids
     else
       render(json: ["Can't find user"], status: 404)
     end
