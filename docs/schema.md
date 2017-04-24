@@ -38,9 +38,16 @@ date           | datetime  | not null
 description    | text      | not null
 location       | string    |
 lat            | float     |
-lng            | float     | 
+lng            | float     |
 
 ## memberships
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign key (references user)
+group_id    | integer   | not null, foreign key (references group)
+
+## organizers
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
