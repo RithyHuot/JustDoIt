@@ -15,11 +15,19 @@ class EventList extends React.Component {
   }
 
  render(){
-   const { events, params } = this.props;
+   const { events, params, addUserToEvent, removeUserFromEvent, currentUser } = this.props;
    const groupId = params.groupId;
+
    const eventLists = events.map(
      (e, i) => {
-       return (<EventListItem key={`event-${i}`} event={e} groupId={groupId}/>);
+       return (<EventListItem
+         key={`event-${i}`}
+         event={e}
+         groupId={groupId}
+         addUserToEvent={addUserToEvent}
+         removeUserFromEvent={removeUserFromEvent}
+         currentUser={currentUser}
+         />);
      }
    );
 

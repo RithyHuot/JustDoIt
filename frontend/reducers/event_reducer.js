@@ -14,7 +14,8 @@ export const eventReducer = (state = defaultState, action) => {
     newState = merge({}, state, { events: action.events });
     return newState;
   case RECEIVE_EVENT:
-    newState = Object.assign({}, state, { events: action.event});
+    newState = merge({}, state, { events: {[action.event.id]: action.event}});
+    newState.events[action.event.id].users = action.event.users;
     return newState;
   case REMOVE_EVENT:
     newState = merge({}, state);

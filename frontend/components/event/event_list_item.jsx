@@ -2,11 +2,24 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const EventListItem = (props) => {
-  const { event, groupId } = props;
+  const { event, groupId, addUserToEvent, removeUserFromEvent, currentUser } = props;
+  let going;
   const users = event.users.map(
-    (user, i) => <img src={user.image_url} key={`user-event-${i}`} className='event-user'/>
+    (user, i) => {
+      if (user.id === currentUser.id) {
+        going = true;
+      }
+      return <img src={user.image_url} key={`user-event-${i}`} className='event-user'/>;
+    }
   );
   const date = new Date(event.date).toString();
+
+  let rsvp;
+  if (going) {
+    rsvp = <span onClick={() => removeUserFromEvent(event.id)}>You are going!</span>;
+  } else {
+    rsvp = <span onClick={() => addUserToEvent(event.id)}>RSVP</span>;
+  }
   return (
     <div className='group-event'>
      <div className='event-name'>
@@ -29,7 +42,7 @@ const EventListItem = (props) => {
            { date.slice(0,11) }
          </div>
          <div className='event-rsvp'>
-           RSVP
+           { rsvp }
          </div>
          <div className='event-attendance'>
            <b>{ event.user_count }</b> going

@@ -74,7 +74,10 @@ export const createEvent = (event) => (dispatch) => {
 export const addUserToEvent = (eventId) => (dispatch) => {
   return APIUtil.addUserToEvent(eventId)
     .then(
-      (eventRes) => dispatch(receiveEvent(eventRes)),
+      (eventRes) => {
+        dispatch(receiveEvent(eventRes));
+      }
+        ,
       (errors) => dispatch(receiveErrors(errors))
     );
 };

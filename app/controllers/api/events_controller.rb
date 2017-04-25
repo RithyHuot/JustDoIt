@@ -50,6 +50,8 @@ class Api::EventsController < ApplicationController
     @event = Event.includes(:users).find(params[:id])
     unless @event.user_ids.include?(current_user.id)
       @event.user_ids = @event.user_ids.push(current_user.id)
+
+      render '/api/events/show', event: @event
     else
       render(json: ["Can't find user"], status: 404)
     end
@@ -61,6 +63,8 @@ class Api::EventsController < ApplicationController
       user_ids = @event.user_ids
       user_ids.delete(current_user.id)
       @event.user_ids = user_ids
+
+      render '/api/events/show', event: @event
     else
       render(json: ["Can't find user"], status: 404)
     end
