@@ -1,0 +1,110 @@
+.event-show-detail-container {
+  display: flex;
+  justify-content: space-between;
+  width: 78%;
+  border: 1px solid rgba(181, 181, 181, 0.8);
+
+  .event-detail-left {
+    width: 70%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+
+    .event-detail-header {
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .event-detail-logistic {
+      margin-bottom: 25px;
+
+      .event-detail-date {
+        margin-bottom: 25px;
+
+        .event-detail-date-year {
+          display: flex;
+          font-size: 22px;
+          font-weight: 500;
+          margin-bottom: 10px;
+
+          i {
+            margin-right: 15px;
+          }
+        }
+        .event-detail-date-time {
+          letter-spacing: 0.5px;
+          font-size: 20px;
+
+          i {
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+
+    .event-detail-location {
+      display: flex;
+      font-size: 22px;
+      font-weight: 500;
+      color: #2A9BC7;
+
+      i {
+        margin-right: 25px;
+      }
+    }
+
+    .event-description {
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      margin-bottom: 25px;
+    }
+  }
+
+  .event-detail-right {
+    width: 30%;
+    border-left: 1px solid rgba(181, 181, 181, 0.8);
+
+    .event-detail-rsvp {
+      padding-left: 15px;
+      margin-top: 20px;
+      border-bottom: 1px solid rgba(181, 181, 181, 0.8);
+      .event-detail-rsvp-text {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .event-detail-rsvp-choice {
+        color: #2A9BC7;
+        margin-bottom: 15px;
+        cursor: pointer;
+      }
+    }
+
+    .event-detail-attendance {
+      padding-left: 15px;
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .event-detail-members {
+      padding-left: 15px;
+      margin-top: 20px;
+
+      .event-detail-user {
+        display: flex;
+
+        img {
+          width: 60px;
+          height: 60px;
+          margin-right: 10px;
+          margin-bottom: 15px;
+          border: 1px solid rgba(181, 181, 181, 0.8);
+        }
+      }
+      }
+  }
+}
