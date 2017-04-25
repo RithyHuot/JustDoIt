@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import EventListContainer from '../event/event_list_container';
 
 class GroupDetail extends React.Component {
   render (){
@@ -11,18 +12,7 @@ class GroupDetail extends React.Component {
           <div className='group-description'>{ group[0].description } </div>
         </div>
         <div className='group-detail-event'>
-          <div className='group-event'>
-            SOME EVENT
-          </div>
-          <div className='group-event'>
-            SOME EVENT
-          </div>
-          <div className='group-event'>
-            SOME EVENT
-          </div>
-          <div className='group-event'>
-            SOME EVENT
-          </div>
+          <EventListContainer />
         </div>
       </div>
     );

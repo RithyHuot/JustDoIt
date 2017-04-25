@@ -1,0 +1,54 @@
+.group-event {
+  .event-name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    // letter-spacing: -.02em;
+    a {
+      color: black;
+    }
+  }
+
+  .event-detail-container {
+    display: flex;
+    justify-content: space-between;
+
+    .event-detail {
+      width: 70%;
+
+      .event-location {
+        color: #2A9BC7;
+        margin-bottom: 10px;
+      }
+
+      .event-members {
+        margin-bottom: 10px;
+        .event-user {
+          width: 35px;
+          height: 35px;
+          margin-right: 3px;
+        }
+      }
+
+      .event-description {
+        line-height: 1.25;
+      }
+    }
+
+    .event-logistic {
+      width: 20%;
+      
+      .event-date {
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .event-rsvp {
+        margin-bottom: 10px;
+        color: #2A9BC7;
+      }
+    }
+  }
+
+}

@@ -53,7 +53,7 @@ class Group extends React.Component {
         </div>
       </div>
     );
-    }
+  }
 }
 
 export default Group;
