@@ -1,0 +1,24 @@
+.event-form-container {
+  text-align: center;
+  .event-form-banner {
+    height: 250px;
+    width: 100%;
+    background-image: url('/images/event.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 30% 20%;
+  }
+
+  .event-form-banner-txt {
+    padding-top: 80px;
+    font-size: 45px;
+    color: white;
+  }
+  .event-form-banner-smaller-txt {
+    margin-top: 20px;
+    font-size: 24px;
+    color: white;
+  }
+
+}

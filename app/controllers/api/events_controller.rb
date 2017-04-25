@@ -3,7 +3,10 @@ class Api::EventsController < ApplicationController
 
   def index
 
-    @events = Event.includes(:users).where(group_id: params[:group_id])
+    @events = Event.includes(:users)
+      .where(group_id: params[:group_id])
+      .order(date: :desc)
+      
     render :index
   end
 
