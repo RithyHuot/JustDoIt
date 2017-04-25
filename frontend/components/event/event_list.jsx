@@ -9,7 +9,7 @@ class EventList extends React.Component {
   }
 
   componentDidMount(){
-    if (this.props.events.length < 1) {
+    if (this.props.events.length < 2) {
       this.props.requestEvents(this.props.params.groupId);
     }
   }
