@@ -160,7 +160,7 @@ users = User.all
 end
 
 3.times do |i|
-  user = users.first
+  user = users.find(first_name: 'Jon', last_name: 'Snow', email: 'demo@justdoit.com')
   user.organizer_groups.create!(name: event[i+15],
                               category: category.sample,
                               location: city.sample,
