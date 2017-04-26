@@ -5,7 +5,7 @@ class Api::EventsController < ApplicationController
 
     @events = Event.includes(:users)
       .where(group_id: params[:group_id])
-  
+
     render :index
   end
 
@@ -75,6 +75,6 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :group_id, :date, :description, :locaiton)
+    params.require(:event).permit(:name, :group_id, :date, :description, :location)
   end
 end

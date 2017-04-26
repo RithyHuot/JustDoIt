@@ -124,7 +124,7 @@ class GroupForm extends React.Component {
           <form onSubmit={ this.handleSubmit } >
             <div className='group-location'>
               <label id='group-location'>What's your new Group's hometown?</label>
-              <input id='group-location' placeholder='e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
+              <input required id='group-location' placeholder='e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
             </div>
 
             <div className='group-categories'>
@@ -138,12 +138,12 @@ class GroupForm extends React.Component {
 
             <div className='group-name'>
               <label id='group-name'>What will your Meetup's name be?</label>
-              <input id='group-name' value={ name } placeholder=' e.g. Let do something awesome together!' onChange={this.handleInput('name')}/>
+              <input required id='group-name' value={ name } placeholder=' e.g. Let do something awesome together!' onChange={this.handleInput('name')}/>
             </div>
 
             <div className='group-description'>
               <label id='group-description'>Describe who should join, and what your group will do </label>
-              <textarea value={ description } onChange={this.handleInput('description')}>
+              <textarea required value={ description } onChange={this.handleInput('description')}>
               </textarea>
             </div>
 

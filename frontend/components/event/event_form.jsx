@@ -9,6 +9,14 @@ class EventForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+
+    this.state = {
+      name: '',
+      date: '',
+      description: '',
+      location: '',
+      group_id: this.props.params.groupId
+    };
   }
 
   handleSubmit(e) {
@@ -60,20 +68,39 @@ class EventForm extends React.Component {
   }
 
   render(){
+
+    const { name, location, description, date } = this.state;
+    let submitValue = 'Create Event';
+
     return(
       <div className='event-form-container'>
+
+        <EventFormBanner />
         { this.renderErrors() }
-        <div className='event-form-header'>
-          <EventFormBanner />
+
+        <div className='event-form'>
+          <form onSubmit={ this.handleSubmit }>
+            <div className='event-name'>
+              <label id='event-name'>What will your event's name be?</label>
+              <input required id='event-name' value={ name } placeholder=" e.g. Let's meetup  @ The Coffee Shop!" onChange={this.handleInput('name')}/>
+            </div>
+            <div className='event-location'>
+              <label id='event-location'>Where will your event be hosted?</label>
+              <input required id='event-location' placeholder=' e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
+            </div>
+            <div className='event-date'>
+              <label id='event-date'> When will your event start?</label>
+              <input required type='datetime-local' defaultValue={ date } onChange={this.handleInput('date')}/>
+            </div>
+            <div className='event-description'>
+              <label id='event-description'>Describe who should attend and why? </label>
+              <textarea required value={ description } onChange={this.handleInput('description')}>
+              </textarea>
+            </div>
+            <input className='event-form-submit' type='submit' value={ submitValue } />
+          </form>
         </div>
-        <div className='event-form-name'>
-        </div>
-        <div className='event-form-location'>
-        </div>
-        <div className='event-form-date'>
-        </div>
-        <div className='event-description'>
-        </div>
+
       </div>
     );
   }
