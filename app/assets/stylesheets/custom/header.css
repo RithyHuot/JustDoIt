@@ -82,12 +82,23 @@
   font-size: 36px;
   font-family: sans-serif;
   margin-top: 10px;
-  color: rgb(180, 8, 34);
+  color: #d01031;
+}
+
+#sign-link {
+  margin-top: 10px;
+}
+
+#signup-text {
+  font-size: 48px;
+  font-weight: 700;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(181, 181, 181, 0.8);
 }
 
 .login-submit, .demo-submit, .signup-submit {
   border: none;
-  background-color: rgb(180, 8, 34);
+  background-color: #d01031;
   color: white;
   display: inline-block;
   padding: 7px 12px ;
@@ -124,14 +135,23 @@
 
 .signup-form {
   position: absolute;
-  z-index: 8;
+  /*z-index: 8;*/
   background-color: white;
 }
 
+.signup-form input {
+  border: 1px solid rgba(181, 181, 181, 0.5);
+  margin-top: 5px;
+}
+
+.signup-form label {
+  font-size: 18px;
+}
+
 .signup form {
-  border: 1px solid grey;
+  border: 1px solid rgba(181, 181, 181, 0.5);
   margin-top: 15%;
-  padding: 15px 10px;
+  padding: 25px 30px;
   border-radius: 5px;
 }
 

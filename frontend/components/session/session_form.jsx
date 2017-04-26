@@ -117,7 +117,9 @@ class SessionForm extends React.Component {
             <br />
             <input className='login-submit' type='submit' value='Login' />
             <br />
-            <input className='demo-submit' type='submit' value='Demo Login' onClick={ this.guestLogin("demo@justdoit.com", "password123")}/>
+            <div className='demo-submit-container'>
+              <input className='demo-submit' type='submit' value='Demo Login' onClick={ this.guestLogin("demo@justdoit.com", "password123")}/>
+            </div>
           </div>
         </form>
         <br />
