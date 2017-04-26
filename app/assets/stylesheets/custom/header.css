@@ -168,4 +168,14 @@
   font-size: 20px;
   font-weight: 500;
   width: 180px;
+  display: flex;
+  align-items: center;
+}
+
+.username-image {
+  cursor: pointer;
+  width: 35px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 5px;
 }

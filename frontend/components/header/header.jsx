@@ -70,9 +70,12 @@ class Header extends React.Component {
     let welcome;
     let login;
     let signup;
-    if (this.props.currentUser) {
+    const { currentUser } = this.props;
+    if (currentUser) {
       logout = (<button id='logout-button' onClick={this.handleClick.bind(this)}> Log Out</button>);
-      welcome = (<span className='welcome-msg'> Welcome, <span onClick={this.redirectToUsers}> {this.props.currentUser.first_name}</span>
+      welcome = (<span className='welcome-msg'>
+      Welcome, {currentUser.first_name}
+    <img onClick={this.redirectToUsers} src={currentUser.image_url} className='username-image'/>
     </span>);
   } else {
     login = (<span id='login-link' onClick={ this.openModal }>Log in</span>);

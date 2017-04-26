@@ -11,12 +11,11 @@ class UserProfile extends React.Component {
     }
   }
 
-  // componentWillUpdate(newProps){
-  //   debugger
-  //   if (newProps.groups.length !== this.props.groups.length){
-  //     this.props.requestGroups();
-  //   }
-  // }
+  componentWillUpdate(newProps){
+    if (newProps.groups.length < 2){
+      this.props.requestGroups();
+    }
+  }
 
   render(){
     const { currentUser, groups } = this.props;
