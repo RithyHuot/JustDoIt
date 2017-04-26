@@ -10,13 +10,23 @@ class EventForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
 
-    this.state = {
-      name: '',
-      date: '',
-      description: '',
-      location: '',
-      group_id: this.props.params.groupId
-    };
+    const { location, events, params } = this.props;
+
+    if (location.pathname === `/group/${params.groupId}/event/${params.eventId}/edit` && events.length !== 0){
+      let event = events.filter(
+          (object) => object.id == params.eventId
+        );
+
+      this.state =  event[0];
+     } else {
+      this.state = {
+        name: '',
+        date: '',
+        description: '',
+        location: '',
+        group_id: this.props.params.groupId
+      };
+    }
   }
 
   handleSubmit(e) {
@@ -61,6 +71,17 @@ class EventForm extends React.Component {
     );
   }
 
+  componentWillMount(){
+    const { location, events, params, requestEvent } = this.props;
+    if (location.pathname === `/group/${params.groupId}/event/${params.eventId}/edit`
+      && events.length === 0){
+        requestEvent(params.eventId)
+          .then((event) =>{
+            this.setState( event.event );
+          });
+      }
+  }
+
   componentWillUnmount(){
     if (this.props.errors !== undefined) {
        this.props.receiveErrors([]);
@@ -68,9 +89,15 @@ class EventForm extends React.Component {
   }
 
   render(){
-
     const { name, location, description, date } = this.state;
+
+    let deleteButton;
     let submitValue = 'Create Event';
+
+    if (this.props.location.pathname === `/group/${this.props.params.groupId}/event/${this.props.params.eventId}/edit`){
+      deleteButton = <button className='event-form-delete' onClick={ this.handleDelete }> Delete Event </button>;
+      submitValue = 'Update Event';
+    }
 
     return(
       <div className='event-form-container'>
@@ -90,7 +117,7 @@ class EventForm extends React.Component {
             </div>
             <div className='event-date'>
               <label id='event-date'> When will your event start?</label>
-              <input required type='datetime-local' defaultValue={ date } onChange={this.handleInput('date')}/>
+              <input required type='datetime-local' onChange={this.handleInput('date')}/>
             </div>
             <div className='event-description'>
               <label id='event-description'>Describe who should attend and why? </label>
@@ -98,6 +125,7 @@ class EventForm extends React.Component {
               </textarea>
             </div>
             <input className='event-form-submit' type='submit' value={ submitValue } />
+            { deleteButton }
           </form>
         </div>
 

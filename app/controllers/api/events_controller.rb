@@ -29,7 +29,7 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.includes(:users).fine(params[:id])
+    @event = Event.includes(:users).find(params[:id])
 
     if @event.destroy
       render '/api/events/show', event: @event

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 const EventDetail = (props) => {
   const { events, addUserToEvent, removeUserFromEvent, currentUser } = props;
@@ -17,6 +18,12 @@ const EventDetail = (props) => {
     }
   );
 
+  const handleRedirect = (path) => {
+    if (props.location.pathname !== `/group/${props.events[0].id}/${path}`) {
+      props.router.push(`/group/${props.params.groupId}/event/${props.events[0].id}/${path}`);
+    }
+  };
+
   const date = new Date(events[0].date);
 
   let rsvp;
@@ -24,6 +31,11 @@ const EventDetail = (props) => {
     rsvp = <span onClick={() => removeUserFromEvent(events[0].id)}>You are going!</span>;
   } else {
     rsvp = <span onClick={() => addUserToEvent(events[0].id)}>RSVP</span>;
+  }
+
+  let organizerButton;
+  if(events[0].group_id == props.params.groupId) {
+    organizerButton = <button onClick={ () => handleRedirect('edit') }>Edit Event </button>;
   }
 
   return (
@@ -67,6 +79,9 @@ const EventDetail = (props) => {
           <div className='event-detail-rsvp-choice'>
             { rsvp }
           </div>
+          <div className='organizerButton'>
+            { organizerButton }
+          </div>
         </div>
         <div className='event-detail-attendance'>
           { events[0].user_count } going!
@@ -79,4 +94,4 @@ const EventDetail = (props) => {
   );
 };
 
-export default EventDetail;
+export default withRouter(EventDetail);

@@ -81,6 +81,22 @@
         margin-bottom: 15px;
         cursor: pointer;
       }
+
+      .organizerButton {
+        margin-bottom: 20px;
+        button {
+          background-color: #d01031;
+          color: white;
+          height: 35px;
+          width: 120px;
+          font-size: 16px;
+          font-weight: 700;
+          border: none;
+          border-radius: 5px;
+          margin-right: 5px;
+          cursor: pointer;
+        }
+      }
     }
 
     .event-detail-attendance {
