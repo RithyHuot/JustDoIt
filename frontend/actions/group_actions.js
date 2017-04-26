@@ -86,3 +86,11 @@ export const removeUserFromGroup = (groupId) => (dispatch) => {
       (errors) => dispatch(receiveErrors(errors))
     );
 };
+
+export const searchGroup = (query) => (dispatch) => {
+  return APIUtil.searchGroup(query)
+    .then(
+      (groupRes) => dispatch(receiveGroups(groupRes)),
+      (errors) => dispatch(receiveErrors(errors))
+    );
+};

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     post '/groups/:id/adduser', to: 'groups#adduser'
     delete '/groups/:id/removeuser', to: 'groups#removeuser'
+    post '/groups/search', to: 'groups#search'
 
     post '/events/:id/adduser', to: 'events#adduser'
     delete '/events/:id/removeuser', to: 'events#removeuser'

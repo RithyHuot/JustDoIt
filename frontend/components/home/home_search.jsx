@@ -1,35 +1,51 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-const SearchBar = (props) => {
-  const redirectToHome = () => {
-    if (props.location.pathname !== '/home') {
-      props.router.push('/home');
-    }
-  };
+class SearchBar extends React.Component {
+  constructor(props){
+    super(props);
+    this.redirectToHome = this.redirectToHome.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
 
-  return (
-    <div className='home-search-container'>
-      <div className='home-search'>
-        <div className='search'>
-          <input type='search' placeholder=' All Groups'/>
-          <span>within 10 miles of New York, NY</span>
+  redirectToHome(){
+    const { location, router } = this.props;
+    if (location.pathname !== '/home') {
+      router.push('/home');
+    }
+  }
+
+  handleSearch(e){
+    this.props.searchGroup(e.target.value);
+  }
+
+  render(){
+    return (
+      <div className='home-search-container'>
+        <div className='home-search'>
+          <div className='search'>
+            <div className='search-bar'>
+              <i className="fa fa-search" aria-hidden="true"></i>
+              <input type='search' onChange={ this.handleSearch } placeholder=' All Groups'/>
+            </div>
+            <span>within 10 miles of New York, NY</span>
+          </div>
+        </div>
+        <div className='home-nav'>
+          <div className='home-groups'>
+            <button onClick={ this.redirectToHome }>
+              Groups
+            </button>
+          </div>
+          <div className='home-calendar'>
+            <button>
+              Calendars
+            </button>
+          </div>
         </div>
       </div>
-      <div className='home-nav'>
-        <div className='home-groups'>
-          <button onClick={ redirectToHome }>
-            Groups
-          </button>
-        </div>
-        <div className='home-calendar'>
-          <button>
-            Calendars
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default withRouter(SearchBar);

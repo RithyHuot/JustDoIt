@@ -1,5 +1,21 @@
 class Api::GroupsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :search]
+
+  def search
+    search_query = params[:search]
+    @groups =
+      Group
+      .includes(:users, :organizer_users)
+      .where(['name ILIKE ? or location ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%"])
+
+      # .where(['name ILIKE ?', "%#{search_query}%"])
+    if @groups.length > 0
+        render :index
+    else
+      render(json: ["No Result"], status: 404)
+    end
+
+  end
 
   def adduser
     @group = Group.includes(:users, :organizer_users).find(params[:id])

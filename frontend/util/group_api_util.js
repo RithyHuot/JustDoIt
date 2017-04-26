@@ -48,3 +48,11 @@ export const removeUserFromGroup = (groupId) => {
     url: `/api/groups/${groupId}/removeuser`
   });
 };
+
+export const searchGroup = (query) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/groups/search',
+    data: { search: query }
+  });
+};

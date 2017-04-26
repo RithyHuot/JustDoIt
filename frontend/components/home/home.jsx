@@ -13,15 +13,35 @@ class Home extends React.Component {
     this.props.requestGroups();
   }
 
+  componentWillUpdate(newProps){
+    if (newProps.groups.length !== this.props.groups.length) {
+      this.props.receiveErrors([]);
+    }
+  }
+
   render(){
-    const { groups, requestGroup } = this.props;
-    if (!groups[0]) return <Spinner />;
+    const { groups, requestGroup, searchGroup, errors } = this.props;
+    if (!groups[0] && errors.length < 1){
+      return <Spinner />;
+    }
+
+    let groupItem;
+    if (errors.length > 0 ){
+      groupItem =
+        (<div className='search-result-error'>
+          No Results Founded
+        </div>);
+    } else {
+      groupItem = (
+        <GroupItems groups={ groups } requestGroup={ requestGroup }/>
+      );
+    }
 
     return(
       <div>
         <HomeBanner groups={ groups } />
-        <SearchBar />
-        <GroupItems groups={ groups } requestGroup={ requestGroup }/>
+        <SearchBar searchGroup={ searchGroup } />
+        { groupItem }
       </div>
     );
   }

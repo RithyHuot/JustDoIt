@@ -11,7 +11,7 @@ export const groupReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
   case RECEIVE_GROUPS:
-    newState = merge({}, state, { groups: action.groups });
+    newState = Object.assign({}, state, { groups: action.groups });
     return newState;
   case RECEIVE_GROUP:
     newState = Object.assign({}, state, { groups: action.group});
