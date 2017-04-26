@@ -7,6 +7,7 @@ class EventList extends React.Component {
   constructor(props){
     super(props);
     this.sortEvent = this.sortEvent.bind(this);
+    this.redirectToCreateEvent = this.redirectToCreateEvent.bind(this);
   }
 
   componentDidMount(){
@@ -30,15 +31,29 @@ class EventList extends React.Component {
     return sortedArray;
   }
 
+  redirectToCreateEvent() {
+    let groupId = this.props.params.groupId;
+    this.props.router.push(`/group/${groupId}/event/new`);
+  }
+
  render(){
    const { events, params, addUserToEvent, removeUserFromEvent, currentUser } = this.props;
    const groupId = params.groupId;
 
 
    if (events.length < 1) {
-     let group = events.filter((obj) => obj.group_id == params.group_id);
+     let group = events.filter((obj) => obj.group_id == params.groupId);
      if (group.length < 1) {
-       return <Spinner />;
+       return (
+         <div className='group-event'>
+           <div className='group-event-create-text'>
+             No Upcoming Events
+           </div>
+           <div className='group-event-create-button'>
+             <button onClick={ this.redirectToCreateEvent }> Create an Event </button>
+           </div>
+         </div>
+       );
      }
    }
 

@@ -52,4 +52,27 @@
     }
   }
 
+  .group-event-create-text {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+  }
+
+  .group-event-create-button {
+    text-align: center;
+
+    button {
+      margin-bottom: 20px;
+      background-color: #d01031;
+      color: white;
+      height: 50px;
+      width: 300px;
+      font-size: 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
 }
