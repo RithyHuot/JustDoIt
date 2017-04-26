@@ -98,6 +98,7 @@ class SessionForm extends React.Component {
             <label id='email'> Email address:
             <br/>
               <input
+                required
                 type='text'
                 value={ this.state.email }
                 onChange={ this.handleInput("email") }
@@ -108,6 +109,7 @@ class SessionForm extends React.Component {
             <label id='password'> Password:
             <br/>
               <input
+                required 
                 type='password'
                 value={ this.state.password }
                 onChange={ this.handleInput("password") }

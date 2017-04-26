@@ -99,6 +99,7 @@ class Signup extends React.Component {
             <label id='name'> First Name:
               <br />
               <input
+                required
                 type='text'
                 value={ this.state.firstName }
                 onChange={ this.handleInput("first_name") }
@@ -110,6 +111,7 @@ class Signup extends React.Component {
             <label id='name'> Last Name:
               <br />
               <input
+                required
                 type='text'
                 value={ this.state.lastName }
                 onChange={ this.handleInput("last_name") }
@@ -123,6 +125,7 @@ class Signup extends React.Component {
             <label id='email'> Email address:
               <br />
               <input
+                required
                 type='email'
                 value={ this.state.email }
                 onChange={ this.handleInput("email") }
@@ -134,6 +137,7 @@ class Signup extends React.Component {
             <label id='password'> Password:
               <br />
               <input
+                required
                 type='password'
                 value={ this.state.password }
                 onChange={ this.handleInput("password") }
@@ -153,10 +157,5 @@ class Signup extends React.Component {
   }
 
 }
-// <img width='100%' src='/images/splash.png' />
-
-// <div>
-//   Already a member? <Link to='/login'> Log in </Link>
-// </div>
 
 export default withRouter(Signup);
