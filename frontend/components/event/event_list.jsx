@@ -6,19 +6,44 @@ import { withRouter } from 'react-router';
 class EventList extends React.Component {
   constructor(props){
     super(props);
+    this.sortEvent = this.sortEvent.bind(this);
   }
 
   componentDidMount(){
-    if (this.props.events.length < 2) {
-      this.props.requestEvents(this.props.params.groupId);
+    const { events, params, requestEvents } = this.props;
+    if (events) {
+      let group = events.filter((obj) => obj.group_id == params.group_id);
+      if (group.length < 1) {
+        requestEvents(params.groupId);
+      }
     }
+  }
+
+  sortEvent(array){
+    let sortedArray =
+      array.sort(function(a, b) {
+        a = new Date(a.date);
+        b = new Date(b.date);
+        return a>b ? -1 : a<b ? 1 : 0;
+    });
+
+    return sortedArray;
   }
 
  render(){
    const { events, params, addUserToEvent, removeUserFromEvent, currentUser } = this.props;
    const groupId = params.groupId;
 
-   const eventLists = events.map(
+
+   if (events.length < 1) {
+     let group = events.filter((obj) => obj.group_id == params.group_id);
+     if (group.length < 1) {
+       return <Spinner />;
+     }
+   }
+
+   let sortedEvents = this.sortEvent(events);
+   const eventLists = sortedEvents.map(
      (e, i) => {
        return (<EventListItem
          key={`event-${i}`}
@@ -28,13 +53,8 @@ class EventList extends React.Component {
          removeUserFromEvent={removeUserFromEvent}
          currentUser={currentUser}
          />);
-     }
-   );
-
-   if (events.length < 1) {
-     return <Spinner />;
-   }
-
+       }
+     );
    return (
      <div>
       { eventLists }

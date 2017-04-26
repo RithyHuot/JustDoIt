@@ -11,7 +11,7 @@ export const eventReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
   case RECEIVE_EVENTS:
-    newState = merge({}, state, { events: action.events });
+    newState = Object.assign({}, state, { events: action.events });
     return newState;
   case RECEIVE_EVENT:
     newState = merge({}, state, { events: {[action.event.id]: action.event}});

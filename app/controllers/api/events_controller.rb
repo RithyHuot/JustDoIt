@@ -5,8 +5,7 @@ class Api::EventsController < ApplicationController
 
     @events = Event.includes(:users)
       .where(group_id: params[:group_id])
-      .order(date: :desc)
-      
+  
     render :index
   end
 
