@@ -24,12 +24,12 @@ class Home extends React.Component {
     if (!groups[0] && errors.length < 1){
       return <Spinner />;
     }
-
+    
     let groupItem;
     if (errors.length > 0 ){
       groupItem =
         (<div className='search-result-error'>
-          No Results Founded
+          No Results Found
         </div>);
     } else {
       groupItem = (
