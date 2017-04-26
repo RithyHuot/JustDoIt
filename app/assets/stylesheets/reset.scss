@@ -49,3 +49,8 @@ blockquote, q {
 a {
   text-decoration-color: none;
 }
+
+html {
+  min-height: 100vh;
+  position: relative;
+}

@@ -1,18 +1,22 @@
 .footer {
+  position: relative;
+  width: 100%;
+  bottom: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-color: black;
   margin-top: 50px;
   height: 100px;
+  /*top: 100px;*/
 }
 
 .app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
   position: relative;
-}
-
-main {
-  height: calc(100% + 100px);
 }
 
 .inner-footer {
