@@ -7,6 +7,7 @@ import GroupContainer from './group/group_container';
 import HomeContainer from './home/home_container';
 import GroupFormContainer from './group/group_form_container';
 import EventFormContainer from './event/event_form_container';
+import UserContainer from './user/user_profile_container';
 
 const Root = ({ store }) => {
   const redirectIfLoggIn  = () => {
@@ -26,6 +27,7 @@ const Root = ({ store }) => {
       <Route path="/" component={ App } >
         <IndexRoute onEnter= { redirectToHome } />
         <Router path='home' component={ HomeContainer }/>
+        <Router path='member/:memberId' component={ UserContainer }/>
         <Route path='group/new' component={ GroupFormContainer } />
         <Route path='group/:groupId/edit' component= { GroupFormContainer } />
         <Route path='group/:groupId/event/new' component={ EventFormContainer } />

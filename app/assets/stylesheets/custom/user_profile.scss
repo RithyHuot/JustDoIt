@@ -1,0 +1,104 @@
+.user-profile-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 25px;
+  border: 1px solid rgba(198, 198, 198, 0.87);
+
+  .user-profile-left {
+    width: 75%;
+    margin-top: 25px;
+
+    .user-profile-name {
+      font-size: 28px;
+      font-weight: 700;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(198, 198, 198, 0.87);
+      padding-left: 20px;
+    }
+
+    .user-profile-info-container{
+      border-bottom: 1px solid rgba(198, 198, 198, 0.87);
+
+      .user-profile-info {
+        padding-left: 20px;
+        margin-top: 25px;
+        display: flex;
+
+        .user-location {
+          margin-right: 80px;
+
+          .user-location-text {
+            margin-bottom: 5px;
+            font-weight: 700;
+          }
+        }
+
+        .user-joined {
+
+          .user-joined-text {
+            font-weight: 700;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      .user-profile-bio {
+        padding-left: 20px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+      }
+    }
+
+    .user-group-count {
+      padding-left: 20px;
+      margin-top: 25px;
+      font-size: 28px;
+      font-weight: 700;
+      padding-bottom: 25px;
+      border-bottom: 1px solid rgba(198, 198, 198, 0.87);
+    }
+
+    .user-groups {
+      column-count: 2;
+      column-gap: 20px;
+      padding-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .user-group-container {
+        display: flex;
+        margin-bottom: 20px;
+
+        .user-group-image {
+          img{
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+          }
+        }
+
+        .user-group-name {
+          .user-group-link {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .user-profile-right{
+    width: 25%;
+    .user-image {
+      img {
+        width: 150px;
+        height: 150px;
+        margin-left: 50px;
+        margin-top: 25px;
+      }
+    }
+  }
+
+}

@@ -15,6 +15,7 @@ class Header extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.redirectToHome = this.redirectToHome.bind(this);
     this.redirectToGroupForm = this.redirectToGroupForm.bind(this);
+    this.redirectToUsers = this.redirectToUsers.bind(this);
   }
 
   closeModal() {
@@ -57,6 +58,13 @@ class Header extends React.Component {
     }
   }
 
+  redirectToUsers (){
+    const { location, currentUser, router } = this.props;
+    if(location.pathname !== `/member/${currentUser.id}`){
+      router.push(`/member/${currentUser.id}`);
+    }
+  }
+
   render() {
     let logout;
     let welcome;
@@ -64,7 +72,7 @@ class Header extends React.Component {
     let signup;
     if (this.props.currentUser) {
       logout = (<button id='logout-button' onClick={this.handleClick.bind(this)}> Log Out</button>);
-      welcome = (<span className='welcome-msg'> Welcome,  {this.props.currentUser.first_name}
+      welcome = (<span className='welcome-msg'> Welcome, <span onClick={this.redirectToUsers}> {this.props.currentUser.first_name}</span>
     </span>);
   } else {
     login = (<span id='login-link' onClick={ this.openModal }>Log in</span>);

@@ -6,9 +6,8 @@ class Api::GroupsController < ApplicationController
     @groups =
       Group
       .includes(:users, :organizer_users)
-      .where(['name ILIKE ? or location ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%"])
+      .where(['name ILIKE ? or location ILIKE ? or description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%"])
 
-      # .where(['name ILIKE ?', "%#{search_query}%"])
     if @groups.length > 0
         render :index
     else
