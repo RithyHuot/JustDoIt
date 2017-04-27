@@ -32,14 +32,26 @@ class GroupForm extends React.Component {
   }
 
   componentWillMount(){
-    const { location, groups, params, requestGroup } = this.props;
+    const { location, groups, params, requestGroup, currentUser, router } = this.props;
+    let groupEdit;
     if (location.pathname === `/group/${params.groupId}/edit`
       && groups.length === 0){
         requestGroup(params.groupId)
           .then((group) =>{
             this.setState( group.group[params.groupId] );
           });
+        }
+
+    if (groups.length !== 0) {
+      groupEdit = groups.filter(
+        (object) => object.id == params.groupId
+      );
+
+      if (currentUser.id !== groupEdit[0].organizer[0].id) {
+        router.push(`/group/${params.groupId}`);
       }
+    }
+
   }
 
   renderErrors() {
