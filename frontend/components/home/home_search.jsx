@@ -6,6 +6,7 @@ class SearchBar extends React.Component {
     super(props);
     this.redirectToHome = this.redirectToHome.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.searchTimeout = null;
   }
 
   redirectToHome(){
@@ -16,7 +17,12 @@ class SearchBar extends React.Component {
   }
 
   handleSearch(e){
-    this.props.searchGroup(e.target.value);
+    const query = e.target.value;
+    clearTimeout(this.searchTimeout);
+
+    this.searchTimeout = setTimeout(() => {
+      this.props.searchGroup(query).then(() => console.log(query));
+    }, 100);
   }
 
   render(){
