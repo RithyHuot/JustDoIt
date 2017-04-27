@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import UserProfile from './user_profile';
 import { requestGroups } from '../../actions/group_actions';
 
-
-
 const mapStateToProps = (state) => {
   return({
     currentUser: state.session.currentUser,

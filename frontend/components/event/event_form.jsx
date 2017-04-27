@@ -108,20 +108,20 @@ class EventForm extends React.Component {
         <div className='event-form'>
           <form onSubmit={ this.handleSubmit }>
             <div className='event-name'>
-              <label id='event-name'>What will your event's name be?</label>
+              <label htmlFor='event-name'>What will your event's name be?</label>
               <input required id='event-name' value={ name } placeholder=" e.g. Let's meetup  @ The Coffee Shop!" onChange={this.handleInput('name')}/>
             </div>
             <div className='event-location'>
-              <label id='event-location'>Where will your event be hosted?</label>
+              <label htmlFor='event-location'>Where will your event be hosted?</label>
               <input required id='event-location' placeholder=' e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
             </div>
             <div className='event-date'>
-              <label id='event-date'> When will your event start?</label>
-              <input required type='datetime-local' onChange={this.handleInput('date')}/>
+              <label htmlFor='event-date'> When will your event start?</label>
+              <input id='event-date' required type='datetime-local' onChange={this.handleInput('date')}/>
             </div>
             <div className='event-description'>
-              <label id='event-description'>Describe who should attend and why? </label>
-              <textarea required value={ description } onChange={this.handleInput('description')}>
+              <label htmlFor='event-description'>Describe who should attend and why? </label>
+              <textarea id='event-description' required value={ description } onChange={this.handleInput('description')}>
               </textarea>
             </div>
             <input className='event-form-submit' type='submit' value={ submitValue } />

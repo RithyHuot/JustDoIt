@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :require_login, except: [:create]
+
   def create
     @user = User.new(user_params)
 
@@ -8,6 +10,17 @@ class Api::UsersController < ApplicationController
     else
       render :error, status: 422
     end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      render :show
+    else
+      render :error, status: 422
+    end
+    
   end
 
   private

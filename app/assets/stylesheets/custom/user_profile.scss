@@ -100,6 +100,23 @@
         margin-top: 25px;
       }
     }
+
+    .user-edit-profile {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+      button {
+        background-color: #d01031;
+        color: white;
+        height: 35px;
+        width: 120px;
+        font-size: 16px;
+        font-weight: 700;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
   }
 
 }

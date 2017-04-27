@@ -123,12 +123,12 @@ class GroupForm extends React.Component {
         <div className='group-form'>
           <form onSubmit={ this.handleSubmit } >
             <div className='group-location'>
-              <label id='group-location'>What's your new Group's hometown?</label>
+              <label htmlFor='group-location'>What's your new Group's hometown?</label>
               <input required id='group-location' placeholder='e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
             </div>
 
             <div className='group-categories'>
-              <label id='group-categories'>What will your group be about?</label>
+              <label htmlFor='group-categories'>What will your group be about?</label>
 
               <select id='group-categories' value={ category } onChange={this.handleInput('category')}>
                 <option className='group-form-dropdown-cat' disabled={ true }>--Please select a category--</option>
@@ -137,13 +137,13 @@ class GroupForm extends React.Component {
             </div>
 
             <div className='group-name'>
-              <label id='group-name'>What will your Meetup's name be?</label>
+              <label htmlFor='group-name'>What will your Meetup's name be?</label>
               <input required id='group-name' value={ name } placeholder=' e.g. Let do something awesome together!' onChange={this.handleInput('name')}/>
             </div>
 
             <div className='group-description'>
-              <label id='group-description'>Describe who should join, and what your group will do </label>
-              <textarea required value={ description } onChange={this.handleInput('description')}>
+              <label htmlFor='group-description'>Describe who should join, and what your group will do </label>
+              <textarea id='group-description' required value={ description } onChange={this.handleInput('description')}>
               </textarea>
             </div>
 

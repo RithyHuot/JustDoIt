@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { withRouter, Link } from 'react-router';
 import Spinner from '../shared/spinner.jsx';
 
 class UserProfile extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = this.props.currentUser;
+    this.handleInput = this.handleInput.bind(this);
+    this.redirectToUsersEdit = this.redirectToUsersEdit.bind(this);
+  }
 
   componentDidMount(){
     const { groups, requestGroups } = this.props;
@@ -17,8 +24,20 @@ class UserProfile extends React.Component {
     }
   }
 
+  handleInput(field) {
+    return (e) => (
+      this.setState({
+        [field]: e.currentTarget.value
+      })
+    );
+  }
+
+  redirectToUsersEdit() {
+    this.props.router.push(`/member/${this.props.params.memberId}/edit`);
+  }
+
   render(){
-    const { currentUser, groups } = this.props;
+    const { currentUser, groups, params } = this.props;
 
     if (groups.length === 0) return <Spinner />;
 
@@ -41,6 +60,11 @@ class UserProfile extends React.Component {
         );
       }
     });
+
+    let editButton;
+    if (currentUser.id == params.memberId) {
+      editButton = <button onClick={this.redirectToUsersEdit} >Edit Profile</button>;
+    }
 
     let count = userGroups.filter((x) => x !== undefined );
 
@@ -85,10 +109,13 @@ class UserProfile extends React.Component {
           <div className='user-image'>
             <img src={ currentUser.image_url } />
           </div>
+          <div className='user-edit-profile'>
+            { editButton }
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default UserProfile;
+export default withRouter(UserProfile);

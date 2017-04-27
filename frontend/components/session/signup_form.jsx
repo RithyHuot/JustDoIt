@@ -96,7 +96,7 @@ class Signup extends React.Component {
           { this.renderErrors() }
           <div>
             <br />
-            <label id='name'> First Name:
+            <label htmlFor='name'> First Name:
               <br />
               <input
                 required
@@ -108,7 +108,7 @@ class Signup extends React.Component {
               />
             </label>
             <br />
-            <label id='name'> Last Name:
+            <label htmlFor='name'> Last Name:
               <br />
               <input
                 required
@@ -122,7 +122,7 @@ class Signup extends React.Component {
 
 
             <br />
-            <label id='email'> Email address:
+            <label htmlFor='email'> Email address:
               <br />
               <input
                 required
@@ -134,7 +134,7 @@ class Signup extends React.Component {
               />
             </label>
             <br />
-            <label id='password'> Password:
+            <label htmlFor='password'> Password:
               <br />
               <input
                 required

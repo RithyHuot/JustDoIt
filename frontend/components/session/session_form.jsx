@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
           { this.renderErrors() }
           <div>
             <br />
-            <label id='email'> Email address:
+            <label htmlFor='email'> Email address:
             <br/>
               <input
                 required
@@ -106,10 +106,10 @@ class SessionForm extends React.Component {
               />
               </label>
             <br />
-            <label id='password'> Password:
+            <label htmlFor='password'> Password:
             <br/>
               <input
-                required 
+                required
                 type='password'
                 value={ this.state.password }
                 onChange={ this.handleInput("password") }

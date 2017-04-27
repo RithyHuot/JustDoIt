@@ -36,3 +36,10 @@ export const logout  = () => (dispatch) => {
       () => dispatch(receiveCurrentUser(null)),
       (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
+export const userUpdate = (user) => (dispatch) => {
+  return APIUtil.userUpdate(user)
+    .then(
+      (currentUser) => dispatch(receiveCurrentUser(currentUser)),
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
+    );
+};
