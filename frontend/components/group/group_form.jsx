@@ -42,7 +42,7 @@ class GroupForm extends React.Component {
           });
         }
 
-    if (groups.length !== 0) {
+    if (groups.length !== 0 && location.pathname === `/group/${params.groupId}/edit`) {
       groupEdit = groups.filter(
         (object) => object.id == params.groupId
       );
