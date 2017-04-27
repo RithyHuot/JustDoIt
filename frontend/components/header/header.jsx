@@ -74,7 +74,7 @@ class Header extends React.Component {
     if (currentUser) {
       logout = (<button id='logout-button' onClick={this.handleClick.bind(this)}> Log Out</button>);
       welcome = (<span className='welcome-msg'>
-      Welcome, {currentUser.first_name}
+      Welcome, <span className='welcome-username'> {currentUser.first_name}</span>
     <img onClick={this.redirectToUsers} src={currentUser.image_url} className='username-image'/>
     </span>);
   } else {

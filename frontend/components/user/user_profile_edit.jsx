@@ -7,6 +7,7 @@ class UserProfileForm extends React.Component {
     this.state = this.props.currentUser;
     this.renderErrors = this.renderErrors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   componentWillMount(){
@@ -29,6 +30,14 @@ class UserProfileForm extends React.Component {
     );
   }
 
+  handleInput(field) {
+    return (e) => (
+      this.setState({
+        [field]: e.currentTarget.value
+      })
+    );
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const { router, params, updateUser } = this.props;
@@ -43,8 +52,44 @@ class UserProfileForm extends React.Component {
 
     return(
       <div className='user-profile-edit-container'>
-        Hello
+        { this.renderErrors }
         <form onSubmit={this.handleSubmit}>
+          <div className='user-profile-edit-name'>
+            <label htmlFor='user-profile-edit-first-name'> First Name: </label>
+            <input
+              required
+              id='user-profile-edit-first-name'
+              value={ first_name }
+              onChange={this.handleInput('first_name')}
+              />
+            <label htmlFor='user-profile-edit-last-name'> First Name: </label>
+            <input
+              required
+              id='user-profile-edit-last-name'
+              value={ last_name }
+              onChange={this.handleInput('last_name')}
+              />
+          </div>
+          <div className='user-profile-edit-location'>
+            <label htmlFor='user-profile-edit-location'> Location: </label>
+            <input
+              required
+              id='user-profile-edit-location'
+              defaultValue={ location }
+              onChange={this.handleInput('location')}
+              />
+          </div>
+          <div className='user-profile-edit-bio'>
+            <label htmlFor='user-profile-edit-bio'> Bio: </label>
+            <textarea
+              required
+              id='user-profile-edit-bio'
+              defaultValue={ bio }
+              onChange={this.handleInput('bio')}
+              >
+            </textarea>
+          </div>
+          <input className='user-profile-form-submit' type='submit' value='Update Profile' />
         </form>
       </div>
     );

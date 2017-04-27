@@ -82,7 +82,7 @@ class UserProfile extends React.Component {
                   Location:
                 </div>
                 <div className='user-location-info'>
-                  { currentUser.location } LOCATION
+                  { currentUser.location }
                 </div>
               </div>
               <div className='user-joined'>
@@ -95,7 +95,7 @@ class UserProfile extends React.Component {
               </div>
             </div>
             <div className='user-profile-bio'>
-              BIO { currentUser.bio }
+              { currentUser.bio }
             </div>
           </div>
           <div className='user-group-count'>
