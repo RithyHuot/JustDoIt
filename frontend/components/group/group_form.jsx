@@ -38,6 +38,9 @@ class GroupForm extends React.Component {
       && groups.length === 0){
         requestGroup(params.groupId)
           .then((group) =>{
+            if(group.group[params.groupId].organizer[0].id !== currentUser.id){
+              router.push(`/group/${params.groupId}`);
+            }
             this.setState( group.group[params.groupId] );
           });
         }
