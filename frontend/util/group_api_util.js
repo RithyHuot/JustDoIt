@@ -22,8 +22,10 @@ export const deleteGroup = (groupId) => {
 export const updateGroup = (group) => {
   return $.ajax({
     method: 'PATCH',
-    url:  `/api/groups/${group.id}`,
-    data: { group }
+    url: `/api/groups/${group.get('group[id]')}`,
+    contentType: false,
+    processData: false,
+    data: group
   });
 };
 

@@ -10,6 +10,7 @@ class GroupForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
     this.renderDropdownBox = this.renderDropdownBox.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleFile = this.handleFile.bind(this);
 
     const { location, groups, params } = this.props;
 
@@ -18,7 +19,19 @@ class GroupForm extends React.Component {
           (object) => object.id == params.groupId
         );
 
-      this.state =  group[0];
+      let foundedGroup = group[0];
+
+      this.state =  {
+        id: foundedGroup.id,
+        name: foundedGroup.name,
+        category: foundedGroup.category,
+        location: foundedGroup.location,
+        description: foundedGroup.description,
+        founded: foundedGroup.founded,
+        image_url: foundedGroup.image_url,
+        imageFile: null,
+        imageUrl: null
+      };
     } else {
       let founded = new Date;
       this.state = {
@@ -78,14 +91,45 @@ class GroupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { id, name, category, location, description, founded, imageFile }
+    = this.state;
+
     if (this.props.location.pathname === `/group/${this.props.params.groupId}/edit`){
-      this.props.updateGroup(this.state)
+
+      let formData = new FormData();
+      formData.append("group[id]", id );
+      formData.append("group[name]", name);
+      formData.append("group[category]", category);
+      formData.append("group[founded]", founded);
+      formData.append("group[description]", description);
+      formData.append("group[location]", location);
+
+      if (imageFile) {
+        formData.append("group[image]", imageFile);
+      }
+
+      this.props.updateGroup(formData)
         .then(() => this.props.router.push(`/group/${this.props.params.groupId}`));
     } else {
       this.props.createGroup(this.state)
       .then(() => {
         this.props.router.push(`/home`);
       });
+    }
+  }
+
+  handleFile(e) {
+    e.preventDefault();
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null});
     }
   }
 
@@ -123,59 +167,83 @@ class GroupForm extends React.Component {
   }
 
   render() {
+    const { name, category, location, description, image_url, imageUrl } = this.state;
+
     let deleteButton;
+    let updateFile;
     let submitValue = 'Agree & Continue';
     if (this.props.location.pathname === `/group/${this.props.params.groupId}/edit`) {
       deleteButton = <button className='group-form-delete' onClick={ this.handleDelete }> Delete Group </button>;
       submitValue = 'Update Group';
     }
 
-    const { name, category, location, description } = this.state;
+    if (this.props.location.pathname === `/group/${this.props.params.groupId}/edit`) {
+      updateFile =
+        <div className='group-image-file-container'>
+          <div className='group-image-file'>
+            <img src={ image_url } />
+          </div>
+          <div className='group-image-preview'>
+            <img src={ imageUrl } />
+          </div>
+          <div className='group-image-update'>
+            <label htmlFor="file">
+              <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
+            </label>
+            <input type="file" name="file" id="file" className="group-image-inputfile" onChange={ this.handleFile } />
+        </div>
+      </div>;
+    }
+
     return (
-      <div className='group-form-container'>
+      <div className='group-form-top'>
         <GroupFormBanner />
-        { this.renderErrors() }
-        <div className='group-form'>
-          <form onSubmit={ this.handleSubmit } >
-            <div className='group-location'>
-              <label htmlFor='group-location'>What's your new Group's hometown?</label>
-              <input required id='group-location' placeholder='e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
-            </div>
+        <div className='group-form-inner'>
+          <div className='group-form-container'>
+            { this.renderErrors() }
+            <div className='group-form'>
+              <form onSubmit={ this.handleSubmit } >
+                <div className='group-location'>
+                  <label htmlFor='group-location'>What's your new Group's hometown?</label>
+                  <input required id='group-location' placeholder='e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
+                </div>
 
-            <div className='group-categories'>
-              <label htmlFor='group-categories'>What will your group be about?</label>
+                <div className='group-categories'>
+                  <label htmlFor='group-categories'>What will your group be about?</label>
 
-              <select id='group-categories' value={ category } onChange={this.handleInput('category')}>
-                <option className='group-form-dropdown-cat' disabled={ true }>--Please select a category--</option>
-                { this.renderDropdownBox() };
-              </select>
-            </div>
+                  <select id='group-categories' value={ category } onChange={this.handleInput('category')}>
+                    <option className='group-form-dropdown-cat' disabled={ true }>--Please select a category--</option>
+                    { this.renderDropdownBox() };
+                  </select>
+                </div>
 
-            <div className='group-name'>
-              <label htmlFor='group-name'>What will your Meetup's name be?</label>
-              <input required id='group-name' value={ name } placeholder=' e.g. Let do something awesome together!' onChange={this.handleInput('name')}/>
-            </div>
+                <div className='group-name'>
+                  <label htmlFor='group-name'>What will your Meetup's name be?</label>
+                  <input required id='group-name' value={ name } placeholder=' e.g. Let do something awesome together!' onChange={this.handleInput('name')}/>
+                </div>
 
-            <div className='group-description'>
-              <label htmlFor='group-description'>Describe who should join, and what your group will do </label>
-              <textarea id='group-description' required value={ description } onChange={this.handleInput('description')}>
-              </textarea>
+                <div className='group-description'>
+                  <label htmlFor='group-description'>Describe who should join, and what your group will do </label>
+                  <textarea id='group-description' required value={ description } onChange={this.handleInput('description')}>
+                  </textarea>
+                </div>
+                <div className='group-agreement'>
+                  <div className='group-agreement-heading'>
+                    What is means to be a JustDoIt Member
+                  </div>
+                  <ul className='group-agreement-list'>
+                    <li>Real, in-person conversations</li>
+                    <li>Open and honest intentions</li>
+                    <li>Always safe and respectful</li>
+                    <li>Put your members first</li>
+                  </ul>
+                </div>
+                <input className='group-form-submit' type='submit' value={ submitValue } />
+                { deleteButton }
+              </form>
             </div>
-
-            <div className='group-agreement'>
-              <div className='group-agreement-heading'>
-                What is means to be a JustDoIt Member
-              </div>
-              <ul className='group-agreement-list'>
-                <li>Real, in-person conversations</li>
-                <li>Open and honest intentions</li>
-                <li>Always safe and respectful</li>
-                <li>Put your members first</li>
-              </ul>
-            </div>
-            <input className='group-form-submit' type='submit' value={ submitValue } />
-            { deleteButton }
-          </form>
+          </div>
+          { updateFile }
         </div>
       </div>
     );

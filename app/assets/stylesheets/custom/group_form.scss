@@ -1,6 +1,5 @@
-.group-form-container {
+.group-form-top{
   text-align: center;
-
   .group-form-banner {
     height: 250px;
     width: 100%;
@@ -10,7 +9,6 @@
     // background-attachment: fixed;
     background-position: 30% 20%;
   }
-
   .group-form-banner-txt {
     padding-top: 80px;
     font-size: 45px;
@@ -22,125 +20,195 @@
     color: white;
   }
 
-  .group-form {
-    margin: 0 auto;
-    margin-top: 40px;
+  .group-form-inner {
     display: flex;
-    justify-content: center;
-    text-align: left;
     width: 80%;
+    margin: 0 auto;
 
-    .group-location {
-      label {
-        display: block;
-        font-size: 30px;
-        font-weight: 550;
-        margin-bottom: 16px;
-      }
-      input {
-        width: 600px;
-        height: 40px;
-        border: none;
-        border-bottom: 1px solid rgba(181, 181, 181, 0.8);
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-    }
+    .group-form-container {
+      width: 70%;
 
-    .group-categories {
-      margin-top: 20px;
-      label {
-        display: block;
-        font-size: 30px;
-        font-weight: 550;
-        margin-bottom: 16px;
-      }
+      .group-form {
+        margin: 0 auto;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        text-align: left;
+        width: 70%;
 
-      select {
-        width: 600px;
-        height: 40px;
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-    }
+        .group-location {
+          label {
+            display: block;
+            font-size: 30px;
+            font-weight: 550;
+            margin-bottom: 16px;
+          }
+          input {
+            width: 600px;
+            height: 40px;
+            border: none;
+            border-bottom: 1px solid rgba(181, 181, 181, 0.8);
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+        }
 
-    .group-name {
-      margin-top: 20px;
-      label {
-        display: block;
-        font-size: 30px;
-        font-weight: 550;
-        margin-bottom: 16px;
-      }
-      input {
-        width: 600px;
-        height: 40px;
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-    }
+        .group-categories {
+          margin-top: 20px;
+          label {
+            display: block;
+            font-size: 30px;
+            font-weight: 550;
+            margin-bottom: 16px;
+          }
 
-    .group-description {
-      margin-top: 20px;
-      label {
-        display: block;
-        font-size: 30px;
-        font-weight: 550;
-        margin-bottom: 16px;
-      }
-      textarea {
-        width: 100%;
-        height: 200px;
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-    }
+          select {
+            width: 600px;
+            height: 40px;
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+        }
 
-    .group-agreement {
-      margin-top: 20px;
+        .group-name {
+          margin-top: 20px;
+          label {
+            display: block;
+            font-size: 30px;
+            font-weight: 550;
+            margin-bottom: 16px;
+          }
+          input {
+            width: 600px;
+            height: 40px;
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+        }
 
-      .group-agreement-heading {
-        font-size: 30px;
-        font-weight: 550;
-        margin-bottom: 20px;
-      }
+        .group-description {
+          margin-top: 20px;
+          label {
+            display: block;
+            font-size: 30px;
+            font-weight: 550;
+            margin-bottom: 16px;
+          }
+          textarea {
+            width: 100%;
+            height: 200px;
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+        }
 
-      ul {
-        margin-left: 30px;
-        margin-bottom: 20px;
-        li{
-          list-style-type: circle;
+        .group-agreement {
+          margin-top: 20px;
+
+          .group-agreement-heading {
+            font-size: 30px;
+            font-weight: 550;
+            margin-bottom: 20px;
+          }
+
+          ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            li{
+              list-style-type: circle;
+              font-size: 20px;
+              margin-bottom: 5px;
+            }
+          }
+        }
+
+        .group-form-submit {
+          margin-top: 20px;
+          background-color: #d01031;
+          color: white;
+          height: 50px;
+          width: 300px;
           font-size: 20px;
-          margin-bottom: 5px;
+          font-weight: 700;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .group-form-delete {
+          margin-top: 20px;
+          background-color: #d01031;
+          color: white;
+          height: 50px;
+          width: 300px;
+          font-size: 20px;
+          font-weight: 700;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-left: 80px;
         }
       }
     }
 
-    .group-form-submit {
-      margin-top: 20px;
-      background-color: #d01031;
-      color: white;
-      height: 50px;
-      width: 300px;
-      font-size: 20px;
-      font-weight: 700;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    //group-right
+    .group-image-file-container {
+      margin: 0 auto;
+      width: 25%;
+      margin-top: 40px;
 
-    .group-form-delete {
-      margin-top: 20px;
-      background-color: #d01031;
-      color: white;
-      height: 50px;
-      width: 300px;
-      font-size: 20px;
-      font-weight: 700;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 80px;
+      .group-image-file {
+        text-align: center;
+        img {
+          width: 400px;
+          height: 300px;
+        }
+      }
+
+      .group-image-preview {
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 150px;
+        height: 100px;
+        img {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+      }
+
+      .group-image-update {
+        margin: 0 auto;
+        margin-top: 30px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #d01031;
+        border-radius: 5px;
+        width: 175px;
+
+        .group-image-inputfile {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+        }
+
+        label {
+          cursor: pointer;
+          color: white;
+          display: inline-block;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+      }
+
+      .group-image-update:hover {
+        background-color: #870b21;
+      }
     }
   }
 }
