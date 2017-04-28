@@ -20,12 +20,12 @@ class Api::UsersController < ApplicationController
     else
       render :error, status: 422
     end
-    
+
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :location, :image_url, :bio)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :location, :image, :bio)
   end
 end

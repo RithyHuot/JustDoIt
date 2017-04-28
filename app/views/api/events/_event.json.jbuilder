@@ -7,7 +7,7 @@
     json.array! event.users do |user|
       json.first_name user.first_name
       json.last_name user.last_name
-      json.image_url user.image_url
+      json.image_url asset_path(user.image.url)
       json.id user.id
     end
   end

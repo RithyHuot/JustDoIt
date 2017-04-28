@@ -29,7 +29,10 @@ class User < ApplicationRecord
   has_many :organizer_groups, through: :organizers, source: :group
 
   has_many :rsvps
-  has_many :events, through: :rsvps, source: :event 
+  has_many :events, through: :rsvps, source: :event
+
+  has_attached_file :image, default_url: "newUser.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   attr_reader :password
 

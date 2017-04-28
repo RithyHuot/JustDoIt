@@ -141,8 +141,11 @@ User.create!(email: 'demo@justdoit.com', password: 'password123',
                first_name: Faker::Name.first_name,
                last_name: Faker::Name.last_name,
                joined: Faker::Date.backward(100),
-               image_url: "/images/user/#{rand(36)}.jpg"
+              #  image_url: "/images/user/#{rand(36)}.jpg"
                )
+  last_user = User.last
+  last_user.image = File.open("public/images/user/#{rand(36)}.jpg")
+  last_user.save
 end
 
 users = User.all
@@ -155,7 +158,11 @@ users = User.all
                               location: city.sample,
                               description: description[i],
                               founded: Faker::Date.backward(1000),
-                              image_url: "/images/group/#{rand(30)}.jpg")
+                              # image_url: "/images/group/#{rand(30)}.jpg"
+                              )
+  last_group = Group.last
+  last_group.image = File.open("public/images/group/#{rand(30)}.jpg")
+  last_group.save
   Group.all.last.user_ids = Group.all.last.user_ids.push(user.id)
 end
 
@@ -166,7 +173,11 @@ end
                               location: city.sample,
                               description: description[i+15],
                               founded: Faker::Date.backward(1000),
-                              image_url: "/images/group/#{rand(30)}.jpg")
+                              # image_url: "/images/group/#{rand(30)}.jpg"
+                              )
+  last_group = Group.last
+  last_group.image = File.open("public/images/group/#{rand(30)}.jpg")
+  last_group.save
   Group.all.last.user_ids = Group.all.last.user_ids.push(user.id)
 end
 

@@ -4,10 +4,23 @@ import { withRouter } from 'react-router';
 class UserProfileForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.currentUser;
     this.renderErrors = this.renderErrors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+
+    const { currentUser } = this.props;
+    this.state = {
+      id: currentUser.id,
+      first_name: currentUser.first_name,
+      last_name: currentUser.last_name,
+      image_url: currentUser.image_url,
+      joined: currentUser.joined,
+      bio: currentUser.bio,
+      location: currentUser.location,
+      imageFile: null,
+      imageUrl: null
+    };
   }
 
   componentWillMount(){
@@ -38,22 +51,52 @@ class UserProfileForm extends React.Component {
     );
   }
 
+  handleFile(e) {
+    e.preventDefault();
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null});
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const { router, params, updateUser } = this.props;
-    updateUser(this.state)
+    const { id, first_name, last_name, location, bio, imageUrl, joined, imageFile }
+    = this.state;
+
+    let formData = new FormData();
+    formData.append("user[id]", id );
+    formData.append("user[first_name]", first_name);
+    formData.append("user[last_name]", last_name);
+    formData.append("user[joined]", joined);
+    formData.append("user[bio]", bio);
+    formData.append("user[location]", location);
+
+    if (imageFile) {
+      formData.append("user[image]", imageFile);
+    }
+
+    updateUser(formData)
       .then(() =>
         router.push(`/member/${params.memberId}`)
       );
   }
 
   render() {
-    const { first_name, last_name, location, bio } = this.state;
+    const { first_name, last_name, location, bio, image_url, imageUrl } = this.state;
 
     return(
       <div className='user-profile-edit-container'>
         { this.renderErrors }
-        <form onSubmit={this.handleSubmit}>
+        <form className='user-profile-edit-form' onSubmit={this.handleSubmit}>
           <div className='user-profile-edit-name'>
             <label htmlFor='user-profile-edit-first-name'> First Name: </label>
             <input
@@ -91,6 +134,20 @@ class UserProfileForm extends React.Component {
           </div>
           <input className='user-profile-form-submit' type='submit' value='Update Profile' />
         </form>
+        <div className='user-profile-image-file-container'>
+          <div className='user-profile-image-file'>
+            <img src={ image_url } />
+          </div>
+          <div className='user-profile-image-preview'>
+            <img src={ imageUrl } />
+          </div>
+          <div className='user-profile-image-update'>
+            <label htmlFor="file">
+              <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
+            </label>
+            <input type="file" name="file" id="file" className="user-profile-image-inputfile" onChange={ this.handleFile } />
+          </div>
+        </div>
       </div>
     );
   }
