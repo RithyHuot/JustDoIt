@@ -93,6 +93,34 @@ class UserProfileForm extends React.Component {
   render() {
     const { first_name, last_name, location, bio, image_url, imageUrl } = this.state;
 
+    let imgURL;
+    let imgURLButton;
+    let imgURLButtonOrg;
+
+    if (imageUrl) {
+      imgURL = <img src={ imageUrl }/>;
+    }
+
+    if (!imageUrl) {
+      imgURLButton =
+        <div className='user-image-button-org'>
+          <div className='user-profile-image-update'>
+            <label htmlFor="file">
+              <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
+            </label>
+            <input type="file" name="file" id="file" className="user-profile-image-inputfile" onChange={ this.handleFile } />
+          </div>
+        </div>;
+    } else {
+      imgURLButtonOrg =
+      <div className='user-profile-image-update'>
+        <label htmlFor="file">
+          <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
+        </label>
+        <input type="file" name="file" id="file" className="user-profile-image-inputfile" onChange={ this.handleFile } />
+      </div>;
+    }
+
     return(
       <div className='user-profile-edit-container'>
         { this.renderErrors }
@@ -139,14 +167,10 @@ class UserProfileForm extends React.Component {
             <img src={ image_url } />
           </div>
           <div className='user-profile-image-preview'>
-            <img src={ imageUrl } />
+            { imgURLButton }
+            { imgURL }
           </div>
-          <div className='user-profile-image-update'>
-            <label htmlFor="file">
-              <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
-            </label>
-            <input type="file" name="file" id="file" className="user-profile-image-inputfile" onChange={ this.handleFile } />
-          </div>
+            { imgURLButtonOrg }
         </div>
       </div>
     );

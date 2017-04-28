@@ -33,15 +33,19 @@ class GroupForm extends React.Component {
         imageUrl: null
       };
     } else {
-      let founded = new Date;
-      this.state = {
-        name: '',
-        category: '--Please select a category--',
-        location: '',
-        description: '',
-        founded: `${founded}`
-      };
+      this.state = this.defaultState();
     }
+  }
+
+  defaultState() {
+    let founded = new Date;
+    return ({
+      name: '',
+      category: '--Please select a category--',
+      location: '',
+      description: '',
+      founded: `${founded}`
+    });
   }
 
   componentWillMount(){
@@ -67,7 +71,12 @@ class GroupForm extends React.Component {
         router.push(`/group/${params.groupId}`);
       }
     }
+  }
 
+  componentWillUpdate(newProps) {
+    if (newProps.location.pathname === `/group/new` && this.props.location.pathname !== `/group/new`) {
+      this.setState(this.defaultState());
+    }
   }
 
   renderErrors() {
@@ -177,6 +186,34 @@ class GroupForm extends React.Component {
       submitValue = 'Update Group';
     }
 
+    let imgURL;
+    let imgURLButton;
+    let imgURLButtonOrg;
+
+    if (imageUrl) {
+      imgURL = <img src={ imageUrl }/>;
+    }
+
+    if (!imageUrl) {
+      imgURLButton =
+      <div className='group-image-button-org'>
+        <div className='group-image-update'>
+          <label htmlFor="file">
+            <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
+          </label>
+          <input type="file" name="file" id="file" className="group-image-inputfile" onChange={ this.handleFile } />
+        </div>
+      </div>;
+    } else {
+      imgURLButtonOrg =
+      <div className='group-image-update'>
+        <label htmlFor="file">
+          <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
+        </label>
+        <input type="file" name="file" id="file" className="group-image-inputfile" onChange={ this.handleFile } />
+      </div>;
+    }
+
     if (this.props.location.pathname === `/group/${this.props.params.groupId}/edit`) {
       updateFile =
         <div className='group-image-file-container'>
@@ -184,14 +221,10 @@ class GroupForm extends React.Component {
             <img src={ image_url } />
           </div>
           <div className='group-image-preview'>
-            <img src={ imageUrl } />
+            { imgURLButton }
+            { imgURL }
           </div>
-          <div className='group-image-update'>
-            <label htmlFor="file">
-              <i className="fa fa-upload" aria-hidden="true"></i> Choose a file
-            </label>
-            <input type="file" name="file" id="file" className="group-image-inputfile" onChange={ this.handleFile } />
-        </div>
+          { imgURLButtonOrg }
       </div>;
     }
 
@@ -204,7 +237,7 @@ class GroupForm extends React.Component {
             <div className='group-form'>
               <form onSubmit={ this.handleSubmit } >
                 <div className='group-location'>
-                  <label htmlFor='group-location'>What's your new Group's hometown?</label>
+                  <label htmlFor='group-location'>{"What's your new Group's hometown?"}</label>
                   <input required id='group-location' placeholder='e.g. New York, NY' value={ location } onChange={this.handleInput('location')}/>
                 </div>
 
@@ -217,9 +250,11 @@ class GroupForm extends React.Component {
                   </select>
                 </div>
 
-                <div className='group-name'>
+                <div className="group-name">
                   <label htmlFor='group-name'>What will your Meetup's name be?</label>
-                  <input required id='group-name' value={ name } placeholder=' e.g. Let do something awesome together!' onChange={this.handleInput('name')}/>
+                  <input required id='group-name' value={ name }
+                    placeholder=' e.g. Let do something awesome together!'
+                    onChange={this.handleInput('name')}/>
                 </div>
 
                 <div className='group-description'>
