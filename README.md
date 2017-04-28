@@ -2,7 +2,7 @@
 
 [JustDoIt Live][heroku]
 
-[heroku]: (https://justdoitrng.herokuapp.com/#/)
+[heroku]: https://justdoitrng.herokuapp.com/#/
 
 JustDoIt is a web application inspired by Meetup. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
