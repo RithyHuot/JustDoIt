@@ -37,12 +37,18 @@ class EventList extends React.Component {
   }
 
  render(){
-   const { events, params, addUserToEvent, removeUserFromEvent, currentUser } = this.props;
+   const { events, params, addUserToEvent, removeUserFromEvent, currentUser, groups } = this.props;
    const groupId = params.groupId;
-
+   const ownerGroup = groups.filter((group) => group.id == params.groupId);
 
    if (events.length < 1) {
      let group = events.filter((obj) => obj.group_id == params.groupId);
+     let eventButton;
+
+     if (ownerGroup[0].organizer[0].id === currentUser.id){
+       eventButton = <button onClick={ this.redirectToCreateEvent }> Create an Event </button>
+     }
+
      if (group.length < 1) {
        return (
          <div className='group-event'>
@@ -50,7 +56,7 @@ class EventList extends React.Component {
              No Upcoming Events
            </div>
            <div className='group-event-create-button'>
-             <button onClick={ this.redirectToCreateEvent }> Create an Event </button>
+             { eventButton }
            </div>
          </div>
        );

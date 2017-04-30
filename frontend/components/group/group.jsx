@@ -61,6 +61,7 @@ class Group extends React.Component {
               addUserToEvent={addUserToEvent}
               removeUserFromEvent={removeUserFromEvent}
               currentUser={currentUser}
+              groups={groups}
               />;
     }
 

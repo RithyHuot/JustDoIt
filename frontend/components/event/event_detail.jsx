@@ -2,7 +2,8 @@ import React from 'react';
 import { withRouter, Link } from 'react-router';
 
 const EventDetail = (props) => {
-  const { events, addUserToEvent, removeUserFromEvent, currentUser } = props;
+  const { events, addUserToEvent, removeUserFromEvent, currentUser, params, location, router, groups } = props;
+
   let going;
   const users = events[0].users.map(
     (user, i) => {
@@ -20,9 +21,10 @@ const EventDetail = (props) => {
     }
   );
 
+
   const handleRedirect = (path) => {
-    if (props.location.pathname !== `/group/${props.events[0].id}/${path}`) {
-      props.router.push(`/group/${props.params.groupId}/event/${props.events[0].id}/${path}`);
+    if (location.pathname !== `/group/${events[0].id}/${path}`) {
+      router.push(`/group/${params.groupId}/event/${events[0].id}/${path}`);
     }
   };
 
@@ -35,8 +37,10 @@ const EventDetail = (props) => {
     rsvp = <span onClick={() => addUserToEvent(events[0].id)}>RSVP</span>;
   }
 
+  const group = groups.filter((group) => group.id == params.groupId);
+  
   let organizerButton;
-  if(events[0].group_id == props.params.groupId) {
+  if(events[0].group_id == params.groupId && group[0].organizer[0].id === currentUser.id) {
     organizerButton = <button onClick={ () => handleRedirect('edit') }>Edit Event </button>;
   }
 

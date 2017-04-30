@@ -29,6 +29,7 @@ class GroupBanner extends React.Component {
     const { group, user } = this.props;
     let button;
     let organizerButton;
+    let organizerEventButton;
     const joined = group[0].users.some((obj) => obj.id === user.id);
 
     if (joined) {
@@ -39,6 +40,7 @@ class GroupBanner extends React.Component {
 
     if (group[0].organizer[0].id === user.id) {
       organizerButton = <button onClick={ () => this.handleRedirect('edit') }>Edit Group </button>;
+      organizerEventButton = <Link to={`/group/${group[0].id}/event/new`}>Create an Event</Link>
     }
 
     return(
@@ -56,7 +58,7 @@ class GroupBanner extends React.Component {
                 <Link to={`/group/${group[0].id}/members`}>Members</Link>
               </div>
               <div className='create-event-button'>
-                <Link to={`/group/${group[0].id}/event/new`}>Create an Event</Link>
+                { organizerEventButton }
               </div>
             </div>
             <div className='group-right'>

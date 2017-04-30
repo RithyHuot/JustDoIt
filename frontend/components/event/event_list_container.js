@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
 
   return({
     events: Object.values(state.events.events),
+    groups: Object.values(state.groups.groups),
     currentUser: state.session.currentUser
   });
 };

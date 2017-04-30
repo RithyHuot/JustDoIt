@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import EventFormBanner from './event_form_banner';
+import Spinner from '../shared/spinner.jsx';
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -72,7 +73,18 @@ class EventForm extends React.Component {
   }
 
   componentWillMount(){
-    const { location, events, params, requestEvent } = this.props;
+    const { location, events, params, requestEvent, requestGroup, groups, router, currentUser } = this.props;
+
+    if ( groups.length < 1 ) {
+      requestGroup(params.groupId);
+    } else {
+      const ownerGroup = groups.filter((group) => group.id == params.groupId);
+      if (ownerGroup[0].organizer[0].id !== currentUser.id){
+        router.push(`/group/${params.groupId}`)
+      }
+    }
+
+
     if (location.pathname === `/group/${params.groupId}/event/${params.eventId}/edit`
       && events.length === 0){
         requestEvent(params.eventId)
@@ -90,6 +102,8 @@ class EventForm extends React.Component {
 
   render(){
     const { name, location, description, date } = this.state;
+
+    if ( this.props.groups.length < 1) return <Spinner />;
 
     let deleteButton;
     let submitValue = 'Create Event';
