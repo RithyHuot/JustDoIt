@@ -30,17 +30,22 @@ class GroupBanner extends React.Component {
     let button;
     let organizerButton;
     let organizerEventButton;
-    const joined = group[0].users.some((obj) => obj.id === user.id);
 
-    if (joined) {
-      button = <button onClick={ () => this.leaveGroup() }>Leave Group</button>;
+    if ( user ) {
+      const joined = group[0].users.some((obj) => obj.id === user.id);
+
+      if (joined) {
+        button = <button onClick={ () => this.leaveGroup() }>Leave Group</button>;
+      } else {
+        button = <button onClick={ () => this.joinGroup() } > Join us! </button>;
+      }
+
+      if (group[0].organizer[0].id === user.id) {
+        organizerButton = <button onClick={ () => this.handleRedirect('edit') }>Edit Group </button>;
+        organizerEventButton = <Link to={`/group/${group[0].id}/event/new`}>Create an Event</Link>;
+      }
     } else {
-      button = <button onClick={ () => this.joinGroup() } > Join us! </button>;
-    }
-
-    if (group[0].organizer[0].id === user.id) {
-      organizerButton = <button onClick={ () => this.handleRedirect('edit') }>Edit Group </button>;
-      organizerEventButton = <Link to={`/group/${group[0].id}/event/new`}>Create an Event</Link>
+      button = <Link to='/signup'>Signup </Link>;
     }
 
     return(

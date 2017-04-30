@@ -7,8 +7,10 @@ const EventDetail = (props) => {
   let going;
   const users = events[0].users.map(
     (user, i) => {
-      if (user.id === currentUser.id) {
-        going = true;
+      if (currentUser) {
+        if (user.id === currentUser.id) {
+          going = true;
+        }
       }
       return (
         <div key={`user-${i}`} className='event-detail-user'>
@@ -31,17 +33,23 @@ const EventDetail = (props) => {
   const date = new Date(events[0].date);
 
   let rsvp;
-  if (going) {
-    rsvp = <span onClick={() => removeUserFromEvent(events[0].id)}>You are going!</span>;
+  if (currentUser){
+    if (going) {
+      rsvp = <span onClick={() => removeUserFromEvent(events[0].id)}>You are going!</span>;
+    } else {
+      rsvp = <span onClick={() => addUserToEvent(events[0].id)}>RSVP</span>;
+    }
   } else {
-    rsvp = <span onClick={() => addUserToEvent(events[0].id)}>RSVP</span>;
+    rsvp = <Link to='/signup'> Signup </Link>;
   }
 
   const group = groups.filter((group) => group.id == params.groupId);
-  
+
   let organizerButton;
-  if(events[0].group_id == params.groupId && group[0].organizer[0].id === currentUser.id) {
-    organizerButton = <button onClick={ () => handleRedirect('edit') }>Edit Event </button>;
+  if (currentUser){
+    if(events[0].group_id == params.groupId && group[0].organizer[0].id === currentUser.id) {
+      organizerButton = <button onClick={ () => handleRedirect('edit') }>Edit Event </button>;
+    }
   }
 
   return (

@@ -57,7 +57,7 @@
 }
 
 .signup-link, #logout-button {
-  background-color: rgb(180, 8, 34);
+  background-color: #d01031;
   color: white;
   display: inline-block;
   width: 100px;
@@ -86,8 +86,9 @@
   color: #d01031;
 }
 
-#sign-link {
+#signup-link {
   margin-top: 10px;
+  color: #d01031
 }
 
 #signup-text {

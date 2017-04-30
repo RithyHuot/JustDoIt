@@ -44,9 +44,10 @@ class EventList extends React.Component {
    if (events.length < 1) {
      let group = events.filter((obj) => obj.group_id == params.groupId);
      let eventButton;
-
-     if (ownerGroup[0].organizer[0].id === currentUser.id){
-       eventButton = <button onClick={ this.redirectToCreateEvent }> Create an Event </button>
+     if (currentUser){
+       if (ownerGroup[0].organizer[0].id === currentUser.id){
+         eventButton = <button onClick={ this.redirectToCreateEvent }> Create an Event </button>
+       }
      }
 
      if (group.length < 1) {

@@ -6,9 +6,13 @@ const EventListItem = (props) => {
   let going;
   const users = event.users.map(
     (user, i) => {
-      if (user.id === currentUser.id) {
-        going = true;
+
+      if (currentUser) {
+        if (user.id === currentUser.id) {
+          going = true;
+        }
       }
+
       return (
         <Link key={`user-event-${i}`} to={`/member/${user.id}`}>
           <img src={user.image_url} className='event-user'/>
@@ -19,11 +23,16 @@ const EventListItem = (props) => {
   const date = new Date(event.date).toString();
 
   let rsvp;
-  if (going) {
-    rsvp = <span onClick={() => removeUserFromEvent(event.id)}>You are going!</span>;
+  if (currentUser) {
+    if (going) {
+      rsvp = <span onClick={() => removeUserFromEvent(event.id)}>You are going!</span>;
+    } else {
+      rsvp = <span onClick={() => addUserToEvent(event.id)}>RSVP</span>;
+    }
   } else {
-    rsvp = <span onClick={() => addUserToEvent(event.id)}>RSVP</span>;
+    rsvp = <Link to='/signup'>Signup </Link>
   }
+
   return (
     <div className='group-event'>
      <div className='event-name'>
