@@ -39,10 +39,13 @@ class Header extends React.Component {
   }
 
   handleClick () {
+    debugger
     this.props.logout().then(
       () => {
+        debugger
         if(this.props.location.pathname !== '/'){
-          hashHistory.push('/');
+          debugger
+          this.props.router.push('/');
         }
       }
     );

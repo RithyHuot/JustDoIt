@@ -6,7 +6,8 @@ import ExploreContainer from './explore/explore_container';
 import FooterContainer from './footer/footer_container';
 
 const AppWithOutState = (props) => {
-  if (!props.currentUser){
+  const { currentUser, location, children } = props;
+  if (!currentUser && location.pathname === '/'){
     return (
       <div className="app-container">
         <div className='top'>
@@ -25,7 +26,7 @@ const AppWithOutState = (props) => {
         <div className='top'>
           <div>
             <HeaderContainer />
-            { props.children }
+            { children }
           </div>
         </div>
         <FooterContainer />

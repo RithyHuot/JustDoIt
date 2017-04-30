@@ -11,9 +11,10 @@ import UserContainer from './user/user_profile_container';
 import UserFormContainer from './user/user_form_container';
 
 const Root = ({ store }) => {
-  const redirectIfLoggIn  = () => {
-    if (store.getState().session.currentUser) {
-      hashHistory.push('/');
+
+  const redirectIfNotLoggedIn  = () => {
+    if (!store.getState().session.currentUser) {
+      hashHistory.push('/home');
     }
   };
 
@@ -28,18 +29,18 @@ const Root = ({ store }) => {
       <Route path="/" component={ App } >
         <IndexRoute onEnter= { redirectToHome } />
         <Router path='home' component={ HomeContainer }/>
-        <Route path='member/:memberId' component={ UserContainer }/>
+        <Route path='member/:memberId' component={ UserContainer } onEnter={ redirectIfNotLoggedIn }/>
         <Route path='member/:memberId/edit' component={ UserFormContainer }/>
-        <Route path='group/new' component={ GroupFormContainer } />
-        <Route path='group/:groupId/edit' component= { GroupFormContainer } />
-        <Route path='group/:groupId/event/new' component={ EventFormContainer } />
-        <Route path='group/:groupId/event/:eventId/edit' component={ EventFormContainer } />
-        <Route path='group/:groupId' component={ GroupContainer } >
+        <Route path='group/new' component={ GroupFormContainer } onEnter={ redirectIfNotLoggedIn }/>
+        <Route path='group/:groupId/edit' component= { GroupFormContainer } onEnter={ redirectIfNotLoggedIn }/>
+        <Route path='group/:groupId/event/new' component={ EventFormContainer } onEnter={ redirectIfNotLoggedIn } />
+        <Route path='group/:groupId/event/:eventId/edit' component={ EventFormContainer } onEnter={ redirectIfNotLoggedIn }/>
+        <Route path='group/:groupId' component={ GroupContainer } onEnter={ redirectIfNotLoggedIn }>
           <Route path='members' component={ GroupContainer } />
           <Route path='event/:eventId' component={ GroupContainer }/>
         </Route>
       </Route>
-      <Route path='/signup' component={ SignupFormContainer } onEnter={ redirectIfLoggIn } />
+      <Route path='/signup' component={ SignupFormContainer } onEnter={ redirectToHome } />
     </Router>
   </Provider>);
 };
