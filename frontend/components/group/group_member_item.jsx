@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const GroupMemberItem = (props) => {
   const { user } = props;
@@ -10,7 +11,7 @@ const GroupMemberItem = (props) => {
       </div>
       <div className='group-member-info'>
         <div className='group-member-user-name'>
-          { user.first_name } { user.last_name }
+          <Link to={`/member/${user.id}`}>{ user.first_name } { user.last_name } </Link>
         </div>
         <div className='group-member-join'>
           Joined on: { date.slice(4,16) }
