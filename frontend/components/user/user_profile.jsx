@@ -12,15 +12,24 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount(){
-    const { groups, requestGroups } = this.props;
-    if ( groups.length === 0) {
+    const { groups, requestGroups, user, params, requestUser } = this.props;
+    if (groups.length === 0) {
       requestGroups();
+    }
+
+    if ( !user ) {
+      requestUser(params.memberId);
     }
   }
 
   componentWillUpdate(newProps){
+    const { params, requestUser } = this.props;
     if (newProps.groups.length < 2){
       this.props.requestGroups();
+    }
+    
+    if ( newProps.user.id != params.memberId) {
+        requestUser(params.memberId);
     }
   }
 
@@ -37,12 +46,12 @@ class UserProfile extends React.Component {
   }
 
   render(){
-    const { currentUser, groups, params } = this.props;
+    const { currentUser, groups, user, params } = this.props;
 
-    if (groups.length === 0) return <Spinner />;
+    if (groups.length === 0 || !user ) return <Spinner />;
 
     const userGroups = groups.map((obj, i) =>{
-      let anyUser = obj.users.some((x) => x.id === currentUser.id);
+      let anyUser = obj.users.some((x) => x.id === user.id);
 
       if (anyUser){
         return(
@@ -68,12 +77,12 @@ class UserProfile extends React.Component {
 
     let count = userGroups.filter((x) => x !== undefined );
 
-    const date = new Date(currentUser.joined);
+    const date = new Date(user.joined);
     return(
       <div className='user-profile-container'>
         <div className='user-profile-left'>
           <div className='user-profile-name'>
-            Welcome, {currentUser.first_name } { currentUser.last_name }
+            Welcome, {user.first_name } { user.last_name }
           </div>
           <div className='user-profile-info-container'>
             <div className='user-profile-info'>
@@ -82,7 +91,7 @@ class UserProfile extends React.Component {
                   Location:
                 </div>
                 <div className='user-location-info'>
-                  { currentUser.location }
+                  { user.location }
                 </div>
               </div>
               <div className='user-joined'>
@@ -95,7 +104,7 @@ class UserProfile extends React.Component {
               </div>
             </div>
             <div className='user-profile-bio'>
-              { currentUser.bio }
+              { user.bio }
             </div>
           </div>
           <div className='user-group-count'>
@@ -107,7 +116,7 @@ class UserProfile extends React.Component {
         </div>
         <div className='user-profile-right'>
           <div className='user-image'>
-            <img src={ currentUser.image_url } />
+            <img src={ user.image_url } />
           </div>
           <div className='user-edit-profile'>
             { editButton }

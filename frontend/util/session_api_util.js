@@ -1,10 +1,3 @@
-export const signup = (user) => {
-  return $.ajax({
-    method: 'POST',
-    url: '/api/users',
-    data: { user }
-  });
-};
 export const login = (user) => {
   return $.ajax({
     method: 'POST',
@@ -19,12 +12,10 @@ export const logout = () => {
   });
 };
 
-export const updateUser = (user) => {
+export const signup = (user) => {
   return $.ajax({
-    method: 'PATCH',
-    url: `/api/users/${user.get('user[id]')}`,
-    contentType: false,
-    processData: false,
-    data: user
+    method: 'POST',
+    url: '/api/users',
+    data: { user }
   });
 };

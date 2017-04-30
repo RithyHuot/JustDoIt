@@ -9,7 +9,11 @@ const EventListItem = (props) => {
       if (user.id === currentUser.id) {
         going = true;
       }
-      return <img src={user.image_url} key={`user-event-${i}`} className='event-user'/>;
+      return (
+        <Link key={`user-event-${i}`} to={`/member/${user.id}`}>
+          <img src={user.image_url} className='event-user'/>
+        </Link>
+      );
     }
   );
   const date = new Date(event.date).toString();

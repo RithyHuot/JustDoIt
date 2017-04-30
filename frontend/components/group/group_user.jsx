@@ -27,7 +27,9 @@ class GroupUser extends React.Component {
           </div>
           <div className='group-organizer-name'>
             <img className='group-organizer-image' src={ group[0].organizer[0].image_url }/>
-            <span>{ group[0].organizer[0].first_name } { group[0].organizer[0].last_name } </span>
+            <Link to={`/member/${group[0].organizer[0].id}`}>
+              <span>{ group[0].organizer[0].first_name } { group[0].organizer[0].last_name } </span>
+            </Link>
           </div>
         </div>
       </div>

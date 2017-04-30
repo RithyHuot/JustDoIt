@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import UserProfileForm from './user_profile_edit';
-import { updateUser } from '../../actions/session_actions';
-
+import { updateUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state) => {
   return({
@@ -13,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDisplayToProps = (dispatch) => {
   return({
-    updateUser: (user) => dispatch(updateUser(user))
+    updateUser: (user) => dispatch(updateUser(user)),
   });
 };
 

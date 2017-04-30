@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
 
 const EventDetail = (props) => {
   const { events, addUserToEvent, removeUserFromEvent, currentUser } = props;
@@ -12,7 +12,9 @@ const EventDetail = (props) => {
       return (
         <div key={`user-${i}`} className='event-detail-user'>
           <img src={user.image_url} key={`user-event-${i}`} className='event-user'/>
-          <div key={`user-event-name-${i}`} className='event-user-name'>{ user.first_name } { user.last_name }</div>
+          <Link to={`/member/${user.id}`}>
+            <div key={`user-event-name-${i}`} className='event-user-name'>{ user.first_name } { user.last_name }</div>
+          </Link>
         </div>
       );
     }
