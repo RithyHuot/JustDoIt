@@ -19,3 +19,13 @@ export const signup = (user) => {
     data: { user }
   });
 };
+
+export const updateUser = (user) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/users/${user.get('user[id]')}`,
+    contentType: false,
+    processData: false,
+    data: user
+  });
+};

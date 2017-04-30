@@ -37,3 +37,11 @@ export const signup = (user) => (dispatch) => {
       (errors) => dispatch(receiveErrors(errors.responseJSON))
     );
 };
+
+export const updateUser = (user) => (dispatch) => {
+  return APIUtil.updateUser(user)
+    .then(
+      (currentUser) => dispatch(receiveCurrentUser(currentUser)),
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
+    );
+};

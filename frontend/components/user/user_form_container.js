@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import UserProfileForm from './user_profile_edit';
-import { updateUser } from '../../actions/user_actions';
+import { updateUser } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => {
   return({
