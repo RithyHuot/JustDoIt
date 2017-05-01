@@ -10,55 +10,71 @@ class Explore extends React.Component {
         </div>
         <div className='first-explore'>
           <div className='first-inner'>
-            <div id='img1'>
-              <img src='/images/movements.png'/>
-            </div>
-            <span> Movements </span>
+            <Link to={`/category/Movements`}>
+              <div id='img1'>
+                <img src='/images/movements.png'/>
+              </div>
+              <span> Movements </span>
+            </Link>
           </div>
           <div className='second-inner'>
-            <div id='img2'>
+            <Link to={`/category/Outdoors & Adventure`}>
+              <div id='img2'>
               <img src='/images/camp.png'/>
-            </div>
-            <span> Outdoors & Adventure </span>
+              </div>
+              <span> Outdoors & Adventure </span>
+            </Link>
           </div>
           <div className='third-inner'>
-            <div id='img3'>
+            <Link to={`/category/Tech`}>
+              <div id='img3'>
               <img src='/images/tech.png'/>
-            </div>
-            <span> Tech </span>
+              </div>
+              <span> Tech </span>
+            </Link>
           </div>
           <div className='fourth-inner'>
-            <div id='img4'>
+            <Link to={`/category/Family`}>
+              <div id='img4'>
               <img src='/images/family.png'/>
-            </div>
-            <span> Family </span>
+              </div>
+              <span> Family </span>
+            </Link>
           </div>
         </div>
 
         <div className='second-explore'>
           <div className='second-inner'>
-            <div id='img5'>
+            <Link to={`/category/Health & Wellness`}>
+              <div id='img5'>
               <img src='/images/health.png'/>
-            </div>
-            <span> Health & Wellness </span>
+              </div>
+              <span> Health & Wellness </span>
+            </Link>
           </div>
           <div className='second-inner'>
-            <div id='img6'>
+            <Link to={`/category/Sports & Fitness`}>
+              <div id='img6'>
               <img src='/images/sport.png'/>
-            </div>
-            <span> Sports & Fitness </span>
+              </div>
+              <span> Sports & Fitness </span>
+            </Link>
           </div>
           <div className='third-inner'>
-            <div id='img7'>
+            <Link to={`/category/Learning`}>
+              <div id='img7'>
               <img src='/images/learning.png'/>
-            </div>
-            <span> Learning </span>
+              </div>
+              <span> Learning </span>
+            </Link>
           </div>
           <div className='fourth-inner'>
-            <div id='img8'>
+            <Link to={`/category/Photography`}>
+              <div id='img8'>
               <img src='/images/photography.png'/>
-            </div>
-            <span> Photography </span>
+              </div>
+              <span> Photography </span>
+            </Link>
           </div>
         </div>
       </div>

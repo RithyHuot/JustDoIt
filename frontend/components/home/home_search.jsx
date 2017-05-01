@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
     clearTimeout(this.searchTimeout);
 
     this.searchTimeout = setTimeout(() => {
-      this.props.searchGroup(query);
+      this.props.searchGroup({ search: query });
     }, 100);
   }
 
@@ -34,7 +34,7 @@ class SearchBar extends React.Component {
               <i className="fa fa-search" aria-hidden="true"></i>
               <input type='search' onChange={ this.handleSearch } placeholder=' All Groups'/>
             </div>
-            <span>within 10 miles of New York, NY</span>
+            <span>within 300 miles of New York, NY</span>
           </div>
         </div>
         <div className='home-nav'>

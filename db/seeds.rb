@@ -133,8 +133,8 @@ event_name = [
 
 #Demo account
 User.create!(email: 'demo@justdoit.com', password: 'password123',
-             first_name: 'Jon', last_name: 'Snow', joined: Faker::Date.backward(2000)),
-             location: 'Winterfell'
+             first_name: 'Jon', last_name: 'Snow', joined: Faker::Date.backward(2000),
+             location: 'Winterfell')
 
 #seeds users
 25.times do
@@ -142,7 +142,7 @@ User.create!(email: 'demo@justdoit.com', password: 'password123',
                first_name: Faker::Name.first_name,
                last_name: Faker::Name.last_name,
                joined: Faker::Date.backward(100),
-               location: city.sample,
+               location: city.sample
                )
   last_user = User.last
   last_user.image = File.open("public/images/user/#{rand(36)}.jpg")
@@ -155,7 +155,7 @@ users = User.all
 15.times do |i|
   user = users.sample
   user.organizer_groups.create!(name: event[i],
-                              category: category.sample,
+                              category: category[rand(7)],
                               location: city.sample,
                               description: description[i],
                               founded: Faker::Date.backward(1000),
@@ -169,7 +169,7 @@ end
 3.times do |i|
   user = users.find_by(first_name: 'Jon', last_name: 'Snow', email: 'demo@justdoit.com')
   user.organizer_groups.create!(name: event[i+15],
-                              category: category.sample,
+                              category: category[rand(7)],
                               location: city.sample,
                               description: description[i+15],
                               founded: Faker::Date.backward(1000),

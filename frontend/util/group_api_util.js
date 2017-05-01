@@ -55,6 +55,6 @@ export const searchGroup = (query) => {
   return $.ajax({
     method: 'POST',
     url: '/api/groups/search',
-    data: { search: query }
+    data: query
   });
 };

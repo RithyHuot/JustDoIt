@@ -20,12 +20,19 @@ class Home extends React.Component {
   }
 
   render(){
-    const { groups, requestGroup, searchGroup, errors } = this.props;
+    const { groups, requestGroup, searchGroup, errors, location, params } = this.props;
     if (!groups[0] && errors.length < 1){
       return <Spinner />;
     }
-    
+    let homeGroups = groups;
+    let category;
     let groupItem;
+
+    if (location.pathname === `/category/${params.categoryQuery}`) {
+      homeGroups = groups.filter((group) => group.category === params.categoryQuery);
+      category = params.categoryQuery;
+    }
+
     if (errors.length > 0 ){
       groupItem =
         (<div className='search-result-error'>
@@ -33,13 +40,13 @@ class Home extends React.Component {
         </div>);
     } else {
       groupItem = (
-        <GroupItems groups={ groups } requestGroup={ requestGroup }/>
+        <GroupItems groups={ homeGroups } requestGroup={ requestGroup }/>
       );
     }
 
     return(
       <div>
-        <HomeBanner groups={ groups } />
+        <HomeBanner groups={ homeGroups } category={category}/>
         <SearchBar searchGroup={ searchGroup } />
         { groupItem }
       </div>
