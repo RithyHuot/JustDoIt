@@ -35,11 +35,11 @@ JustDoIt is a web application inspired by Meetup. It utilizes Ruby on Rails on t
 
 ## Future Directions for the Project
 
+### Categories
+  - [x] Users will be able to navigate to a category page that filter out all groups based on the selected category
+
 ### Infinite Scrolls
-  - Users will be able to scroll through their groups and events and the server will send out a new set of groups and events starting from the last offset
+  - [ ] Users will be able to scroll through their groups and events and the server will send out a new set of groups and events starting from the last offset
 
 ### Calendar
-  - Users will be able to search and sort for events based on date
-
-### Categories
-  - Users will be able to navigate to a category page that filter out all groups based on the selected category
+  - [ ] Users will be able to search and sort for events based on date
