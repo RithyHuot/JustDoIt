@@ -6,7 +6,9 @@ class UserProfile extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.currentUser;
+    if (this.props.currentUser) {
+      this.state = this.props.currentUser;
+    }
     this.handleInput = this.handleInput.bind(this);
     this.redirectToUsersEdit = this.redirectToUsersEdit.bind(this);
   }
@@ -53,9 +55,11 @@ class UserProfile extends React.Component {
     let showUser = user;
     let editButton;
 
-    if ( params.memberId == currentUser.id) {
-      showUser = currentUser;
-      editButton = <button onClick={this.redirectToUsersEdit} >Edit Profile</button>;
+    if (currentUser){
+      if ( params.memberId == currentUser.id) {
+        showUser = currentUser;
+        editButton = <button onClick={this.redirectToUsersEdit} >Edit Profile</button>;
+      }
     }
 
     const userGroups = groups.map((obj, i) =>{

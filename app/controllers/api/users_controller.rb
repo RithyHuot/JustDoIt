@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :require_login, except: [:create]
+  before_action :require_login, except: [:create, :show]
 
   def create
     @user = User.new(user_params)
@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
       render :show
     else
       render :error, status: 422
-    end 
+    end
   end
 
   private

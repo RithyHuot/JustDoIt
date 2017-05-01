@@ -30,7 +30,7 @@ const Root = ({ store }) => {
         <IndexRoute onEnter= { redirectToHome } />
         <Router path='home' component={ HomeContainer }/>
         <Route path='category/:categoryQuery' component={ HomeContainer }/>
-        <Route path='member/:memberId' component={ UserContainer } onEnter={ redirectIfNotLoggedIn }/>
+        <Route path='member/:memberId' component={ UserContainer }/>
         <Route path='member/:memberId/edit' component={ UserFormContainer } onEnter={ redirectIfNotLoggedIn }/>
         <Route path='group/new' component={ GroupFormContainer } onEnter={ redirectIfNotLoggedIn }/>
         <Route path='group/:groupId/edit' component= { GroupFormContainer } onEnter={ redirectIfNotLoggedIn }/>
