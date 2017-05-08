@@ -16,7 +16,12 @@
 class Group < ApplicationRecord
   validates :name, :category, :location, :description, presence: true
 
-  has_attached_file :image, default_url: "newGroup.jpg"
+  has_attached_file :image, default_url: "newGroup_:style.jpg",
+                    :styles => {
+                                :thumb => "35x35",
+                                :small  => "150x150>",
+                                :medium => "200x200"
+                              }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :memberships

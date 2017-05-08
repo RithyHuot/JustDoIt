@@ -31,7 +31,12 @@ class User < ApplicationRecord
   has_many :rsvps
   has_many :events, through: :rsvps, source: :event
 
-  has_attached_file :image, default_url: "newUser.jpg"
+  has_attached_file :image, default_url: "newUser_:style.png",
+                    :styles => {
+                                :thumb => "35x35",
+                                :small  => "150x150>",
+                                :medium => "200x200"
+                              }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   attr_reader :password

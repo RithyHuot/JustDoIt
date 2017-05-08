@@ -6,13 +6,6 @@ import Modal from 'react-modal';
 
 import * as groupActions from './actions/group_actions';
 
-// window.store = configureStore();
-// window.requestGroups = groupActions.requestGroups;
-// window.requestGroup = groupActions.requestGroup;
-// window.createGroup = groupActions.createGroup;
-// window.updateGroup = groupActions.updateGroup;
-// window.deleteGroup = groupActions.deleteGroup;
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.current_user) {
