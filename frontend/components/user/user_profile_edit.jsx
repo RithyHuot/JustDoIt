@@ -144,7 +144,6 @@ class UserProfileForm extends React.Component {
           <div className='user-profile-edit-location'>
             <label htmlFor='user-profile-edit-location'> Location: </label>
             <input
-              required
               id='user-profile-edit-location'
               defaultValue={ location }
               onChange={this.handleInput('location')}
@@ -153,7 +152,6 @@ class UserProfileForm extends React.Component {
           <div className='user-profile-edit-bio'>
             <label htmlFor='user-profile-edit-bio'> Bio: </label>
             <textarea
-              required
               id='user-profile-edit-bio'
               defaultValue={ bio }
               onChange={this.handleInput('bio')}

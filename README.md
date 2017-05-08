@@ -48,6 +48,21 @@ JustDoIt is a web application inspired by Meetup. It utilizes Ruby on Rails on t
     }
   ```
 
+  ```ruby
+    def search
+      @groups =
+        Group
+        .includes(:users, :organizer_users)
+        .where(['name ILIKE ? or location ILIKE ? or description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%"])
+
+      if @groups.length > 0
+          render :index
+      else
+        render(json: ["No Result"], status: 404)
+      end
+    end
+  ```
+
 
 * Authentication
   - Secure custom authentication system that hashes/salts passwords using BCrypt
