@@ -76,8 +76,7 @@ export const addUserToEvent = (eventId) => (dispatch) => {
     .then(
       (eventRes) => {
         dispatch(receiveEvent(eventRes));
-      }
-        ,
+      },
       (errors) => dispatch(receiveErrors(errors))
     );
 };
@@ -87,5 +86,13 @@ export const removeUserFromEvent = (eventId) => (dispatch) => {
     .then(
       (eventRes) => dispatch(receiveEvent(eventRes)),
       (errors) => dispatch(receiveErrors(errors))
+    );
+};
+
+export const requestUserEvents = (userId) => (dispatch) => {
+  return APIUtil.requestUserEvents(userId)
+    .then(
+      (eventsRes) => dispatch(receiveEvents(eventsRes)),
+      (errors) => dispatch(receiveErrors(errors.responseJSON))
     );
 };

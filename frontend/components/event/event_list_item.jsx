@@ -30,7 +30,7 @@ const EventListItem = (props) => {
       rsvp = <span onClick={() => addUserToEvent(event.id)}>RSVP</span>;
     }
   } else {
-    rsvp = <Link to='/signup'>Signup </Link>
+    rsvp = <Link to='/signup'>Signup </Link>;
   }
 
   return (

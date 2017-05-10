@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'static_pages#root'
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy]
-    resources :users, only: [:create, :update, :show]
+    resources :users, only: [:create, :update, :show] do
+    end
     resources :groups, except: [:new, :edit] do
       resources :events, only: [:index]
     end
@@ -15,5 +16,7 @@ Rails.application.routes.draw do
 
     post '/events/:id/adduser', to: 'events#adduser'
     delete '/events/:id/removeuser', to: 'events#removeuser'
+
+    get '/events/users/:id', to: 'events#userevents'
   end
 end

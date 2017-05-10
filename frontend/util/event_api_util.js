@@ -48,3 +48,10 @@ export const removeUserFromEvent = (eventId) => {
     url: `/api/events/${eventId}/removeuser`
   });
 };
+
+export const requestUserEvents = (userId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/events/users/${userId}`
+  });
+};

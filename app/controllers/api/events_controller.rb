@@ -1,8 +1,7 @@
 class Api::EventsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :userevents]
 
   def index
-
     @events = Event.includes(:users)
       .where(group_id: params[:group_id])
 
@@ -70,6 +69,14 @@ class Api::EventsController < ApplicationController
     else
       render(json: ["Can't find user"], status: 404)
     end
+  end
+
+  def userevents
+    @events =  Event.includes(:users)
+      .joins(:rsvps)
+      .where('user_id = ?', params[:id])
+
+      render :index
   end
 
   private
