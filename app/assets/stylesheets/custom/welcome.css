@@ -53,3 +53,7 @@
   border: none;
   z-index: 5
 }
+
+.inner-signup-link:hover {
+  background-color: #900d24;
+}

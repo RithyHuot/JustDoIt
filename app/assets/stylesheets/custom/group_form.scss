@@ -136,6 +136,10 @@
           cursor: pointer;
         }
 
+        .group-form-submit:hover {
+          background-color: #900d24;
+        }
+
         .group-form-delete {
           margin-top: 20px;
           background-color: #d01031;
@@ -148,6 +152,10 @@
           border-radius: 5px;
           cursor: pointer;
           margin-left: 80px;
+        }
+
+        .group-form-delete:hover {
+          background-color: #900d24;
         }
       }
     }

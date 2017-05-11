@@ -30,10 +30,18 @@
 }
 
 .header-center {
-  margin-left: 140px;
+  margin-right: 20px;
 }
 
 .header-right {
+  display: flex;
+  width: 325px;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.header-left {
   display: flex;
   width: 325px;
   justify-content: space-between;
@@ -51,9 +59,9 @@
 #login-link {
   cursor: pointer;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
   font-family: sans-serif;
-  margin-left: 40px;
+  margin-left: 80px;
 }
 
 .signup-link, #logout-button {
@@ -66,6 +74,11 @@
   text-align: center;
   margin-left: 5px;
   border-radius: 5px;
+  font-size: 20px;
+}
+
+.signup-link:hover {
+  background-color: #900d24;
 }
 
 #logout-button {
@@ -73,6 +86,26 @@
   background-color: #d01031;
   border: none;
   cursor: pointer;
+}
+
+#logout-button:hover {
+  background-color: #900d24;
+}
+
+.header-guest-login  button{
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 5px;
+  background-color: #d01031;
+  border: none;
+  cursor: pointer;
+}
+
+.header-guest-login button:hover {
+  background-color: #900d24;
 }
 
 .close-button {
@@ -84,11 +117,6 @@
   font-family: sans-serif;
   margin-top: 10px;
   color: #d01031;
-}
-
-#signup-link {
-  margin-top: 10px;
-  color: #d01031
 }
 
 #signup-text {
@@ -109,6 +137,14 @@
   font-size: 16px;
   font-weight: 550;
   cursor: pointer;
+}
+
+.login-submit:hover, .demo-submit:hover {
+  background-color: #900d24;
+}
+
+#sign-link {
+  margin-top: 10px;
 }
 
 .error-msg {

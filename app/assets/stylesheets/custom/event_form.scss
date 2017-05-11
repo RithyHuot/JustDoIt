@@ -107,6 +107,10 @@
       cursor: pointer;
     }
 
+    .event-form-submit:hover {
+      background-color: #900d24;
+    }
+
     .event-form-delete {
       margin-top: 20px;
       background-color: #d01031;
@@ -119,6 +123,10 @@
       border-radius: 5px;
       cursor: pointer;
       margin-left: 80px;
+    }
+
+    .event-form-delete:hover {
+      background-color: #900d24;
     }
   }
 

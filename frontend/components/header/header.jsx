@@ -16,6 +16,7 @@ class Header extends React.Component {
     this.redirectToHome = this.redirectToHome.bind(this);
     this.redirectToGroupForm = this.redirectToGroupForm.bind(this);
     this.redirectToUsers = this.redirectToUsers.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   closeModal() {
@@ -58,6 +59,20 @@ class Header extends React.Component {
     }
   }
 
+  handleLogin(e) {
+    e.preventDefault();
+    const user = {
+      email: "demo@justdoit.com",
+      password: "password123"
+    };
+    this.props.login(user)
+      .then(() => {
+        if(this.props.location.pathname !== '/home'){
+          hashHistory.push('/home');
+        }
+      });
+  }
+
   redirectToUsers (){
     const { location, currentUser, router } = this.props;
     if(location.pathname !== `/member/${currentUser.id}`){
@@ -70,6 +85,7 @@ class Header extends React.Component {
     let welcome;
     let login;
     let signup;
+    let guestlogin;
     const { currentUser } = this.props;
     if (currentUser) {
       logout = (<button id='logout-button' onClick={this.handleClick.bind(this)}> Log Out</button>);
@@ -78,6 +94,7 @@ class Header extends React.Component {
     <img onClick={this.redirectToUsers} src={currentUser.image_url} className='username-image'/>
     </span>);
   } else {
+    guestlogin = <button onClick={this.handleLogin}> Guest Login </button>;
     login = (<span id='login-link' onClick={ this.openModal }>Log in</span>);
     signup = (<Link onClick={ this.closeModal } to='/signup' className='signup-link'>Sign up</Link>);
   }
@@ -96,6 +113,9 @@ class Header extends React.Component {
         <div className='header-inner'>
           <div className='header-left'>
             <span className='header-create-group' onClick={ this.redirectToGroupForm }> Create a Group </span>
+            <div className='header-guest-login'>
+              { guestlogin }
+            </div>
           </div>
           <div className='header-center'>
             <img src='/images/justdoit.png' onClick={this.redirectToHome}/>

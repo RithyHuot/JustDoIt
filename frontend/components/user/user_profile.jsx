@@ -55,7 +55,7 @@ class UserProfile extends React.Component {
     let showUser = user;
     let editButton;
 
-    if (currentUser){
+    if (currentUser && currentUser.email !== 'demo@justdoit.com'){
       if ( params.memberId == currentUser.id) {
         showUser = currentUser;
         editButton = <button onClick={this.redirectToUsersEdit} >Edit Profile</button>;
