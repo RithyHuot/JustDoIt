@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
   return({
     groups: Object.values(state.groups.groups),
     currentUser: state.session.currentUser,
-    errors: state.groups.errors
+    errors: state.groups.errors,
+    events: Object.values(state.events.events)
   });
 };
 

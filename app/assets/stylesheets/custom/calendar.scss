@@ -1,0 +1,27 @@
+.home-calendar-event {
+  width:900px;
+  margin: 0 auto;
+
+  .calendar-events {
+    border: 1px solid rgba(181, 181, 181, 0.8);
+    padding: 20px;
+    margin-top: 20px;
+  }
+}
+
+.calendar-no-user {
+  width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 30px;
+
+  p {
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  a {
+    color: #d01031;
+  }
+}

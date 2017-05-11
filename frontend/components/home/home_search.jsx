@@ -5,6 +5,7 @@ class SearchBar extends React.Component {
   constructor(props){
     super(props);
     this.redirectToHome = this.redirectToHome.bind(this);
+    this.redirectToCaledar = this.redirectToCaledar.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.searchTimeout = null;
   }
@@ -13,6 +14,13 @@ class SearchBar extends React.Component {
     const { location, router } = this.props;
     if (location.pathname !== '/home') {
       router.push('/home');
+    }
+  }
+
+  redirectToCaledar(){
+    const { location, router } = this.props;
+    if (location.pathname !== '/calendar') {
+      router.push('/calendar');
     }
   }
 
@@ -34,7 +42,7 @@ class SearchBar extends React.Component {
               <i className="fa fa-search" aria-hidden="true"></i>
               <input type='search' onChange={ this.handleSearch } placeholder=' All Groups'/>
             </div>
-            <span>within 300 miles of New York, NY</span>
+            <span>within 15 miles of New York, NY</span>
           </div>
         </div>
         <div className='home-nav'>
@@ -44,7 +52,7 @@ class SearchBar extends React.Component {
             </button>
           </div>
           <div className='home-calendar'>
-            <button>
+            <button onClick={ this.redirectToCaledar }>
               Calendars
             </button>
           </div>

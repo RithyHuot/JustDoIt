@@ -29,6 +29,7 @@ const Root = ({ store }) => {
       <Route path="/" component={ App } >
         <IndexRoute onEnter= { redirectToHome } />
         <Router path='home' component={ HomeContainer }/>
+        <Router path='calendar' component={ HomeContainer }/>
         <Route path='category/:categoryQuery' component={ HomeContainer }/>
         <Route path='member/:memberId' component={ UserContainer }/>
         <Route path='member/:memberId/edit' component={ UserFormContainer } onEnter={ redirectIfNotLoggedIn }/>
