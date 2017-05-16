@@ -34,6 +34,13 @@ class SearchBar extends React.Component {
   }
 
   render(){
+    let groupSelected;
+    let calendarSelected;
+    if (this.props.location.pathname === '/home') {
+      groupSelected = 'selected';
+    } else  {
+      calendarSelected = 'selected';
+    }
     return (
       <div className='home-search-container'>
         <div className='home-search'>
@@ -47,12 +54,12 @@ class SearchBar extends React.Component {
         </div>
         <div className='home-nav'>
           <div className='home-groups'>
-            <button onClick={ this.redirectToHome }>
+            <button className={groupSelected} onClick={ this.redirectToHome }>
               Groups
             </button>
           </div>
           <div className='home-calendar'>
-            <button onClick={ this.redirectToCaledar }>
+            <button className={calendarSelected} onClick={ this.redirectToCaledar }>
               Calendars
             </button>
           </div>

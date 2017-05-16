@@ -96,7 +96,7 @@
         cursor: pointer;
       }
 
-      button:focus {
+      .selected {
         background-color: rgb(69, 67, 67);
       }
     }
@@ -117,7 +117,7 @@
         cursor: pointer;
       }
 
-      button:focus {
+      .selected {
         background-color: rgb(69, 67, 67);
       }
     }
